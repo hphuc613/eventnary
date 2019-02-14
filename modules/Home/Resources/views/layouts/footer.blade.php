@@ -54,13 +54,9 @@
 										<i class="icon-twitter"></i>
 										<i class="icon-twitter"></i>
 									</a>
-									<a href="#" class="social-icon inline-block noborder si-small si-github" title="Github">
-										<i class="icon-github"></i>
-										<i class="icon-github"></i>
-									</a>
-									<a href="#" class="social-icon inline-block noborder si-small si-pinterest" title="Pinterest">
-										<i class="icon-pinterest"></i>
-										<i class="icon-pinterest"></i>
+									<a href="#" class="social-icon inline-block noborder si-small si-youtube" title="youtube">
+										<i class="icon-youtube"></i>
+										<i class="icon-youtube"></i>
 									</a>
 								</div>
 							</div>

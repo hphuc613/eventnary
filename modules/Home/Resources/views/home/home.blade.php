@@ -374,7 +374,7 @@
 						</div>
 					@endfor
 				</div>
-				<p class="bottommargin  m-t-30 m-r-30 float-right" style="font-size: 16px;"><a href="#" data-scrollto="#section-services" data-easing="easeInOutExpo" data-speed="1250" data-offset="70" class="more-link">Xem thêm <i class="icon-angle-right"></i></a></p>
+				<p class="bottommargin  m-t-30 m-r-30 float-right" style="font-size: 16px;"><a href="{{ route('home.list.event') }}" class="more-link">Xem thêm <i class="icon-angle-right"></i></a></p>
 
 				<div class="m-b-50 clear"></div>
 
@@ -493,7 +493,7 @@
 
 					<div class="row noleftmargin norightmargin bottommargin-lg common-height">
 						<div class="col-lg-8 col-md-6 gmap d-none d-md-block">
-							<iframe width=100% height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=105.7645305991173%2C10.060592276832386%2C105.7675212621689%2C10.062279849823335&amp;layer=mapnik" style="border: 1px solid black"></iframe>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3927.846365943849!2d105.63674295005569!3d10.11165899273919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDA2JzQyLjAiTiAxMDXCsDM4JzIwLjIiRQ!5e0!3m2!1svi!2s!4v1549514089916" width="" height="186%" frameborder="0" style="border:0" allowfullscreen></iframe>
 						</div>
 						<div class="col-lg-4 col-md-6" style="background-color: #F5F5F5;">
 							<div class="col-padding max-height">
@@ -537,6 +537,8 @@
 								<form class="nobottommargin" id="template-contactform" name="template-contactform" action="include/sendemail.php" method="post">
 
 									<div class="form-process"></div>
+
+									<center><h2 class="divcenter bottommargin font-body" style="max-width: 500px; font-size: 35px;">Gửi phản hồi của bạn cho chúng tôi</h2></center>
 
 									<div class="col_half">
 										<input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control border-form-control required" placeholder="Họ & tên" />
