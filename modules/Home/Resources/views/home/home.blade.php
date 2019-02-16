@@ -6,7 +6,7 @@
 
 			<div class="content-wrap nopadding">
 
-				<div id="section-about" class="center page-section">
+				<div id="section-about" class="center page-section notoppadding">
 					<div class="container clearfix">
 						<h2 class="divcenter bottommargin font-body" style="max-width: 700px; font-size: 40px;">Chào mừng bạn đến với Eventnary
 						!</h2>
@@ -323,9 +323,9 @@
 					</div>
 				</div>
 
-				<div  id="section-blog" class="center page-section">
+				<div  id="section-blog" class="center page-section nopadding">
 					
-					<div  class="fancy-title title-center title-dotted-border padding">
+					<div  class="fancy-title title-center title-dotted-border">
 						<h2>Sự kiện nổi bật</h2>
 					</div>
 

@@ -111,6 +111,12 @@
 
 			</div>
 
+			<div class="top-header">
+				<div class="container-fluid center topmargin">
+					<a href="{{ route('get.home.login') }}" class="btn btn-primary">Đăng nhập </a>
+				</div>
+			</div>
+
 		</div>
 
 	</div>
@@ -118,6 +124,8 @@
 	<!-- Document Wrapper
 	============================================= -->
 	<div id="wrapper" class="clearfix">
+		
+
 
 		<!-- Header
 		============================================= -->

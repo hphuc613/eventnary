@@ -17,4 +17,8 @@ class HomeController extends Controller{
     public function index(Request $request){
         return view('Home::home.home');
     }
+
+    public function login(Request $request){
+        return view('Home::home.login');
+    }
 }

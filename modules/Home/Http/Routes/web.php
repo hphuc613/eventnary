@@ -1,6 +1,7 @@
 <?php
 
         Route::get('/','HomeController@index')->name('get.home.index');
+        Route::get('/login-page','HomeController@login')->name('get.home.login');
     	
 
 
