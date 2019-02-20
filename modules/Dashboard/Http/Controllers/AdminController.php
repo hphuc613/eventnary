@@ -1,5 +1,5 @@
 <?php
-namespace HPro\Base\Http\Controllers;
+namespace HPro\Dashboard\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,7 +14,7 @@ class AdminController extends Controller{
     public function __construct(){
         # parent::__construct();
     }
-    public function outdex(Request $request){
-        return view('Home::outdex');
+    public function index(Request $request){
+        return view('Dashboard::home.home');
     }
 }

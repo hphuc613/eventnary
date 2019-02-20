@@ -1,7 +1,8 @@
 <?php
-$namespace = 'HPro\Base\Http\Controllers';
+$namespace = 'HPro\Dashboard\Http\Controllers';
 Route::group(
-    ['module'=>'Base', 'namespace' => $namespace],
+    ['module'=>'Role', 'namespace' => $namespace,'middleware' => ['web']],
+    
     function() {
 
     	require('Routes\web.php');

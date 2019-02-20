@@ -19,8 +19,15 @@ class ServiceProvider extends  \Illuminate\Support\ServiceProvider
             if(is_dir(__DIR__.'/'.$module.'/Resources/views')) {
                 $this->loadViewsFrom(__DIR__.'/'.$module.'/Resources/views', $module);
             }
+
+            if (file_exists($file = __DIR__.'/'.$module.'/Helpers/Helpers.php')){
+                require $file;
+            }
         }
     }
+
+    
+
     public function register(){
         
     }

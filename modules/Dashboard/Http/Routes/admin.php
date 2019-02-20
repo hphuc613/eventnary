@@ -1,8 +1,6 @@
 <?php
 	Route::prefix('admin')->group(function(){
-		Route::prefix('base')->group(function(){
-    		Route::get('outdex','AdminController@outdex');
-    	});
+    	Route::get('/','AdminController@index')->name('home.admin');
 	});
     	
 
