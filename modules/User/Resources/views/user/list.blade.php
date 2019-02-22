@@ -1,6 +1,6 @@
 @extends('Dashboard::layouts.master')
 
-@include('Role::role.breadcrumb')
+@include('User::user.breadcrumb')
 
 @section('content')                
                 <!-- Start Page Content -->
@@ -17,16 +17,20 @@
                                         <thead>
                                             <tr>
                                                 <th>STT</th>
+                                                <th>Tên</th>
+                                                <th>Số điện thoại</th>
+                                                <th>Email</th>
                                                 <th>Vai trò</th>
-                                                <th>Mô tả</th>
                                                 <th>Thao tác</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>STT</th>
+                                                <th>Tên</th>
+                                                <th>Số điện thoại</th>
+                                                <th>Email</th>
                                                 <th>Vai trò</th>
-                                                <th>Mô tả</th>
                                                 <th width="110px">Thao tác</th>
                                             </tr>
                                         </tfoot>
@@ -34,13 +38,15 @@
                                             @foreach($data as $key => $val)
                                             <tr>
                                                 <td>{{ $key+1 }}</td>
-                                                <td>{{ $val->title }}</td>
-                                                <td>{{ $val->description }}</td>
+                                                <td>{{ $val->name }}</td>
+                                                <td>0{{ $val->phone }}</td>
+                                                <td>{{ $val->email }}</td>
+                                                <td>{{ $val->role->title }}</td>
                                                 <td>
                                                     <center>
-                                                        <a href="{{ route('get.edit.role',$val->id) }}" data-toggle="tooltip" data-original-title="Sửa"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
-                                                        <a href="javascript:void(0)" alt="{{ route('get.delete.role',$val->id) }}" id="del-warning" href="#" data-toggle="tooltip" data-original-title="Xóa"> <i class="fa fa-close text-danger"></i> </a>
-                                                        <!-- <button class="btn btn-danger" action="{{ route('get.delete.role',$val->id) }}" >Xóa</button> -->
+                                                        <a href="{{ route('get.edit.user',$val->id) }}" data-toggle="tooltip" data-original-title="Sửa"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                                        <a href="javascript:void(0)" alt="{{ route('get.delete.user',$val->id) }}" id="del-warning" href="#" data-toggle="tooltip" data-original-title="Xóa"> <i class="fa fa-close text-danger"></i> </a>
+                                                        <!-- <button class="btn btn-danger" action="{{ route('get.delete.user',$val->id) }}" >Xóa</button> -->
                                                     </center>
                                                 </td>
                                                 

@@ -1,6 +1,6 @@
 @extends('Dashboard::layouts.master')
 
-@include('Role::role.breadcrumb')
+@include('Event::event.breadcrumb')
 
 @section('content')
 
@@ -14,7 +14,7 @@
                                 <h4 class="m-b-0 text-white">Chỉnh sửa vai trò</h4>
                             </div>
                             <div class="card-body">
-                                <form class="form-material" method="post" action="{{ route('post.edit.role',$data->id) }}">
+                                <form class="form-material" method="post" action="{{ route('post.edit.event',$data->id) }}">
                                  {{ csrf_field() }}
                                     <div class="form-body">
                                         <div class="p-t-20">

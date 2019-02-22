@@ -1,51 +1,54 @@
 <?php
-namespace HPro\Event\Http\Controllers;
+namespace HPro\User\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use HPro\Event\Enities\Event;
+use HPro\Role\Enities\Roles;
+use HPro\User\Enities\User;
 use Validator;
 
-class EventController extends Controller{
+class UserController extends Controller{
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct(Event $model, Request $request)
+    public function __construct(User $model, Request $request)
     {
         $this->model    = $model;
     }
     
     
     public function getList(Request $request){
-        $data = Event::all();
-        return view('Event::event.list',compact('data'));
+        $data = User::all();
+        return view('User::user.list',compact('data'));
     }
 
 
     public function getCreate(Request $request){
-        return view('Event::event.create');
+        $roles = Roles::all();
+        return view('User::user.create',compact('roles'));
     }
 
     public function postCreate(Request $request){
 
         $this->validate($request,$this->model->rules,$this->model->messages);
         $data = $request->all();
-        $insert = new Event($data);
+        $insert = new User($data);
         $insert->save();
         $request->session()->flash('status', 'Thêm mới thành công!');
-        return redirect()->route('get.list.role');
+        return redirect()->route('get.list.user');
     }
 
     public function getEdit(Request $request, $id){
-        $data = Event::find($id);
-        return view('Event::event.edit',compact('data'));
+        $roles = Roles::all();
+        $data = User::find($id);
+        return view('User::user.edit',compact('data','roles'));
     }
 
     public function postEdit(Request $request, $id){
         $this->validate($request,$this->model->rules,$this->model->messages);
-        $data = Event::find($id);
+        $data = User::find($id);
         $data->update($request->all());
         $data->save();
         $request->session()->flash('status', 'Chỉnh sửa thành công!');
@@ -54,7 +57,7 @@ class EventController extends Controller{
 
     public function delete(Request $request, $id)
     {
-        $data = Event::find($id);
+        $data = User::find($id);
         $data->delete();
         $request->session()->flash('alert', 'Xóa thành công!');
         return redirect()->back();

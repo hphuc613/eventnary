@@ -1,17 +1,16 @@
 <?php
 
-namespace HPro\Role\Enities;
+namespace HPro\Event\Enities;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use HPro\User\Enities\User;
 
-class Roles extends Model
+class Event extends Model
 {
 	use SoftDeletes;
 
-	protected $table = 'roles';
+	protected $table = 'events';
 
 	protected $primaryKey = 'id';
 
@@ -43,10 +42,6 @@ class Roles extends Model
     public function getTitle()
     {
         return $this->title;
-    }
-
-    public function user(){
-        return $this->hasMany(User::class,'role_id','id');
     }
 
 }

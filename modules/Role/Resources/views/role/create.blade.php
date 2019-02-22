@@ -1,13 +1,6 @@
 @extends('Dashboard::layouts.master')
 
-@section('breadcrumb')
-        Vai trò
-@endsection
-
-@section('link')
-        <a href="{{ route('get.create.role') }}" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Tạo mới</a>
-@endsection
-
+@include('Role::role.breadcrumb')
 
 @section('content')
                 <!-- ============================================================== -->
@@ -31,14 +24,14 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label">Tên vai trò</label>
-                                                    <input type="text" name="title" class="form-control" placeholder="Nhập tên vai trò">
+                                                    <input type="text" name="title" class="form-control" placeholder="Nhập tên vai trò" value="{{ old('title') }}">
                                                 </div>
                                             </div>
                                             <!--/span-->
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label">Mô tả</label>
-                                                    <textarea class="form-control" name="description" rows="5" placeholder="Nhập mô tả"></textarea>
+                                                    <textarea class="form-control" name="description" rows="5" placeholder="Nhập mô tả">{{ old('description') }}</textarea>
                                                 </div>
                                             </div>
                                             <!--/span-->

@@ -1,9 +1,9 @@
 <?php
-namespace HPro\Event\Http\Controllers;
+namespace HPro\User\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use HPro\Event\Enities\Event;
+use HPro\User\Enities\User;
 use Validator;
 
 class AdminController extends Controller{
@@ -12,7 +12,7 @@ class AdminController extends Controller{
      *
      * @return void
      */
-    public function __construct(Event $model, Request $request)
+    public function __construct(User $model, Request $request)
     {
         $this->model    = $model;
     }

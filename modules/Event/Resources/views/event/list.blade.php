@@ -1,6 +1,6 @@
 @extends('Dashboard::layouts.master')
 
-@include('Role::role.breadcrumb')
+@include('Event::event.breadcrumb')
 
 @section('content')                
                 <!-- Start Page Content -->

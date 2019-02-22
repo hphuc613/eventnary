@@ -28,6 +28,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js') }} "></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js') }} "></script>
 <![endif]-->
+    @stack('css')
 </head>
 
 <body class="skin-blue fixed-layout">
@@ -218,7 +219,7 @@
     <!-- end - This is for export functionality only -->
     <script src="{{ asset('backend/assets/node_modules/sweetalert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('backend/assets/node_modules/sweetalert/jquery.sweet-alert.custom.js') }}"></script>
-    
+    @stack('js')
     <script>
     $(document).ready(function() {
         $('#myTable').DataTable();

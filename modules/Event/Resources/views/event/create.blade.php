@@ -1,9 +1,12 @@
 @extends('Dashboard::layouts.master')
 
-@include('Role::role.breadcrumb')
+@include('Event::event.breadcrumb')
 
 @section('content')
-
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
@@ -11,24 +14,24 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header bg-info">
-                                <h4 class="m-b-0 text-white">Chỉnh sửa vai trò</h4>
+                                <h4 class="m-b-0 text-white">Thêm vai trò</h4>
                             </div>
                             <div class="card-body">
-                                <form class="form-material" method="post" action="{{ route('post.edit.role',$data->id) }}">
+                                <form class="form-material" method="post" action="{{ route('post.create.event') }}">
                                  {{ csrf_field() }}
                                     <div class="form-body">
                                         <div class="p-t-20">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label">Tên vai trò</label>
-                                                    <input type="text" name="title" class="form-control" placeholder="Nhập tên vai trò" value="{{ $data->title }}">
+                                                    <input type="text" name="title" class="form-control" placeholder="Nhập tên vai trò">
                                                 </div>
                                             </div>
                                             <!--/span-->
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="control-label">Mô tả</label>
-                                                    <textarea class="form-control" name="description" rows="5" placeholder="Nhập mô tả">{{ $data->description }}</textarea>
+                                                    <textarea class="form-control" name="description" rows="5" placeholder="Nhập mô tả"></textarea>
                                                 </div>
                                             </div>
                                             <!--/span-->
@@ -45,4 +48,3 @@
                     </div>
                 </div>
 @endsection
-

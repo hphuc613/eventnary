@@ -192,9 +192,11 @@ $(function () {
     })
 });
 
-$("div.notification").delay(2000).slideUp();
+$("div.notification").delay(3000).slideUp();
 
 $('a#del-warning').on('click',function(){
+
+    var href = $(this).attr('alt');
     swal({   
         title: "Bạn chắc chắn về việc này?",   
         text: "Bạn sẽ không thể phục hồi lại dữ liệu này!",   
@@ -202,8 +204,8 @@ $('a#del-warning').on('click',function(){
         showCancelButton: true,   
         confirmButtonColor: "#DD6B55",   
         confirmButtonText: "Đồng ý!",   
-        closeOnConfirm: false 
-    }, function(){   
-        swal("Đã xóa!", "Dữ liệu này đã được xóa", "success"); 
-    });
+        closeOnConfirm: true,
+    }, function () {
+            window.location.href = href;
+        });
 });
