@@ -8,9 +8,9 @@
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="image/logo_eventnary2_dark.png" alt="homepage" class="dark-logo" />
+                            <img src="{{ url('image/logo_eventnary2_dark.png') }}" alt="homepage" class="dark-logo" />
                             <!-- Light Logo icon -->
-                            <img src="image/logo_eventnary2.png" width="50%" alt="homepage" class="light-logo" />
+                            <img src="{{ url('image/logo_eventnary2.png') }}" width="50%" alt="homepage" class="light-logo" />
                         </b></a>
                         <!--End Logo icon -->
                         <!-- Logo text<span> -->

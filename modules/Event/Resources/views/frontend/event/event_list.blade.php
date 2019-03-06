@@ -4,6 +4,7 @@
 @section('content')
 @include('Event::frontend.layout.slider')
 
+
 <section id="content">
 
 			<div class="content-wrap">
@@ -14,31 +15,34 @@
 
 						<div id="posts" class="events small-thumbs">
 							
-							@for($i=0; $i<=3; $i++)
+							@foreach($data as $key => $val)
+								@php
+								    $start_date=$val->start_date;
+								    $end_date=$val->end_date;
+								@endphp
 								<div class="entry clearfix">
 								<div class="entry-image">
 									<a href="#">
-										<img src="frontend/images/events/thumbs/1.jpg" alt="Inventore voluptates velit totam ipsa tenetur">
+										<img src="{{ asset('upload/image/event/'.$val->current_image) }}" alt="{{ $val->title }}">
 										<div class="entry-date">10<span>Apr</span></div>
 									</a>
 								</div>
 								<div class="entry-c">
 									<div class="entry-title">
-										<h2><a href="#">Inventore voluptates velit totam ipsa tenetur</a></h2>
+										<h2><a href="#">{{ $val->title }}</a></h2>
 									</div>
 									<ul class="entry-meta clearfix">
-										<li><span class="badge badge-warning">Private</span></li>
-										<li><a href="#"><i class="icon-time"></i> 11:00 - 19:00</a></li>
-										<li><a href="#"><i class="icon-map-marker2"></i> Melbourne, Australia</a></li>
+										<li><a href="#"><i class="icon-time"></i> {{ date_format(new DateTime($start_date),'d-m-Y H:i') }} - {{ date_format(new DateTime($end_date),'d-m-Y H:i') }}</a></li>
+										<li><a href="#"><i class="icon-map-marker2"></i> {{ $val->ward->district->title }}, {{ $val->ward->district->city->title }}</a></li>
 									</ul>
 									<div class="entry-content">
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur voluptate rerum molestiae eaque possimus exercitationem eligendi fuga.</p>
 										<a href="#" class="btn btn-success " disabled="disabled">Buy Tickets</a>
-										<a href="{{ route('home.detail.event') }}" class="btn btn-danger">Read More</a>
+										<a href="#" class="btn btn-danger">Read More</a>
 									</div>
 								</div>
 								</div>
-							@endfor
+							@endforeach
 
 						</div>
 

@@ -25,7 +25,8 @@ class RoleController extends Controller{
 
 
     public function getCreate(Request $request){
-        return view('Role::role.create');
+        $roles = Roles::all();
+        return view('Role::role.create',compact('roles'));
     }
 
     public function postCreate(Request $request){
@@ -35,12 +36,13 @@ class RoleController extends Controller{
         $insert = new Roles($data);
         $insert->save();
         $request->session()->flash('status', 'Thêm mới thành công!');
-        return redirect()->route('get.list.role');
+        return redirect()->back();
     }
 
     public function getEdit(Request $request, $id){
+        $roles = Roles::all();
         $data = Roles::find($id);
-        return view('Role::role.edit',compact('data'));
+        return view('Role::role.edit',compact('data','roles'));
     }
 
     public function postEdit(Request $request, $id){

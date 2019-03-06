@@ -24,13 +24,15 @@ class CreateEventsTable extends Migration
             $table->string('current_image')->nullable();
             $table->string('organizational')->nullable();
             $table->string('organizational_link')->nullable();
-            $table->integer('phone_contact')->nullable();
+            $table->string('phone_contact')->nullable();
             $table->integer('status')->nullable();
-            $table->integer('user_id')->unsigned();
-            $table->integer('event_type_id')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('ward_id')->unsigned();
+            $table->integer('event_type_id')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('ward_id')->references('id')->on('wards');
             $table->foreign('event_type_id')->references('id')->on('event_types');
         });
     }

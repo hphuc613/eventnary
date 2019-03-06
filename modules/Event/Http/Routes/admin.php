@@ -7,6 +7,9 @@
     		Route::get('edit/{id}','EventController@getEdit')->name('get.edit.event');
     		Route::post('edit/{id}','EventController@postEdit')->name('post.edit.event');
     		Route::get('delete/{id}','EventController@delete')->name('get.delete.event');
+            Route::get('gallery/{id}','EventController@getListGallery')->name('get.list_gallery.event');
+            Route::post('gallery','EventController@postListGallery')->name('post.list_gallery.event');
+            Route::get('delete-gallery/{id}','EventController@deleteGallery')->name('get.delete_gallery.event');
 
     	});
 	});

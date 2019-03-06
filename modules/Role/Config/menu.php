@@ -3,7 +3,7 @@
 return [
         'name' => 'Vai trò',
         'route' => '',
-        'sort' => 3,
+        'sort' => 23,
         'active'=> 'role',
         'icon' => ' icon-people',
         'middleware' => [],
@@ -11,15 +11,8 @@ return [
                 'list-role' => [
                         'name'  => trans('Danh sách vai trò'),
                         'icon'  => null,
-                        'route' => route('get.list.role')   ,
+                        'route' => route('get.create.role')   ,
                         'active'=> 'list-role ',
-                        'middleware' => [],
-                ],
-                'create-role' => [
-                        'name'  => trans('Thêm mới vai trò'),
-                        'icon'  => null,
-                        'route' => route('get.create.role'),
-                        'active'=> 'create-role ',
                         'middleware' => [],
                 ],
 

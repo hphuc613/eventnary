@@ -11,12 +11,24 @@
     <!-- Favicon icon -->
     <link rel="SHORTCUT ICON"  type="image/png" sizes="16x16" href="{{ asset('/image/logo.png') }}">
     <title>Eventnary Admin - Hệ thống quản lý tổ chức sự kiện</title>
+    <link rel="stylesheet" href="{{ asset('backend/assets/node_modules/dropify/dist/css/dropify.min.css') }}">
     <!-- Custom CSS -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700&amp;subset=vietnamese" rel="stylesheet">
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    
     <link href="{{ asset('backend/dist/css/style.min.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/dist/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/dist/css/pages/form-icheck.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/dist/css/pages/user-card.css') }}" rel="stylesheet">
+    
+    <link href="{{ asset('backend/assets/node_modules/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('backend/assets/node_modules/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/assets/node_modules/Magnific-Popup-master/dist/magnific-popup.css') }}" rel="stylesheet">
     
     <link href="{{ asset('backend/assets/node_modules/sweetalert/sweetalert.css') }}" rel="stylesheet" type="text/css">
+    <!-- Datetime Picker -->
+    <link href="{{ asset('backend/assets/node_modules/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet">
     <!-- page css -->
     <link href="{{ asset('backend/dist/css/pages/float-chart.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/dist/css/pages/file-upload.css') }}" rel="stylesheet">
@@ -203,6 +215,7 @@
 
     <!-- ============================================================== -->
     <!-- This page plugins -->
+    <script src="{{ asset('backend/assets/node_modules/jquery-inputmask/jquery.inputmask.bundle.js') }}"></script>
     <!-- ============================================================== -->
     <!-- Flot Charts JavaScript -->
     <script src="{{ asset('backend/dist/js/pages/jasny-bootstrap.js') }} "></script>
@@ -219,8 +232,40 @@
     <!-- end - This is for export functionality only -->
     <script src="{{ asset('backend/assets/node_modules/sweetalert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('backend/assets/node_modules/sweetalert/jquery.sweet-alert.custom.js') }}"></script>
+    <!-- ====================================== -->
+
+    <!-- Date Picker -->
+    
+    <script src="{{ asset('backend/assets/node_modules/moment/moment.js') }}"></script>
+    <script src="{{ asset('backend/assets/node_modules/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
+    <script src="{{ asset('backend/assets/node_modules/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+    <!-- Select2 -->
+    <script src="{{ asset('backend/assets/node_modules/select2/dist/js/select2.full.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('backend/assets/node_modules/bootstrap-select/bootstrap-select.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('backend/assets/node_modules/icheck/icheck.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/node_modules/icheck/icheck.init.js') }}"> </script>
+
+    <!-- ============================================================== -->
+    <!-- jQuery file upload -->
+    <script src="{{ asset('backend/assets/node_modules/dropify/dist/js/dropify.min.js') }}"></script>
+    <!-- Magnific popup JavaScript -->
+    <script src="{{ asset('backend/assets/node_modules/Magnific-Popup-master/dist/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/node_modules/Magnific-Popup-master/dist/jquery.magnific-popup-init.js') }}"></script>
+    <!-- Current JS -->
     @stack('js')
+    
+
     <script>
+
+    $('#min-date').bootstrapMaterialDatePicker({ format: 'YYYY-MM-DD HH:mm:ss', minDate: new Date() });
+    $('#min-date2').bootstrapMaterialDatePicker({ format: 'YYYY-MM-DD HH:mm:ss', minDate: new Date() });
+    $('#min-date3').bootstrapMaterialDatePicker({ format: 'YYYY-MM-DD HH:mm:ss', minDate: new Date() });
+    $('#min-date4').bootstrapMaterialDatePicker({ format: 'YYYY-MM-DD HH:mm:ss', minDate: new Date() });
+    
+    $(".select2").select2();
+    
+
     $(document).ready(function() {
         $('#myTable').DataTable();
         $(document).ready(function() {
@@ -265,6 +310,47 @@
         buttons: [
             'copy', 'excel', 'pdf', 'print'
         ]
+    });
+
+    $(document).ready(function() {
+        // Basic
+        $('.dropify').dropify();
+
+        // Translated
+        $('.dropify-fr').dropify({
+            messages: {
+                default: 'Glissez-déposez un fichier ici ou cliquez',
+                replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                remove: 'Supprimer',
+                error: 'Désolé, le fichier trop volumineux'
+            }
+        });
+
+        // Used events
+        var drEvent = $('#input-file-events').dropify();
+
+        drEvent.on('dropify.beforeClear', function(event, element) {
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
+
+        drEvent.on('dropify.afterClear', function(event, element) {
+            alert('File deleted');
+        });
+
+        drEvent.on('dropify.errors', function(event, element) {
+            console.log('Has Errors');
+        });
+
+        var drDestroy = $('#input-file-to-destroy').dropify();
+        drDestroy = drDestroy.data('dropify')
+        $('#toggleDropify').on('click', function(e) {
+            e.preventDefault();
+            if (drDestroy.isDropified()) {
+                drDestroy.destroy();
+            } else {
+                drDestroy.init();
+            }
+        })
     });
     </script>
 

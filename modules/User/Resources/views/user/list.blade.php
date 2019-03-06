@@ -39,7 +39,7 @@
                                             <tr>
                                                 <td>{{ $key+1 }}</td>
                                                 <td>{{ $val->name }}</td>
-                                                <td>0{{ $val->phone }}</td>
+                                                <td>{{ $val->phone }}</td>
                                                 <td>{{ $val->email }}</td>
                                                 <td>{{ $val->role->title }}</td>
                                                 <td>

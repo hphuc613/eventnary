@@ -17,7 +17,7 @@
                                 <h4 class="m-b-0 text-white">Thêm người dùng</h4>
                             </div>
                             <div class="card-body">
-                                <form class="form-material" method="post" action="{{ route('post.create.user') }}">
+                                <form class="form-material" method="post" action="{{ route('post.edit.user',$data->id) }}">
                                 {{ csrf_field() }}
                                     <div class="form-body">
                                         <h3 class="card-title">Thông tin người dùng</h3>
@@ -29,30 +29,34 @@
                                                     <input type="text" id="name" class="form-control" placeholder="Nhập tên" name="name" value="{{ $data->name }}">
                                                 </div>
                                             </div>
-                                            <!--/span-->
                                             <div class="col-md-6">
-                                                <div class="form-group has-danger">
+                                                <div class="form-group ">
                                                     <label class="control-label">Số điện thoại</label>
-                                                    <input type="tel" id="phone" class="form-control" placeholder="Nhập số điện thoại" name="phone"  value="{{ $data->phone }}">
+                                                    <input type="tel" id="phone" class="form-control" data-inputmask-mask="9{10}" placeholder="Nhập số điện thoại" name="phone"  value="{{ $data->phone }}">
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
-                                                <div class="form-group has-danger">
+                                                <div class="form-group ">
                                                     <label class="control-label">Email</label>
                                                     <input type="email" id="lastName" class="form-control" placeholder="" name="email"  value="{{ $data->email }}">
                                                 </div>
                                             </div>
-                                            <!--/span-->
                                             <div class="col-md-6">
-                                                <div class="form-group has-danger">
+                                                <div class="form-group ">
                                                     <label class="control-label">Mật khẩu</label>
                                                     <input type="password" id="lastName" class="form-control" placeholder="" name="password"  value="{{ $data->password }}">
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--/row-->
+
                                         <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Địa chỉ</label>
+                                                    <input type="text" id="lastName" class="form-control" placeholder="" name="address"  value="{{ $data->address }}">
+                                                </div>
+                                            </div>
                                             <div class="col-md-6">
                                                 <div class="form-group has-success">
                                                     <label class="control-label">Chọn vai trò</label>
@@ -63,7 +67,37 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <!--/span-->
+                                        </div>
+                                    </div>
+                                    <div class="form-body">
+                                        <h3 class="card-title">Tài khoản ngân hàng</h3>
+                                        <hr>
+                                        <div class="row p-t-20">
+                                            <div class="col-md-6">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Tên ngân hàng</label>
+                                                    <input type="text" id="lastName" class="form-control" placeholder="" name="bank"  value="{{ $data->bank }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Tên chi nhánh</label>
+                                                    <input type="text" id="lastName" class="form-control" placeholder="" name="branch_bank"  value="{{ $data->branch_bank }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group ">
+                                                    <label class="control-label">Số tài khoản</label>
+                                                    <input type="text" id="lastName" data-inputmask-mask="9{11}" class="form-control" placeholder="" name="bank_account_number"  value="{{ $data->bank_account_number }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group has-success">
+                                                    <label class="control-label">Chủ tài khoản</label>
+                                                    (<small class="form-control-feedback">Chủ tài khoản phải viết tên không dấu</small>)
+                                                    <input type="text" id="lastName" class="form-control" placeholder="" name="     bank_account_owner"  value="{{ $data->bank_account_owner }}">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-actions">
@@ -79,6 +113,5 @@
 
 @push('js')
         
-
 
 @endpush

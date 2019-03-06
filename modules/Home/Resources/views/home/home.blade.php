@@ -332,45 +332,28 @@
 					<div class="topmargin"></div>
 
 					<div class="container-fluid owl-carousel posts-carousel carousel-widget bottommargin" data-margin="20" data-nav="true" data-pagi="false" data-items-xs="1" data-items-sm="2" data-items-md="3" data-items-lg="4">
-						@for($i = 0; $i < 3; $i++ )
+						@foreach($events as $key => $val)
+							@php
+								$start_date=$val->start_date;
+							@endphp
 							<div class="oc-item">
 								<div class="ipost clearfix">
 									<div class="entry-image">
-										<a href="frontend/images/blog/12.jpg" data-lightbox="image"><img class="image_fade" src="frontend/images/blog/12.jpg" alt="Standard Post with Image"></a>
+										<a href="{{ asset('upload/image/event/'.$val->current_image) }}" data-lightbox="image"><img class="image_fade" src="{{ asset('upload/image/event/'.$val->current_image) }}" alt="Standard Post with Image"></a>
 									</div>
 									<div class="entry-title">
-										<h3><a href="blog-single.html">This is a Standard post with a Preview Image</a></h3>
+										<h3><a href="blog-single.html">{{ $val->title }}</a></h3>
 									</div>
 									<ul class="entry-meta clearfix">
-										<li><i class="icon-calendar3"></i> 10th Feb 2014</li>
-										<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
-										<li><a href="#"><i class="icon-camera-retro"></i></a></li>
+										<li><i class="icon-calendar3"></i>  {{ date_format(new DateTime($start_date),'d-m-Y H:i') }}</li>
+										<li><a href="#"><i class="icon-map-marker2"></i> {{ $val->ward->district->title }}, {{ $val->ward->district->city->title }}</a></li>
 									</ul>
 									<div class="entry-content">
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in.</p>
 									</div>
 								</div>
 							</div>
-
-							<div class="oc-item">
-								<div class="ipost clearfix">
-									<div class="entry-image">
-										<iframe src="http://player.vimeo.com/video/87701971" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-									</div>
-									<div class="entry-title">
-										<h3><a href="blog-single-full.html">This is a Standard post with a Vimeo Video</a></h3>
-									</div>
-									<ul class="entry-meta clearfix">
-										<li><i class="icon-calendar3"></i> 16th Feb 2014</li>
-										<li><a href="blog-single-full.html#comments"><i class="icon-comments"></i> 19</a></li>
-										<li><a href="#"><i class="icon-film"></i></a></li>
-									</ul>
-									<div class="entry-content">
-										<p>Asperiores, tenetur, blanditiis, quaerat odit ex exercitationem pariatur quibusdam veritatis quisquam!</p>
-									</div>
-								</div>
-							</div>
-						@endfor
+						@endforeach
 					</div>
 					<p class="bottommargin  m-t-30 m-r-30 float-right" style="font-size: 16px;"><a href="{{ route('home.list.event') }}" class="more-link">Xem thêm <i class="icon-angle-right"></i></a></p>
 

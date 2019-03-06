@@ -5,7 +5,7 @@ return [
         'route' => '',
         'sort' => 3,
         'active'=> 'user',
-        'icon' => ' icon-people',
+        'icon' => 'icon-user',
         'middleware' => [],
         'group' => [
                 'list-user' => [

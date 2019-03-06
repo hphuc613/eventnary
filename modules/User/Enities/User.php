@@ -26,24 +26,32 @@ class User extends Model
     public  $rules =
 	[
 		'name'        => 'required',
-        'phone'        => 'required|unique:users|integer|max:10,',
-        'email'        => 'required|unique:users',
-        'password'        => 'required|min:6',
-		'role_id'        => 'required',
+        'phone'       => 'required|numeric|unique:users',
+        'phone'       => 'required|numeric|unique:users',
+        'email'       => 'required|e-mail|unique:users',
+        'password'    => 'required|min:6',
+		'role_id'     => 'required',
 	];
+
 
 	public $messages = 
 	[
-        'name.required' => 'Tên không được để trống!',
-        'phone.required' => 'Số điện thoại không được để trống!',
-        'phone.unique' => 'Số điện thoại không được trùng!',
-        'phone.integer' => 'Số điện thoại không đúng định dạng!',
-        'email.required' => 'Email không được để trống!',
-        'email.unique' => 'Email không được trùng!',
-        'password.required' => 'Mật khẩu không được để trống!',
-        'password.min' => 'Mật khẩu phải từ 6 ký tự!',
-		'role_id.required' => 'Vai trò không được để trống!',
+        'name.required'     =>   'Tên không được để trống!',
+        'phone.required'    =>   'Số điện thoại không được để trống!',
+        'phone.unique'      =>   'Số điện thoại không được trùng!',
+        'phone.numeric'     =>   'Số điện thoại không đúng định dạng!',
+        'email.required'    =>   'Email không được để trống!',
+        'email.unique'      =>   'Email không được trùng!',
+        'email.e-mail'      =>   'Vui lòng nhập đúng địa chỉ email!',
+        'password.required' =>   'Mật khẩu không được để trống!',
+        'password.min'      =>   'Mật khẩu phải từ 6 ký tự!',
+		'role_id.required'  =>   'Chọn vai trò!',
 	];
+   
+    public function authorize()
+    {
+        return true;
+    }
 
 
     public function getId()

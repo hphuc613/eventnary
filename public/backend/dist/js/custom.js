@@ -209,3 +209,10 @@ $('a#del-warning').on('click',function(){
             window.location.href = href;
         });
 });
+
+
+$(document).ready(function() {
+    $(":input[data-inputmask-mask]").inputmask();
+    $(":input[data-inputmask-alias]").inputmask();
+    $(":input[data-inputmask-regex]").inputmask("Regex");
+});

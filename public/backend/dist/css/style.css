@@ -10350,7 +10350,7 @@ Form-control
   background-color: #00c292; }
 
 form label {
-  font-weight: 400; }
+  font-weight: 600; }
 
 .form-group {
   margin-bottom: 25px; }
@@ -10460,6 +10460,7 @@ Form addons page
 .select2-container--default .select2-selection--single {
   border-color: #e9ecef;
   height: 38px; }
+  
   .select2-container--default .select2-selection--single .select2-selection__rendered {
     line-height: 38px; }
   .select2-container--default .select2-selection--single .select2-selection__arrow {

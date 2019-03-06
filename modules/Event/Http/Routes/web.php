@@ -6,7 +6,7 @@
     	});
 
 
-        Route::get('event-list','EventController@list')->name('home.list.event');
-        Route::get('event-detail','EventController@detail')->name('home.detail.event');
+        Route::get('event-list','WebController@getListEvent')->name('home.list.event');
+        // Route::get('event-detail','WebController@detail')->name('home.detail.event');
 
 

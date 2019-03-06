@@ -33,7 +33,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group has-danger">
                                                     <label class="control-label">Số điện thoại</label>
-                                                    <input type="tel" id="phone" class="form-control" placeholder="Nhập số điện thoại" name="phone"  value="{{ old('phone') }}">
+                                                    <input type="tel" id="phone" class="form-control" data-inputmask-mask="9{10}" placeholder="Nhập số điện thoại" name="phone"  value="{{ old('phone') }}">
                                                 </div>
                                             </div>
 
@@ -57,7 +57,7 @@
                                                 <div class="form-group has-success">
                                                     <label class="control-label">Chọn vai trò</label>
                                                     <select class="form-control custom-select" name=role_id>
-                                                        <option>--Chọn--</option>
+                                                        <option value="">--Chọn--</option>
                                                     @foreach($roles as $key => $role)
                                                         <option value="{{ $role->id }}">{{ $role->title }}</option>
                                                     @endforeach

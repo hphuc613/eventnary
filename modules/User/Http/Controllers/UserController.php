@@ -47,7 +47,13 @@ class UserController extends Controller{
     }
 
     public function postEdit(Request $request, $id){
-        $this->validate($request,$this->model->rules,$this->model->messages);
+        $this->validate($request,[
+            'name'        => 'required',
+            'phone'       => 'required|numeric|unique:users,phone,' . $id,
+            'email'       => 'required|e-mail|unique:users,email,' . $id,
+            'password'    => 'required|min:6',
+            'role_id'     => 'required',
+        ],$this->model->messages);
         $data = User::find($id);
         $data->update($request->all());
         $data->save();
