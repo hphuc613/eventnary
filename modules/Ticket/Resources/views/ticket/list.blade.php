@@ -4,7 +4,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header bg-info">
-                <h4 class="m-b-0 text-white">Danh sách các loại</h4>
+                <h4 class="m-b-0 text-white">Danh sách các loại vé</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -41,8 +41,8 @@
                                 <td>{{ number_format($val->price) }} VNĐ</td>
                                 <td>{{ $val->quality }}</td>
                                 <td>{{ date_format(new DateTime($val->end_selling),'d-m-Y H:i:s') }}</td>
-                                <td>{{ ticketStatusTitle($val->status) }}</td>
                                 <td>{{ $val->type->title }}</td>
+                                <td>{{ ticketStatusTitle($val->status) }}</td>
                                 <td>
                                     <center>
                                         <a href="{{ route('get.edit.ticket',$val->id) }}" data-toggle="tooltip" data-original-title="Sửa"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>

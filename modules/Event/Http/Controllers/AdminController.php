@@ -17,7 +17,13 @@ class AdminController extends Controller{
         $this->model    = $model;
     }
     
-    
+    public function getSearchEvent(Request $request){
+        $page = 8;
+        $data = Event::where('title','like','%'.$request->key.'%')
+                            ->orWhere('title',$request->key)->paginate($page);
+            return view('Event::event.list',compact('data'))
+                        ->with('i', ($request->input('page', 1) - 1) * $page);
+    }
 
    
 }

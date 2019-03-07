@@ -29,7 +29,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Tên sự kiện</label>
-                                    <input type="text" name="title" class="form-control" placeholder="Nhập tên sự kiện" value="{{ old('title') }}">
+                                    <input type="text" id="title" name="title" class="form-control" placeholder="Nhập tên sự kiện" value="{{ old('title') }}">
                                 </div>
                             </div>
                             <!--/span-->
@@ -146,6 +146,17 @@
                                     <input type="text" name="address" class="form-control" placeholder="Nhập tên địa chỉ" value="{{ old('address') }}">
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Địa điểm</label>
+                                    <textarea class="form-control" name="location" id="location" rows="10" placeholder="Nhập địa chỉ Google Map">{{ old('location') }}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="event-location">
+                                    
+                                </div>
+                            </div>
                         </div>
                         <h3 class="card-title">Thể loại sự kiện</h3>
                         <hr>
@@ -208,6 +219,22 @@
         });
     });
 
+    // $(document).ready(function(){
+    //     $('#title').change(function() {
+    //         var title = $('#title').val();
+    //         var data = slug(title);
+    //         console.log(data);
+    //         $('#slug').val(data);
+    //     })
+    // })
+
+    $(document).ready(function(){
+        $('#location').change(function() {
+            var data = $('#location').val();
+            console.log(data);
+            $('.event-location').html(data);
+        })
+    })
 </script>
 
 @endpush

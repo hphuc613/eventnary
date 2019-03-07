@@ -30,8 +30,7 @@
                         @endif
                     @endforeach
                 @endif
-
-    </ul>
-</nav>
-</div>
+            </ul>
+        </nav>
+    </div>
 </aside>

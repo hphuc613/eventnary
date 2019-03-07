@@ -24,7 +24,7 @@
 
 	<link rel="stylesheet" href="{{ asset('/frontend/css/fonts.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('/frontend/css/responsive.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('/css/custom.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('/css/custom_hp.css') }}" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<!-- Document Title

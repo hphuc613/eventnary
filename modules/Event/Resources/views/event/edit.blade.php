@@ -3,7 +3,11 @@
 @include('Event::event.breadcrumb')
 
 @push('css')
-
+    <style>
+        .event-name{
+            color: red;
+        }
+    </style>
 @endpush
 @section('content')
 <!-- ============================================================== -->
@@ -25,7 +29,7 @@
                     <div class="form-body">
                         <div class="row">
                             <div class="col-md-8">
-                                <h3 class="card-title">Thông tin sự kiện</h3>
+                                <h3>Thông tin sự kiện: <span class="event-name">{{ $data->getTitle() }}</span></h3>
                             </div>
                             <div class="col-md-2">
                                 <a href="{{ route('get.list_gallery.event',$data->id) }}" class="btn btn-warning float-right">Thư viện hình ảnh</a>
@@ -164,7 +168,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Địa điểm</label>
-                                    <textarea class="form-control" name="location" rows="10" placeholder="Nhập địa chỉ Google Map">{{ $data->location }}</textarea>
+                                    <textarea class="form-control" name="location" id="location" rows="10" placeholder="Nhập địa chỉ Google Map">{{ $data->location }}</textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -240,6 +244,14 @@
             });
         });
     });
+
+    $(document).ready(function(){
+        $('#location').change(function() {
+            var data = $('#location').val();
+            console.log(data);
+            $('.event-location').html(data);
+        })
+    })
 </script>
 
 @endpush

@@ -11,6 +11,7 @@
             Route::post('gallery','EventController@postListGallery')->name('post.list_gallery.event');
             Route::get('delete-gallery/{id}','EventController@deleteGallery')->name('get.delete_gallery.event');
 
+            Route::get('search-event}','AdminController@getSearchEvent')->name('get.search.event');
     	});
 	});
     	

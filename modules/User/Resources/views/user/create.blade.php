@@ -29,21 +29,18 @@
                                                     <input type="text" id="name" class="form-control" placeholder="Nhập tên" name="name" value="{{ old('name') }}">
                                                 </div>
                                             </div>
-                                            <!--/span-->
                                             <div class="col-md-6">
                                                 <div class="form-group has-danger">
                                                     <label class="control-label">Số điện thoại</label>
                                                     <input type="tel" id="phone" class="form-control" data-inputmask-mask="9{10}" placeholder="Nhập số điện thoại" name="phone"  value="{{ old('phone') }}">
                                                 </div>
                                             </div>
-
                                             <div class="col-md-6">
                                                 <div class="form-group has-danger">
                                                     <label class="control-label">Email</label>
                                                     <input type="email" id="lastName" class="form-control" placeholder="" name="email"  value="{{ old('email') }}">
                                                 </div>
                                             </div>
-                                            <!--/span-->
                                             <div class="col-md-6">
                                                 <div class="form-group has-danger">
                                                     <label class="control-label">Mật khẩu</label>
@@ -79,7 +76,8 @@
 @endsection
 
 @push('js')
-        
+    
+
 
 
 @endpush

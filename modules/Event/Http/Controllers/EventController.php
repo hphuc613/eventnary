@@ -25,8 +25,10 @@ class EventController extends Controller{
     
     
     public function getList(Request $request){
-        $data = Event::all();
-        return view('Event::event.list',compact('data'));
+        $page = 6;
+        $data = Event::paginate($page);
+        return view('Event::event.list',compact('data'))
+                ->with('i', ($request->input('page', 1) - 1) * $page);
     }
 
 
@@ -48,6 +50,7 @@ class EventController extends Controller{
         $image = $event->id.'-'.$request->file('current_image')->getClientOriginalName();
         $request->file('current_image')->move('upload/image/event',$image);
         $event->current_image = $image;
+        $event->slug = $event->id.'-'.slug($event->title);
         $event->update();
         //$request->session()->flash('status', 'Thêm mới thành công!');
         return redirect()->route('get.create.ticket',$event->id);
@@ -74,6 +77,9 @@ class EventController extends Controller{
             $data->current_image = $image;
             $data->update();
         }
+        $data->slug = $data->id.'-'.slug($data->title);
+        $data->update();
+
         $request->session()->flash('status', 'Chỉnh sửa thành công!');
         return redirect()->back();
     }

@@ -88,7 +88,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Giá vé</label>
-                            <input type="text" name="price" class="form-control" placeholder="Nhập giá vé" value="{{ $ticket->price }}">
+                            <input type="text" name="price" @if($ticket->type->id==1 ) readonly @endif class="form-control" placeholder="Nhập giá vé" value="{{ $ticket->price }}">
                         </div>
                     </div>
                     <div class="col-md-6">

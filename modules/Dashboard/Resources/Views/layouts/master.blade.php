@@ -33,7 +33,7 @@
     <link href="{{ asset('backend/dist/css/pages/float-chart.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/dist/css/pages/file-upload.css') }}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('/css/custom.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('/css/custom_hp.css') }}" type="text/css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -212,6 +212,7 @@
     <!--Custom JavaScript -->
     <script src="{{ asset('backend/dist/js/custom.min.js') }} "></script>
     <script src="{{ asset('backend/dist/js/custom.js') }} "></script>
+    <script src="{{ asset('/js/custom.js') }} "></script>
 
     <!-- ============================================================== -->
     <!-- This page plugins -->
