@@ -15,6 +15,7 @@ class EventTypeController extends Controller{
     public function __construct(Event_type $model, Request $request)
     {
         $this->model    = $model;
+        $this->middleware('auth');
     }
     
     

@@ -15,6 +15,7 @@ class RoleController extends Controller{
     public function __construct(Roles $model, Request $request)
     {
         $this->model    = $model;
+        $this->middleware('auth');
     }
     
     

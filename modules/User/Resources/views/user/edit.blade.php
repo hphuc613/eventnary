@@ -14,10 +14,10 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header bg-info">
-                                <h4 class="m-b-0 text-white">Thêm người dùng</h4>
+                                <h4 class="m-b-0 text-white">Chỉnh sửa người dùng</h4>
                             </div>
                             <div class="card-body">
-                                <form class="form-material" method="post" action="{{ route('post.edit.user',$data->id) }}">
+                                <form class="form-material" method="post" action="{{ route('post.edit.user',$data->id) }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                     <div class="form-body">
                                         <h3 class="card-title">Thông tin người dùng</h3>
@@ -44,15 +44,6 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group ">
-                                                    <label class="control-label">Mật khẩu</label>
-                                                    <input type="password" id="lastName" class="form-control" placeholder="" name="password"  value="{{ $data->password }}">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group ">
                                                     <label class="control-label">Địa chỉ</label>
                                                     <input type="text" id="lastName" class="form-control" placeholder="" name="address"  value="{{ $data->address }}">
                                                 </div>
@@ -67,6 +58,18 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Ảnh chính</label>
+                                                    <input type="file" name="image" id="input-file-now-custom-1" class="dropify" data-default-file="{{ asset('upload/image/user/'.$data->image) }}" value="{{ $data->image }}" />
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Password</label>
+                                                    <input type="text" name="password" id="input-file-now-custom-1" class="form-control">
+                                                </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="form-body">

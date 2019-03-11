@@ -26,42 +26,37 @@
                         <h3 class="card-title">Thông tin sự kiện</h3>
                         <hr>
                         <div class="row p-t-20">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">Tên sự kiện</label>
                                     <input type="text" id="title" name="title" class="form-control" placeholder="Nhập tên sự kiện" value="{{ old('title') }}">
                                 </div>
                             </div>
                             <!--/span-->
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">Số điện thoại liên hệ</label>
                                     <input type="text" name="phone_contact" class="form-control" data-inputmask-mask="9{10}" placeholder="Nhập số điện thoại" value="{{ old('phone_contact') }}">
                                 </div>
                             </div>
                             
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">Ngày bắt đầu</label>
                                     <input type="text" class="form-control" placeholder="{{ date('Y-m-d h:m:s') }}" id="min-date" name="start_date" value="{{ old('start_date') }}">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">Ngày kết thúc</label>
                                     <input type="text" class="form-control" placeholder="{{ date('Y-m-d h:m:s') }}" id="min-date2" name="end_date" value="{{ old('end_date') }}">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label">Nhà tổ chức</label>
-                                    <input type="text" name="organizational" class="form-control" placeholder="Nhập tên sự kiện" value="{{ old('organizational') }}">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">Link nhà tổ chức</label>
-                                    <input type="text" name="organizational_link" class="form-control" placeholder="Nhập tên sự kiện" value="{{ old('organizational_link') }}">
+                                    <label class="control-label">Mô tả ngắn</label>
+                                    <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
                                 </div>
                             </div>
                             
@@ -92,6 +87,18 @@
                         <h3 class="card-title">Địa chỉ</h3>
                         <hr>
                         <div class="row p-t-20">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Nhà tổ chức</label>
+                                    <input type="text" name="organizational" class="form-control" placeholder="Nhập tên sự kiện" value="{{ old('organizational') }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Link nhà tổ chức</label>
+                                    <input type="text" name="organizational_link" class="form-control" placeholder="Nhập tên sự kiện" value="{{ old('organizational_link') }}">
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Chọn thành phố</label>

@@ -18,6 +18,7 @@ class WardController extends Controller{
     public function __construct(Ward $model, Request $request)
     {
         $this->model    = $model;
+        $this->middleware('auth');
     }
     
     

@@ -15,6 +15,7 @@ class TicketTypeController extends Controller{
     public function __construct(Ticket_type $model, Request $request)
     {
         $this->model    = $model;
+        $this->middleware('auth');
     }
     
     

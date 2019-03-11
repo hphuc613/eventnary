@@ -16,6 +16,7 @@ class CityController extends Controller{
     public function __construct(City $model, Request $request)
     {
         $this->model    = $model;
+        $this->middleware('auth');
     }
     
     

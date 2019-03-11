@@ -21,6 +21,7 @@ class EventController extends Controller{
     public function __construct(Event $model, Request $request)
     {
         $this->model    = $model;
+        $this->middleware('auth');
     }
     
     
@@ -52,7 +53,8 @@ class EventController extends Controller{
         $event->current_image = $image;
         $event->slug = $event->id.'-'.slug($event->title);
         $event->update();
-        //$request->session()->flash('status', 'Thêm mới thành công!');
+        
+        $request->session()->flash('status', 'Thêm mới thành công!');
         return redirect()->route('get.create.ticket',$event->id);
     }
 

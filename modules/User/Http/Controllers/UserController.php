@@ -16,6 +16,7 @@ class UserController extends Controller{
     public function __construct(User $model, Request $request)
     {
         $this->model    = $model;
+        $this->middleware('auth');
     }
     
     
@@ -33,9 +34,13 @@ class UserController extends Controller{
     public function postCreate(Request $request){
 
         $this->validate($request,$this->model->rules,$this->model->messages);
-        $data = $request->all();
-        $insert = new User($data);
-        $insert->save();
+        $data = new User();
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->phone = $request->phone;
+        $data->role_id = $request->role_id;
+        $data->password = bcrypt($request->password);
+        $data->save();
         $request->session()->flash('status', 'Thêm mới thành công!');
         return redirect()->route('get.list.user');
     }
@@ -51,12 +56,30 @@ class UserController extends Controller{
             'name'        => 'required',
             'phone'       => 'required|numeric|unique:users,phone,' . $id,
             'email'       => 'required|e-mail|unique:users,email,' . $id,
-            'password'    => 'required|min:6',
             'role_id'     => 'required',
         ],$this->model->messages);
+
         $data = User::find($id);
-        $data->update($request->all());
-        $data->save();
+
+        if($request->file('image') && $data->image != null){
+            $fileImage = 'upload/image/user/'.$data->image;
+            if(file_exists($fileImage))
+            {
+                unlink($fileImage);
+
+            }
+            $data->update($request->all());
+            $image = $data->id.'-'.$request->file('image')->getClientOriginalName();
+            $request->file('image')->move('upload/image/user',$image);
+            $data->image = $image;
+            $data->update();
+        }else{
+            $data->update($request->all());
+        }
+
+        // $data->password = bcrypt($request->input('password'));
+        // $data->update();
+
         $request->session()->flash('status', 'Chỉnh sửa thành công!');
         return redirect()->back();
     }

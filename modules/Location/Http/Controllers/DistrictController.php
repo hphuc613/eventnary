@@ -16,6 +16,7 @@ class DistrictController extends Controller{
     public function __construct(District $model, Request $request)
     {
         $this->model    = $model;
+        $this->middleware('auth');
     }
     
     

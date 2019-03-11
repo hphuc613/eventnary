@@ -16,6 +16,7 @@ class TicketController extends Controller{
     public function __construct(Ticket $model, Request $request)
     {
         $this->model    = $model;
+        $this->middleware('auth');
     }
     
     public function getCreate(Request $request, $id_event){
