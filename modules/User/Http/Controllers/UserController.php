@@ -60,6 +60,18 @@ class UserController extends Controller{
         ],$this->model->messages);
 
         $data = User::find($id);
+        $data->update($request->all());
+        // $data->password = bcrypt($request->input('password'));
+        // $data->update();
+
+        $request->session()->flash('status', 'Chỉnh sửa thành công!');
+        return redirect()->back();
+    }
+
+    public function postImageEdit(Request $request, $id)
+    {
+
+        $data = User::find($id);
 
         if($request->file('image') && $data->image != null){
             $fileImage = 'upload/image/user/'.$data->image;
@@ -68,25 +80,44 @@ class UserController extends Controller{
                 unlink($fileImage);
 
             }
-            $data->update($request->all());
+
             $image = $data->id.'-'.$request->file('image')->getClientOriginalName();
             $request->file('image')->move('upload/image/user',$image);
             $data->image = $image;
             $data->update();
-        }else{
-            $data->update($request->all());
+          
+            $request->session()->flash('status', 'Thay đổi thành công!');
+
+        }elseif($request->file('image') != null){
+            
+            $image = $data->id.'-'.$request->file('image')->getClientOriginalName();
+            $request->file('image')->move('upload/image/user',$image);
+            $data->image = $image;
+            $data->update();
+            
+            $request->session()->flash('status', 'Thay đổi thành công!');
+
+        }elseif($request->file('image') == null){
+
+            $request->session()->flash('alert', 'Vui lòng nhập hình mới!');
         }
 
-        // $data->password = bcrypt($request->input('password'));
-        // $data->update();
-
-        $request->session()->flash('status', 'Chỉnh sửa thành công!');
         return redirect()->back();
     }
 
     public function delete(Request $request, $id)
     {
         $data = User::find($id);
+
+        if($data->image != null){
+            $fileImage = 'upload/image/user/'.$data->image;
+            if(file_exists($fileImage))
+            {
+                unlink($fileImage);
+
+            }
+        }
+        
         $data->delete();
         $request->session()->flash('alert', 'Xóa thành công!');
         return redirect()->back();
