@@ -21,8 +21,10 @@ class UserController extends Controller{
     
     
     public function getList(Request $request){
-        $data = User::all();
-        return view('User::user.list',compact('data'));
+        $page = 8;
+        $data = User::paginate(8);
+        return view('User::user.list2',compact('data'))
+                ->with('i', ($request->input('page', 1) - 1) * $page);
     }
 
 

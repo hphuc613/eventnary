@@ -7,6 +7,7 @@
 
 
         Route::get('event-list','WebController@getListEvent')->name('home.list.event');
-        // Route::get('event-detail','WebController@detail')->name('home.detail.event');
+        Route::get('event-detail/{id}','WebController@getInfoEvent')->name('home.detail.event');
+        Route::get('search-event','WebController@searchEvent')->name('home.search.event');
 
 

@@ -26,13 +26,21 @@ class Event extends Model
 
     public  $rules =
 	[
-		'title'        => 'required',
-		'description'        => '',
+        'title'        => 'required',
+        'start_date'        => 'required',
+        'address'        => 'required',
+        'phone_contact'        => 'required',
+        'ward_id'        => 'required',
+
 	];
 
 	public $messages = 
 	[
-		'title.required' => 'Tên không được để trống!',
+        'title.required' => 'Tên sự kiện không được để trống!',
+        'start_date.required' => 'Chưa nhập thời gian bắt đầu!',
+        'address.required' => 'Địa chỉ không được để trống!',
+        'phone_contact.required' => 'Số điện thoại liên hệ không được để trống!',
+        'ward_id.required' => 'Hãy chọn quận huyện/tỉnh thành!',
 	];
 
 

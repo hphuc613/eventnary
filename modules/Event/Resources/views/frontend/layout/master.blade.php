@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="{{ asset('frontend/css/magnific-popup.css') }}" type="text/css" />
 
 	<link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('/css/custom_hp.css') }}" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<!-- Document Title
@@ -189,12 +190,13 @@
 						<!-- Top Search
 						============================================= -->
 						<div id="top-search-input">
-							<form action="search.html" method="get">
+							<form action="{{ route('home.search.event') }}" method="get">
+			                 {{ csrf_field() }}
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<div class="input-group-text"><i class="icon-line-search"></i></div>
 									</div>
-									<input type="text" name="q" class="form-control" value="" placeholder="Search..">
+									<input type="text" name="key" class="form-control" value="" placeholder="Search..">
 								</div>
 							</form>
 						</div><!-- #top-search end -->

@@ -2,8 +2,8 @@
 
 
 @section('content')
-@include('Event::frontend.layout.slider')
 
+<div class="clear"></div>
 
 <section id="content">
 
@@ -22,23 +22,22 @@
 								@endphp
 								<div class="entry clearfix">
 								<div class="entry-image">
-									<a href="#">
+									<a href="{{ route('home.detail.event',$val->id) }}">
 										<img src="{{ asset('upload/image/event/'.$val->current_image) }}" alt="{{ $val->title }}">
-										<div class="entry-date">10<span>Apr</span></div>
 									</a>
 								</div>
 								<div class="entry-c">
 									<div class="entry-title">
-										<h2><a href="#">{{ $val->title }}</a></h2>
+										<h2><a href="{{ route('home.detail.event',$val->id) }}">{{ $val->title }}</a></h2>
 									</div>
 									<ul class="entry-meta clearfix">
 										<li><a href="#"><i class="icon-time"></i> {{ date_format(new DateTime($start_date),'d-m-Y H:i') }} - {{ date_format(new DateTime($end_date),'d-m-Y H:i') }}</a></li>
 										<li><a href="#"><i class="icon-map-marker2"></i> {{ $val->ward->district->title }}, {{ $val->ward->district->city->title }}</a></li>
 									</ul>
 									<div class="entry-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, voluptatem, dolorem animi nisi autem blanditiis enim culpa reiciendis et explicabo tenetur voluptate rerum molestiae eaque possimus exercitationem eligendi fuga.</p>
+										<p>{{ $val->description }}</p>
 										<a href="#" class="btn btn-success " disabled="disabled">Buy Tickets</a>
-										<a href="#" class="btn btn-danger">Read More</a>
+										<a href="{{ route('home.detail.event',$val->id) }}" class="btn btn-danger">Xem thêm</a>
 									</div>
 								</div>
 								</div>

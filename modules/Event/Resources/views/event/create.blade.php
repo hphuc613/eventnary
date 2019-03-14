@@ -56,30 +56,38 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">Mô tả ngắn</label>
-                                    <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
+                                    <textarea name="description" class="form-control" id="" cols="30" rows="5"></textarea>
                                 </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="control-label">Nội dung</label>
+                                    <textarea name="content" class="form-control" id="editor1" rows="20"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">Trạng thái</label>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio1" name="status" class="custom-control-input" checked value="1">
+                                            <label class="custom-control-label" for="customRadio1">Hoạt động</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio2" name="status" class="custom-control-input" value="0">
+                                            <label class="custom-control-label" for="customRadio2">Ngừng hoạt động</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">Ảnh chính</label>
+                                        <input type="file" name="current_image" id="input-file-now-custom-1" class="dropify" data-default-file="{{ asset('backend/assets/node_modules/dropify/src/images/test-image-1.jpg') }}"/>
+                                    </div>
+                                </div>
+                                
                             </div>
                             
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">Ảnh chính</label>
-                                    <input type="file" name="current_image" id="input-file-now-custom-1" class="dropify" data-default-file="{{ asset('backend/assets/node_modules/dropify/src/images/test-image-1.jpg') }}"/>
-                                </div>
-                            </div>
-                            <div class="col-md-2"></div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">Trạng thái</label>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio1" name="status" class="custom-control-input" checked value="1">
-                                        <label class="custom-control-label" for="customRadio1">Hoạt động</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio2" name="status" class="custom-control-input" value="0">
-                                        <label class="custom-control-label" for="customRadio2">Ngừng hoạt động</label>
-                                    </div>
-                                </div>
-                            </div>
                             
                             
                             <!--/span-->

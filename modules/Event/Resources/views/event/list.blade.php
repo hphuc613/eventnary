@@ -53,7 +53,7 @@
         <div class="col-md-12">
             <div class="card-header bg-info row">
                 <div class="col-md-6">
-                    <h3 class="text-white bold">Danh sách các loại vé</h3>
+                    <h3 class="text-white bold">Danh sách sự kiện</h3>
                 </div>
                 <div class="col-md-6">
                     <form class="app-search d-none d-md-block d-lg-block float-right" method="get" action="{{ route('get.search.event') }}">
@@ -95,7 +95,7 @@
                             <a class="btn btn-primary btn-xs full-width" href="{{ route('get.create.ticket',$val->id) }}">Quản lý vé</a>
                         </div>
                         <div class="col-md-4">
-                            <a class="btn btn-danger btn-xs full-width"alt="{{ route('get.delete.event',$val->id) }}" id="del-warning">Xóa sự kiện</a>
+                            <a class="btn btn-danger btn-xs full-width "alt="{{ route('get.delete.event',$val->id) }}" style="color: white" id="del-warning">Xóa sự kiện</a>
                         </div>
                     </div>
                 </div>

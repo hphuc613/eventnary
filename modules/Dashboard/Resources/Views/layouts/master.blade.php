@@ -212,6 +212,7 @@
     <!--Custom JavaScript -->
     <script src="{{ asset('backend/dist/js/custom.min.js') }} "></script>
     <script src="{{ asset('backend/dist/js/custom.js') }} "></script>
+    <script src="{{ asset('backend/plugins/ckeditor/ckeditor.js') }} "></script>
     <script src="{{ asset('/js/custom.js') }} "></script>
 
     <!-- ============================================================== -->
@@ -353,6 +354,8 @@
             }
         })
     });
+
+     CKEDITOR.replace( 'editor1' );
     </script>
 
 </body>

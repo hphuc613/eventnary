@@ -24,10 +24,9 @@ class EventController extends Controller{
         $this->middleware('auth');
     }
     
-    
     public function getList(Request $request){
         $page = 6;
-        $data = Event::paginate($page);
+        $data = Event::orderBy('id','DESC')->paginate($page);
         return view('Event::event.list',compact('data'))
                 ->with('i', ($request->input('page', 1) - 1) * $page);
     }
@@ -112,14 +111,17 @@ class EventController extends Controller{
 
     public function postListGallery(Request $request){
 
-        $this->validate($request,$this->model->rules,$this->model->messages);
-        $image = $request->input('event_id').'-'.$request->file('title')->getClientOriginalName();
-        $request->file('title')->move('upload/image/event/multible',$image);
+        if($request->file('title')){
+            $image = $request->input('event_id').'-'.$request->file('title')->getClientOriginalName();
+            $request->file('title')->move('upload/image/event/multible',$image);
 
-        $data = new Image_event();
-        $data->title = $image;
-        $data->event_id = $request->input('event_id');
-        $data->save();
+            $data = new Image_event();
+            $data->title = $image;
+            $data->event_id = $request->input('event_id');
+            $data->save();
+        }else{
+            $request->session()->flash('alert', 'Chưa có hình nào để tải lên!');
+        }
 
         return redirect()->back();
      }

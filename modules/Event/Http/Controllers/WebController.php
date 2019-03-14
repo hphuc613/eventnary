@@ -25,14 +25,24 @@ class WebController extends Controller{
     
     
     public function getListEvent(Request $request){
-        $data = Event::all();
+        $data = Event::orderBy('id','DESC')->get();
         return view('Event::frontend.event.event_list',compact('data'));
     }
 
-    // public function getInfoEvent(Request $request){
-    //     $data = Event::all();
-    //     return view('Event::frontend.list',compact('data'));
-    // }
+    public function getInfoEvent(Request $request, $id){
+        $data = Event::find($id);
+        $gallery = Image_event::where('event_id',$id)->get();
+        return view('Event::frontend.event.event_detail',compact('data','gallery'));
+    }
+
+    public function searchEvent(Request $request)
+    {
+        $page = 8;
+        $data = Event::where('title','like','%'.$request->key.'%')
+                            ->orWhere('title',$request->key)->paginate($page);
+            return view('Event::frontend.event.event_list',compact('data'))
+                        ->with('i', ($request->input('page', 1) - 1) * $page);
+    }
 
 
     // public function getCreate(Request $request){

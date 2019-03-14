@@ -26,6 +26,8 @@ class CreateEventsTable extends Migration
             $table->string('organizational')->nullable();
             $table->string('organizational_link')->nullable();
             $table->string('phone_contact')->nullable();
+            $table->longText('description')->nullable();
+            $table->longText('content')->nullable();
             $table->integer('status')->nullable();
             $table->integer('user_id')->unsigned()->nullable();
             $table->integer('ward_id')->unsigned();

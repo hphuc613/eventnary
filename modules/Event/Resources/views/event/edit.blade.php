@@ -38,34 +38,77 @@
                                 <a href="{{ route('get.create.ticket',$data->id) }}" class="btn btn-primary ">Quản lý vé</a>
                             </div>
                         </div>
-                                <hr>
+                        <hr>
                         <div class="row p-t-20">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">Tên sự kiện</label>
                                     <input type="text" name="title" class="form-control" placeholder="Nhập tên sự kiện" value="{{ $data->title }}">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <!--/span-->
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">Số điện thoại liên hệ</label>
                                     <input type="text" name="phone_contact" class="form-control" data-inputmask-mask="9{10}" placeholder="Nhập số điện thoại" value="{{ $data->phone_contact }}">
                                 </div>
                             </div>
-                            <!--/span-->
                             
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">Ngày bắt đầu</label>
                                     <input type="text" class="form-control" placeholder="{{ date('Y-m-d h:m:s') }}" id="min-date" name="start_date" value="{{ $data->start_date }}">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label class="control-label">Ngày kết thúc</label>
                                     <input type="text" class="form-control" placeholder="{{ date('Y-m-d h:m:s') }}" id="min-date2" name="end_date" value="{{ $data->end_date }}">
                                 </div>
                             </div>
+                            
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">Mô tả ngắn</label>
+                                    <textarea name="description" class="form-control" id="" cols="30" rows="5">{{ $data->description }}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="control-label">Nội dung</label>
+                                    <textarea name="content" class="form-control" id="editor1" rows="20">{!! $data->content !!}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">Trạng thái</label>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio1" name="status" class="custom-control-input" @if($data->status==1) checked @endif  value="1">
+                                            <label class="custom-control-label" for="customRadio1">Hoạt động</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio2" name="status" class="custom-control-input" @if($data->status==0) checked @endif value="0">
+                                            <label class="custom-control-label" for="customRadio2">Ngừng hoạt động</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">Ảnh chính</label>
+                                        <input type="file" name="current_image" id="input-file-now-custom-1" class="dropify" data-default-file="{{ asset('upload/image/event/'.$data->current_image) }}" value="{{ $data->current_image }}" />
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                            
+                            
+                            <!--/span-->
+                        </div>
+                        <h3 class="card-title">Địa chỉ</h3>
+                        <hr>
+                        <div class="row p-t-20">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Nhà tổ chức</label>
@@ -78,33 +121,6 @@
                                     <input type="text" name="organizational_link" class="form-control" placeholder="Nhập tên sự kiện" value="{{ $data->organizational_link }}">
                                 </div>
                             </div>
-                            
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="control-label">Ảnh chính</label>
-                                    <input type="file" name="current_image" id="input-file-now-custom-1" class="dropify" data-default-file="{{ asset('upload/image/event/'.$data->current_image) }}" value="{{ $data->current_image }}" />
-                                </div>
-                            </div>
-                            <div class="col-md-2"></div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">Trạng thái</label>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio1" name="status" class="custom-control-input" @if($data->status==1) checked @endif  value="1">
-                                        <label class="custom-control-label" for="customRadio1">Hoạt động</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio2" name="status" class="custom-control-input" @if($data->status==0) checked @endif value="0">
-                                        <label class="custom-control-label" for="customRadio2">Ngừng hoạt động</label>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!--/span-->
-                        </div>
-                        <h3 class="card-title">Địa chỉ</h3>
-                        <hr>
-                        <div class="row p-t-20">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="control-label">Chọn thành phố</label>
@@ -185,14 +201,7 @@
                                 <select class="select2 form-control custom-select" name="event_type_id">
                                     <option value="">--Không có loại sự kiện--</option>
                                     @foreach($event_type as $key => $val)
-                                    <option 
-                                        @if($data->event_type_id)
-                                            @if($data->event_type_id==$val->id)
-                                                selected
-                                            @endif
-                                        @endif
-
-                                    value="{{ $val->id }}">{{ $val->title }}</option>
+                                    <option value="{{ $val->id }}">{{ $val->title }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -207,12 +216,14 @@
                         <button type="reset" class="btn btn-inverse">Cancel</button>
                         <div class="form-control-feedback m-t-10">* Chọn tiếp theo để quản lý vé!</div>
                     </div>
-
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+
+  
 @endsection
 
 @push('js')

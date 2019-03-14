@@ -36,10 +36,11 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs profile-tab" role="tablist">
                         <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#personal" role="tab">Thông tin cá nhân</a> </li>
-                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#company" role="tab">Tài khoản ngân hàng</a> </li>
+                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#bank" role="tab">Tài khoản ngân hàng</a> </li>
+                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#role" role="tab">Phân quyền</a> </li>
                     </ul>
                     <!-- Tab panes -->
-                    <form class="form-horizontal" method="post" action="">
+                    <form class="form-material" method="post" action="">
                     {{ csrf_field() }}
 	                    <div class="tab-content">
 	                        <!-- Personal info -->
@@ -57,28 +58,17 @@
 		                                </div>
 		                                <div class="form-group col-md-6">
 		                                    <label>Số điện thoại</label>
-		                                    <input type="text" value="{{ $data->phone }}" name="phone" class="form-control form-control-line">
+		                                    <input type="text" value="{{ $data->phone }}" data-inputmask-mask="9{10}" name="phone" class="form-control form-control-line">
 		                                </div>
 		                                <div class="form-group col-md-6">
 		                                    <label>Địa chỉ</label>
 		                                    <input type="text" value="{{ $data->address }}" name="address" class="form-control form-control-line">
 		                                </div>
-		                                <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label">Chọn vai trò</label>
-                                                <select class="form-control custom-select select2" name=role_id>
-                                                @foreach($roles as $key => $role)
-                                                    <option @if($role->id == $data->role_id) selected="" @endif value="{{ $role->id }}">{{ $role->title }}</option>
-                                                @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
 		                            </div>
-		                            
 		                        </div>
 		                    </div>
 		                    <!-- Company -->
-		                    <div class="tab-pane" id="company" role="tabpanel">
+		                    <div class="tab-pane" id="bank" role="tabpanel">
 		                        <div class="card-body">
 		                            <div class="row p-t-20">
 		                                <div class="col-md-6">
@@ -100,12 +90,28 @@
 		                                    </div>
 		                                </div>
 		                                <div class="col-md-6">
-		                                    <div class="form-group ">
+		                                    <div class="form-group has-success">
 		                                        <label class="control-label">Chủ tài khoản</label>
-		                                        (<small class="has-success form-control-feedback">Chủ tài khoản phải viết tên không dấu</small>)
 		                                        <input type="text" id="lastName" class="form-control" placeholder="" name="     bank_account_owner"  value="{{ $data->bank_account_owner }}">
+		                                        <small class="form-control-feedback">Chủ tài khoản phải viết tên không dấu</small>
 		                                    </div>
 		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="tab-pane" id="role" role="tabpanel">
+		                        <div class="card-body">
+		                            <div class="row">
+		                            	<div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Chọn vai trò</label><br>
+                                                <select class="form-control custom-select select2" style="width: 100%" name=role_id>
+                                                @foreach($roles as $key => $role)
+                                                    <option @if($role->id == $data->role_id) selected="" @endif value="{{ $role->id }}">{{ $role->title }}</option>
+                                                @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
 		                            </div>
 		                        </div>
 		                    </div>
