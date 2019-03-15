@@ -11,6 +11,8 @@ use HPro\Location\Enities\Ward;
 use HPro\Category\Enities\Event_type;
 use HPro\Ticket\Enities\Ticket;
 use Validator;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller{
     /**
@@ -27,6 +29,30 @@ class HomeController extends Controller{
     public function getHome(Request $request){
         $events = Event::all();
         return view('Home::home.home',compact('events'));
+    }
+
+    public function getHomeLogin(Request $request){
+        return view('Home::home.login');
+    }
+
+    public function postHomeLogin(Request $request){
+        
+        $login = [
+                        'email' => $request->input('account'),
+                        'password' => $request->input('password'),
+                    ];
+
+        $login2 = [
+                        'phone' => $request->input('account'),
+                        'password' => $request->input('password'),
+                    ];
+        
+        if (Auth::guard()->attempt($login) or Auth::guard()->attempt($login2)) {
+            return redirect()->route('get.home.index');
+        }else{
+            $request->session()->flash('alert','Nhập sai Email hoặc Mật khẩu!');
+            echo 'Đăng nhập không thành công!';
+        }
     }
 
     // public function getInfoEvent(Request $request){

@@ -1,4 +1,7 @@
 @extends('Event::frontend.layout.master')
+@section('title')
+	{{ $data->title }}	
+@endsection
 
 @push('css')
 	<style>
@@ -48,7 +51,7 @@
 						</div>
 						<div class="col_one_fourth col_last">
 							<div class="card events-meta mb-3">
-								<div class="card-header"><h5 class="mb-0">Event Info:</h5></div>
+								<div class="card-header"><h5 class="mb-0">Thông tin sự kiện:</h5></div>
 								<div class="card-body">
 									<ul class="iconlist nobottommargin">
 										<li><i class="icon-calendar3"></i>{{ date_format(new DateTime($start_date),'d-m-Y') }} - {{ date_format(new DateTime($end_date),'d-m-Y') }}</li>

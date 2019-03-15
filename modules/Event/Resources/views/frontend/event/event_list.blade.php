@@ -1,5 +1,7 @@
 @extends('Event::frontend.layout.master')
-
+@section('title')
+	Danh sách sự kiện	
+@endsection
 
 @section('content')
 

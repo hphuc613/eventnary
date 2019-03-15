@@ -34,7 +34,7 @@ class AdminController extends Controller{
                     ];
         
         if (Auth::guard()->attempt($login , $request->has('remember'))) {
-            return view('Dashboard::home.home');
+            return redirect()->route('home.admin');
         }else{
             $request->session()->flash('alert','Nhập sai Email hoặc Mật khẩu!');
             return redirect()->back();
