@@ -6,24 +6,26 @@
 	
 	@if(Auth::check())
 		<div class="widget widget_links clearfix">
-
-			<img src="{{ asset('upload/image/user/'.auth::user()->image) }}" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
-
-			<!-- <div style="font-size: 14px; line-height: 1.7;">
-				<address style="line-height: 1.7;">
-					123/321 Nguyễn Văn Cừ, Phường An Khánh<br>
-					Quận Ninh Kiều, Thành Phố Cần Thơ<br>
-				</address>
-
-				<div class="clear topmargin-sm"></div>
-
-				<abbr title="Phone Number">Số điện thoại:</abbr> (91) 8547 632521<br>
-				<abbr title="Fax">Fax:</abbr> (91) 11 4752 1433<br>
-				<abbr title="Email Address">Email:</abbr> wofl.alone613@gmail.com
-			</div> -->
-
+			<div class="row">
+				<div class="col-md-4"><center>
+					<a href=""><img src="{{ asset('upload/image/user/'.auth::user()->image) }}" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;"></a></center>
+				</div>
+				<div class="col-md-8">
+					<div class="p-l-10" style="font-size: 14px;">
+						<a href="#"><h4 class="m-b-10">{{ Auth::user()->name }}</h4></a>
+						{{ Auth::user()->email }}
+						<ul class="left m-t-10" >
+							<a class="" href="#"><i class="icon-credit"></i> Tạo sự kiện mới</a><br>
+							<a class="" href="#"><i class="icon-tasks"></i> Sự kiện của bạn</a><br>
+							<a class="" href="#"><i class="icon-bar-chart"></i> Thống kê sự kiện</a><br>
+							<a class="" href="{{ route('get.home.login') }}"><i class="icon-signout"></i> Đăng xuất</a>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
 		</div>
-	@endif
+	@else
 
 		<div class="widget quick-contact-widget clearfix">
 
@@ -90,20 +92,13 @@
 			</a>
 
 		</div>
-	@if(Auth::check())
-		<div class="top-header">
-			<div class="container-fluid center topmargin">
-				<a href="{{ route('get.home.login') }}" class="btn btn-success">Đăng xuất </a>
-			</div>
-		</div>
-	@endif
 
-		<div class="top-header">
+		<div class="top-header m-b-30">
 			<div class="container-fluid center topmargin">
 				<a href="{{ route('get.home.login') }}" class="btn btn-primary">Đăng nhập </a>
 			</div>
 		</div>
-
+	@endif
 	</div>
 
 </div>
