@@ -11,8 +11,8 @@ use HPro\Location\Enities\Ward;
 use HPro\Category\Enities\Event_type;
 use HPro\Ticket\Enities\Ticket;
 use Validator;
-use App\User;
-use Illuminate\Support\Facades\Auth;
+use HPro\User\Enities\User;
+use Illuminate\Support\Facades\Auth as Auth;
 
 class HomeController extends Controller{
     /**
@@ -32,7 +32,10 @@ class HomeController extends Controller{
     }
 
     public function getHomeLogin(Request $request){
-        return view('Home::home.login');
+        if(Auth::guard('collaborator')->check()){
+            return redirect()->back();
+        }else
+            return view('Home::home.login');
     }
 
     public function postHomeLogin(Request $request){
@@ -40,20 +43,41 @@ class HomeController extends Controller{
         $login = [
                         'email' => $request->input('account'),
                         'password' => $request->input('password'),
+                        'role_id' => 2
                     ];
 
         $login2 = [
                         'phone' => $request->input('account'),
                         'password' => $request->input('password'),
+                        'role_id' => 2
+                    ];
+
+        $login3 = [
+                        'email' => $request->input('account'),
+                        'password' => $request->input('password'),
+                        'role_id' => 1
+                    ];
+
+        $login4 = [
+                        'phone' => $request->input('account'),
+                        'password' => $request->input('password'),
+                        'role_id' => 1
                     ];
         
-        if (Auth::guard()->attempt($login) or Auth::guard()->attempt($login2)) {
+        if (Auth::guard('collaborator')->attempt($login) or Auth::guard('collaborator')->attempt($login2)
+            or Auth::guard('collaborator')->attempt($login3) or Auth::guard('collaborator')->attempt($login4)) {
             return redirect()->route('get.home.index');
         }else{
-            $request->session()->flash('alert','Nhập sai Email hoặc Mật khẩu!');
-            echo 'Đăng nhập không thành công!';
+            return redirect()->back()->withInput();
         }
     }
+
+    public function getHomeLogout(Request $request){
+        Auth::guard('collaborator')->logout();
+        return redirect()->route('get.home.index');
+    }
+
+   
 
     // public function getInfoEvent(Request $request){
     //     $data = Event::all();

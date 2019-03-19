@@ -16,9 +16,14 @@
 	<link rel="stylesheet" href="{{ asset('frontend/css/font-icons.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('frontend/css/magnific-popup.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('frontend/css/components/bs-filestyle.css') }}" type="text/css" />
 
 	<link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('/css/custom_hp.css') }}" type="text/css" />
+	
+	<!-- Datetime Picker -->
+    <link href="{{ asset('backend/assets/node_modules/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<!-- Document Title
@@ -26,7 +31,6 @@
 	<title>@yield('title')</title>
 	<link rel="SHORTCUT ICON"  href="{{ asset('/image/logo.png') }}">
 
-@stack('css')
 <style>
 
 #top-search-input {
@@ -62,7 +66,14 @@
 
 .device-sm #top-search-input form { width: 100%; }
 
+label{
+	text-transform: none;
+	font-size: 16px;
+	font-weight: normal;
+
+}
 </style>
+@stack('css')
 
 </head>
 
@@ -235,6 +246,90 @@
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="{{ asset('frontend/js/functions.js') }}"></script>
+
+	<script src="{{ asset('frontend/js/components/bs-filestyle.js') }}"></script>
+
+	<!-- Ckeditor -->
+    <script src="{{ asset('backend/plugins/ckeditor/ckeditor.js') }} "></script>
+	<!-- Date Picker -->
+    
+    <script src="{{ asset('backend/assets/node_modules/moment/moment.js') }}"></script>
+    <script src="{{ asset('backend/assets/node_modules/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
+    <script src="{{ asset('backend/assets/node_modules/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+
+	<script >
+		
+		$('.min-date').bootstrapMaterialDatePicker({ format: 'YYYY-MM-DD HH:mm:ss', minDate: new Date() });
+	    $('.min-date2').bootstrapMaterialDatePicker({ format: 'YYYY-MM-DD HH:mm:ss', minDate: new Date() });
+	    $('.min-date3').bootstrapMaterialDatePicker({ format: 'YYYY-MM-DD HH:mm:ss', minDate: new Date() });
+	    $('.min-date4').bootstrapMaterialDatePicker({ format: 'YYYY-MM-DD HH:mm:ss', minDate: new Date() });
+
+
+		$(document).ready(function() {
+			$("#input-5").fileinput({showCaption: false});
+
+			$("#input-6").fileinput({
+				showUpload: false,
+				maxFileCount: 10,
+				mainClass: "input-group-lg",
+				showCaption: true
+			});
+
+			$("#input-8").fileinput({
+				mainClass: "input-group-md",
+				showUpload: true,
+				previewFileType: "image",
+				browseClass: "btn btn-success",
+				browseLabel: "Pick Image",
+				browseIcon: "<i class=\"icon-picture\"></i> ",
+				removeClass: "btn btn-danger",
+				removeLabel: "Delete",
+				removeIcon: "<i class=\"icon-trash\"></i> ",
+				uploadClass: "btn btn-info",
+				uploadLabel: "Upload",
+				uploadIcon: "<i class=\"icon-upload\"></i> "
+			});
+
+			$("#input-9").fileinput({
+				previewFileType: "text",
+				allowedFileExtensions: ["txt", "md", "ini", "text"],
+				previewClass: "bg-warning",
+				browseClass: "btn btn-primary",
+				removeClass: "btn btn-secondary",
+				uploadClass: "btn btn-secondary",
+			});
+
+			$("#input-10").fileinput({
+				showUpload: false,
+				layoutTemplates: {
+					main1: "{preview}\n" +
+					"<div class=\'input-group {class}\'>\n" +
+					"   <div class=\'input-group-append\'>\n" +
+					"       {browse}\n" +
+					"       {upload}\n" +
+					"       {remove}\n" +
+					"   </div>\n" +
+					"   {caption}\n" +
+					"</div>"
+				}
+			});
+
+			$("#input-11").fileinput({
+				maxFileCount: 10,
+				allowedFileTypes: ["image", "video"]
+			});
+
+			$("#input-12").fileinput({
+				showPreview: false,
+				allowedFileExtensions: ["zip", "rar", "gz", "tgz"],
+				elErrorContainer: "#errorBlock"
+			});
+		});
+
+	</script>
+
+	@stack('js')
+
 
 </body>
 </html>

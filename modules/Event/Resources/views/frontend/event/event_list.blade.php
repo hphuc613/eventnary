@@ -16,7 +16,7 @@
 					<div class="postcontent nobottommargin">
 
 						<div id="posts" class="events small-thumbs">
-							
+						@if($data)
 							@foreach($data as $key => $val)
 								@php
 								    $start_date=$val->start_date;
@@ -44,6 +44,9 @@
 								</div>
 								</div>
 							@endforeach
+						@else
+							<p>Không có sự kiện nào bạn muốn tìm!</p>
+						@endif
 
 						</div>
 
@@ -51,8 +54,8 @@
 						============================================= -->
 						<div class="row mb-3">
 							<div class="col-12">
-								<a href="#" class="btn btn-outline-secondary float-left">&larr; Older</a>
-								<a href="#" class="btn btn-outline-dark float-right">Newer &rarr;</a>
+								<a href="{{ $data->previousPageUrl() }}" class="btn btn-outline-secondary float-left">&larr; Older</a>
+								<a href="{{ $data->nextPageUrl() }}" class="btn btn-outline-dark float-right">Newer &rarr;</a>
 							</div>
 						</div>
 						<!-- .pager end -->

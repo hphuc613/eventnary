@@ -45,7 +45,18 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+        'collaborator' => [
+            'driver' => 'session',
+            'provider' => 'collaborators',
+        ],
+        'collaborator-api' => [
+            'driver' => 'token',
+            'provider' => 'collaborators',
+        ],
     ],
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -68,6 +79,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'collaborators' => [
+            'driver' => 'eloquent',
+            'model' => App\Collaborator::class,
         ],
 
         // 'users' => [
@@ -94,6 +110,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'collaborators' => [
+            'provider' => 'collaborators',
             'table' => 'password_resets',
             'expire' => 60,
         ],

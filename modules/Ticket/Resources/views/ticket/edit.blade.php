@@ -30,7 +30,7 @@
 </div>
 <div class="card">
     <div class="card-header bg-info">
-        <h4 class="m-b-0 text-white">Chỉnh sửa thông tin vé</h4>
+        <h4 class="m-b-0 text-white">Chỉnh sửa thông tin @if($ticket->ticket_type_id==1) Vé miễn phí @else Vé thu phí @endif</h4>
     </div>
     <div class="card-body">
         <form class="form-material" method="post" action="{{ route('post.edit.ticket',$ticket->id) }}">

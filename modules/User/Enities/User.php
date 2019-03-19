@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use HPro\Role\Enities\Roles;
+use HPro\Event\Enities\Event;
 
 class User extends Model
 {
@@ -66,6 +67,11 @@ class User extends Model
 
     public function role(){
         return $this->belongsTo(Roles::class,'role_id');
+    }
+
+    public function event()
+    {
+        return $this->hasMany(Event::class,'event_id');
     }
 
 }

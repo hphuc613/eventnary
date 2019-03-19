@@ -3,22 +3,33 @@
 	<div id="side-panel-trigger-close" class="side-panel-trigger"><a href="#"><i class="icon-line-cross"></i></a></div>
 
 	<div class="side-panel-wrap">
+
 	
-	@if(Auth::check())
+	@if(Auth::guard('collaborator')->check())
+		@php
+			$collaborator = Auth::guard('collaborator');
+		@endphp
 		<div class="widget widget_links clearfix">
 			<div class="row">
-				<div class="col-md-4"><center>
-					<a href=""><img src="{{ asset('upload/image/user/'.auth::user()->image) }}" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;"></a></center>
+				<div class="col-md-4">
+					<center><a href="">
+						@if($collaborator->user()->image)
+						<img src="{{ asset('upload/image/user/'.$collaborator->user()->image) }}" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
+						@else
+						<img src="{{ asset('image/avatar.png') }}" class="alignleft img-circle img-thumbnail notopmargin nobottommargin" alt="Avatar" style="max-width: 84px;">
+						@endif
+					</a></center>
 				</div>
 				<div class="col-md-8">
 					<div class="p-l-10" style="font-size: 14px;">
-						<a href="#"><h4 class="m-b-10">{{ Auth::user()->name }}</h4></a>
-						{{ Auth::user()->email }}
+						<a href="{{ route('get.edit.account',$collaborator->user()->id) }}"><h4 class="m-b-10">{{ $collaborator->user()->name }}</h4></a>
+						{{ $collaborator->user()->email }}
 						<ul class="left m-t-10" >
-							<a class="" href="#"><i class="icon-credit"></i> Tạo sự kiện mới</a><br>
+							<a class="" href="{{ route('home.create.event') }}"><i class="icon-plus"></i> Tạo sự kiện mới</a><br>
 							<a class="" href="#"><i class="icon-tasks"></i> Sự kiện của bạn</a><br>
 							<a class="" href="#"><i class="icon-bar-chart"></i> Thống kê sự kiện</a><br>
-							<a class="" href="{{ route('get.home.login') }}"><i class="icon-signout"></i> Đăng xuất</a>
+							<a class="" href="#"><i class="icon-credit"></i> Vé đã mua</a><br>
+							<a class="" href="{{ route('get.home.logout') }}"><i class="icon-signout"></i> Đăng xuất</a>
 						</ul>
 					</div>
 				</div>

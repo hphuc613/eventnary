@@ -10,6 +10,10 @@
     		Route::post('image/{id}','UserController@postImageEdit')->name('post.edit_image.user');
 
     	});
+
+        Route::prefix('collaborator')->group(function(){
+            Route::get('list','CollaboratorController@getList')->name('get.list.collaborator');
+        });
 	});
     	
 

@@ -8,20 +8,29 @@ return [
         'icon' => 'icon-user',
         'middleware' => [],
         'group' => [
+                'create-user' => [
+                        'name'  => trans('Thêm mới'),
+                        'icon'  => null,
+                        'route' => route('get.create.user')   ,
+                        'active'=> 'create-user ',
+                        'middleware' => [],
+                ],
+                'list-collaborator' => [
+                        'name'  => trans('Danh sách Cộng tác viên'),
+                        'icon'  => null,
+                        'route' => route('get.list.collaborator')   ,
+                        'active'=> 'list-user ',
+                        'middleware' => [],
+                ],
                 'list-user' => [
-                        'name'  => trans('Danh sách người dùng'),
+                        'name'  => trans('Danh sách Quản trị'),
                         'icon'  => null,
                         'route' => route('get.list.user')   ,
                         'active'=> 'list-user ',
                         'middleware' => [],
                 ],
-                'create-user' => [
-                        'name'  => trans('Thêm mới người dùng'),
-                        'icon'  => null,
-                        'route' => route('get.create.user'),
-                        'active'=> 'create-user ',
-                        'middleware' => [],
-                ],
+                
+                
 
         // \TTSoft\Categories\Entities\Category::DOC_STATUS => [
         //     'name'  => trans('Tình trạng chứng từ'),

@@ -20,7 +20,7 @@ class CreateTicketsTable extends Migration
             $table->integer('price');
             $table->integer('quality');
             $table->dateTime('start_selling');
-            $table->dateTime('end_selling');
+            $table->dateTime('end_selling')->nullable();
             $table->integer('min_selling')->nullable();
             $table->integer('max_selling')->nullable();
             $table->string('description')->nullable();

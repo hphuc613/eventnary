@@ -81,7 +81,7 @@
 					</div>
 				</div>
 
-				<div id="section-works" class="page-section notoppadding">
+				<!-- <div id="section-works" class="page-section notoppadding">
 
 					<div class="section nomargin">
 						<div class="container clearfix">
@@ -91,8 +91,6 @@
 						</div>
 					</div>
 
-					<!-- Portfolio Items
-					============================================= -->
 					<div id="portfolio" class="portfolio grid-container portfolio-nomargin portfolio-full portfolio-masonry mixed-masonry clearfix">
 
 						<article class="portfolio-item pf-media pf-icons wide">
@@ -193,17 +191,17 @@
 							</div>
 						</article>
 
-					</div><!-- #portfolio end -->
+					</div>
 
 					<div class="topmargin center"><a href="#" class="button button-border button-circle t600">View More Projects</a></div>
-				</div>
+				</div> -->
 
 				<div id="section-services" class="page-section notoppadding">
 
 					<div class="section nomargin">
 						<div class="container clearfix">
 							<div class="divcenter center" style="max-width: 900px;">
-								<h2 class="nobottommargin t300 ls1">We enjoy working on the Services &amp; Products we provide as much as you need them. This help us in delivering your Goals easily. Browse through the wide range of services we provide.</h2>
+								<h2 class="nobottommargin t300 ls1">Chúng tôi cảm thấy hài lòng khi làm việc dựa trên các Dịch vụ & Sản phẩm mà chúng tôi cung cấp cho bạn. Điều này giúp chúng tôi tiếp cận và hỗ trợ các Mục tiêu của bạn một cách dễ dàng. Xem qua những dịch vụ chúng tôi cung cấp.</h2>
 							</div>
 						</div>
 					</div>
@@ -219,7 +217,7 @@
 											<div class="fbox-icon">
 												<a href="#"><i class="icon-et-mobile"></i></a>
 											</div>
-											<h3>Responsive Framework</h3>
+											<h3>Phù hợp các kích thước màn hình</h3>
 										</div>
 									</div>
 									<div class="col-lg-4 col-md-6 col-padding">
@@ -227,7 +225,7 @@
 											<div class="fbox-icon">
 												<a href="#"><i class="icon-et-presentation"></i></a>
 											</div>
-											<h3>Beautifully Presented</h3>
+											<h3>Thân thiện khi sử dụng</h3>
 										</div>
 									</div>
 									<div class="col-lg-4 col-md-6 col-padding">
@@ -235,7 +233,7 @@
 											<div class="fbox-icon">
 												<a href="#"><i class="icon-et-puzzle"></i></a>
 											</div>
-											<h3>Extensively Extendable</h3>
+											<h3>Chức năng mở rộng</h3>
 										</div>
 									</div>
 									<div class="col-lg-4 col-md-6 col-padding">
@@ -243,7 +241,7 @@
 											<div class="fbox-icon">
 												<a href="#"><i class="icon-et-gears"></i></a>
 											</div>
-											<h3>Powerfully Customizable</h3>
+											<h3>Tùy biến mạnh mẽ</h3>
 										</div>
 									</div>
 									<div class="col-lg-4 col-md-6 col-padding">
@@ -251,7 +249,7 @@
 											<div class="fbox-icon">
 												<a href="#"><i class="icon-et-genius"></i></a>
 											</div>
-											<h3>Geniusly Transformable</h3>
+											<h3>Phân phối hiệu quả linh hoạt</h3>
 										</div>
 									</div>
 									<div class="col-lg-4 col-md-6 col-padding">
@@ -259,7 +257,7 @@
 											<div class="fbox-icon">
 												<a href="#"><i class="icon-et-hotairballoon"></i></a>
 											</div>
-											<h3>Industrial Support</h3>
+											<h3>Hổ trợ đắc lực</h3>
 										</div>
 									</div>
 								</div>
@@ -270,7 +268,7 @@
 
 					<div class="section dark nomargin">
 						<div class="divcenter center" style="max-width: 900px;">
-							<h2 class="nobottommargin t300 ls1">Like Our Services? Get an <a href="#" data-scrollto="#template-contactform" data-offset="140" data-easing="easeInOutExpo" data-speed="1250" class="button button-border button-circle button-light button-large notopmargin nobottommargin" style="position: relative; top: -3px;">Instant Quote</a></h2>
+							<h2 class="nobottommargin t300 ls1">Liên hệ với chúng tôi để hiểu rõ hơn? <a href="#" data-scrollto="#template-contactform" data-offset="140" data-easing="easeInOutExpo" data-speed="1250" class="button button-border button-circle button-light button-large notopmargin nobottommargin" style="position: relative; top: -3px;">Phản hồi</a></h2>
 						</div>
 					</div>
 
@@ -287,7 +285,7 @@
 										<div class="slider-wrap">
 											<div class="slide">
 												<div class="testi-content">
-													<p>Similique fugit repellendus expedita excepturi iure perferendis provident quia eaque vero numquam?</p>
+													<p>Tôi nghĩ nếu bạn làm điều gì đó và thu được kết quả tốt đẹp, bạn nên đi tiếp để làm những điều tuyệt vời khác, đừng dừng chân lại quá lâu. Hãy tìm xem nên làm gì tiếp.</p>
 													<div class="testi-meta">
 														Steve Jobs
 														<span>Apple Inc.</span>
@@ -296,7 +294,7 @@
 											</div>
 											<div class="slide">
 												<div class="testi-content">
-													<p>Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa corporis molestias.</p>
+													<p>Tương lai của giáo dục, cả online và offline, sẽ chiến thắng bởi những người hiểu rằng tại sao, như thế nào và nơi mọi người học không phải là một hình thức duy nhất sẽ phù hợp cho tất cả các đối tượng khác nhau.</p>
 													<div class="testi-meta">
 														Collis Ta'eed
 														<span>Envato Inc.</span>
@@ -305,10 +303,10 @@
 											</div>
 											<div class="slide">
 												<div class="testi-content">
-													<p>Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo rerum!</p>
+													<p>Ta không tự chủ động giải quyết vấn đề thì sẽ không ai có thể cứu ta thoát khỏi những vấn đề đó!</p>
 													<div class="testi-meta">
-														John Doe
-														<span>XYZ Inc.</span>
+														Ener Võ
+														<span>MySoul Inc.</span>
 													</div>
 												</div>
 											</div>

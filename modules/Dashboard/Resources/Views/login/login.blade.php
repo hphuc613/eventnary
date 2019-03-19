@@ -1,4 +1,3 @@
-{{ Auth::logout() }}
 <!DOCTYPE html>
 <html lang="en">
 

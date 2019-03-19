@@ -23,8 +23,8 @@
 						<ul class="one-page-menu" data-easing="easeInOutExpo" data-speed="1250" data-offset="65">
 							<li><a href="{{ route('get.home.index') }}" data-href="#wrapper"><div>Home</div></a></li>
 							<li><a href="#" data-href="#section-about"><div>Giới thiệu</div></a></li>
-							<li><a href="#" data-href="#section-works"><div>Works</div></a></li>
-							<li><a href="#" data-href="#section-services"><div>Services</div></a></li>
+							<!-- <li><a href="#" data-href="#section-works"><div>Works</div></a></li> -->
+							<li><a href="#" data-href="#section-services"><div>Dịch vụ</div></a></li>
 							<li><a href="#" data-href="#section-blog"><div>Sự kiện</div></a></li>
 							<li><a href="#" data-href="#section-contact"><div>Liên hệ</div></a></li>
 							<li><a href="#" data-href="#section-feedback"><div>Phản hồi</div></a></li>

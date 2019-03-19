@@ -76,6 +76,7 @@
                                 <h4 class="box-title m-b-0">{{ $val->title }} <span @if($val->status==1) class="status-event-active" @else class="status-event-non-active" @endif>({{eventStatusTitle($val->status)}})</span></h4>
                             </a>
                             <address>
+                                <p><span>Người đăng:</span>@if($val->user_id) <a href="{{ route('get.edit.user',$val->user_id) }}">{{ $val->user->name }}</a> @endif</p>
                                 <p><span>Địa chỉ:</span> {{ $val->address }}, {{ $val->ward->title }}, {{ $val->ward->district->title }}, {{ $val->ward->district->city->title }}</p>
                                 @php
                                     $start_date=$val->start_date;

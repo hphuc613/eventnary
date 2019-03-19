@@ -25,7 +25,7 @@ class WebController extends Controller{
     
     
     public function getListEvent(Request $request){
-        $data = Event::orderBy('id','DESC')->get();
+        $data = Event::where('status',1)->orderBy('id','DESC')->paginate(6);
         return view('Event::frontend.event.event_list',compact('data'));
     }
 
@@ -37,107 +37,103 @@ class WebController extends Controller{
 
     public function searchEvent(Request $request)
     {
-        $page = 8;
-        $data = Event::where('title','like','%'.$request->key.'%')
-                            ->orWhere('title',$request->key)->paginate($page);
-            return view('Event::frontend.event.event_list',compact('data'))
-                        ->with('i', ($request->input('page', 1) - 1) * $page);
+        $data = Event::where('status',1)->where('title','like','%'.$request->key.'%')->paginate(6);
+        return view('Event::frontend.event.event_list',compact('data'));
     }
 
+    public function getCreateEvent(Request $request)
+    {   
+        $cities = City::get();
+        $type = Event_type::get();
+        return view('Event::frontend.event.event_create',compact('cities','type'));
+    }
 
-    // public function getCreate(Request $request){
-    //     $cities = City::all();
-    //     $event_type = Event_type::all();
-    //     return view('Event::event.create',compact('cities','event_type'));
-    // }
-
-    // public function postCreate(Request $request){
-
-
-    //     $this->validate($request,$this->model->rules,$this->model->messages);
-    //     $data = $request->all();
-    //     $insert = new Event($data);
-    //     $insert->save();
-
-    //     $event = Event::orderBy('created_at','DESC')->first();
-    //     $image = $event->id.'-'.$request->file('current_image')->getClientOriginalName();
-    //     $request->file('current_image')->move('upload/image/event',$image);
-    //     $event->current_image = $image;
-    //     $event->update();
-    //     //$request->session()->flash('status', 'Thêm mới thành công!');
-    //     return redirect()->route('get.create.ticket',$event->id);
-    // }
-
-    // public function getEdit(Request $request, $id){
-    //     $data = Event::find($id);
-    //     $cities = City::all();
-    //     $districts = District::all();
-    //     $wards = Ward::all();
-    //     $event_type = Event_type::all();
-    //     return view('Event::event.edit',compact('data','cities','districts','wards','event_type'));
-    // }
-
-    // public function postEdit(Request $request, $id){
-    //     $this->validate($request,$this->model->rules,$this->model->messages);
-    //     $data = Event::find($id);
-    //     $data->update($request->all());
-    //     $data->save();
-
-    //     if($request->file('current_image')){
-    //         $image = $data->id.'-'.$request->file('current_image')->getClientOriginalName();
-    //         $request->file('current_image')->move('upload/image/event',$image);
-    //         $data->current_image = $image;
-    //         $data->update();
-    //     }
-    //     $request->session()->flash('status', 'Chỉnh sửa thành công!');
-    //     return redirect()->back();
-    // }
-
-    // public function delete(Request $request, $id)
-    // {
-    //     $data = Event::find($id);
-    //     $ticket = Ticket::where('event_id',$id)->get();
-    //     foreach ($ticket as $key => $val) {
-    //         $val->delete();
-    //     }
-    //     $images = Image_event::where('event_id',$id)->get();
-    //     foreach ($images as $key => $val) {
-    //         $val->delete();
-    //     }
-    //     $data->delete();
-    //     $request->session()->flash('alert', 'Xóa thành công!');
-    //     return redirect()->back();
-    // }
+    public function postCreateEvent(Request $request){
 
 
-    // public function getListGallery($id)
-    // {
-    //     $event = Event::find($id);
-    //     $data = Image_event::where('event_id',$id)->get();
-    //     return view('Event::image.gallery',compact('data','event'));
-    // }
+        $this->validate($request,$this->model->rules,$this->model->messages);
+        $data = $request->all();
+        $insert = new Event($data);
+        $insert->save();
 
-    // public function postListGallery(Request $request){
+        $event = Event::orderBy('created_at','DESC')->first();
+            if($request->file('current_image')){
+            $image = $event->id.'-'.$request->file('current_image')->getClientOriginalName();
+            $request->file('current_image')->move('upload/image/event',$image);
+            $event->current_image = $image;
+            $event->slug = $event->id.'-'.slug($event->title);
+            $event->update();
+        }else{
+            $event->slug = $event->id.'-'.slug($event->title);
+            $event->update();   
+        }
+        
+        $request->session()->flash('status', 'Thêm mới thành công!');
+        return redirect()->route('get.create.ticket_home',$event->slug);
+    }
 
-    //     $this->validate($request,$this->model->rules,$this->model->messages);
-    //     $image = $request->input('event_id').'-'.$request->file('title')->getClientOriginalName();
-    //     $request->file('title')->move('upload/image/event/multible',$image);
+    public function getEditEvent(Request $request, $slug, $id)
+    {   
+        $data = Event::find($id);
+        $type = Event_type::get();
+        $cities = City::get();
+        $districts = District::where('city_id',$data->ward->district->city->id)->get();
+        $wards = Ward::where('district_id',$data->ward->district->id)->get();
+        return view('Event::frontend.event.event_edit',compact('cities','wards','districts','type','data'));
+    }
 
-    //     $data = new Image_event();
-    //     $data->title = $image;
-    //     $data->event_id = $request->input('event_id');
-    //     $data->save();
+    public function postEditEvent(Request $request, $slug, $id){
 
-    //     return redirect()->back();
-    //  }
+        $this->validate($request,$this->model->rules,$this->model->messages);
+        $data = Event::find($id);
+        $data->update($request->all());
 
-    // public function deleteGallery(Request $request,$id)
-    // {
-    //     $data = Image_event::find($id);
-    //     $data->delete();
-    //     $request->session()->flash('alert', 'Xóa thành công!');
-    //     return redirect()->back();
-    // }
+        if($request->file('current_image')){
+            $image = $data->id.'-'.$request->file('current_image')->getClientOriginalName();
+            $request->file('current_image')->move('upload/image/event',$image);
+            $data->current_image = $image;
+            $data->update();
+        }
+        $data->slug = $data->id.'-'.slug($data->title);
+        $data->update();
+
+        $request->session()->flash('status', 'Chỉnh sửa thành công!');
+        return redirect()->back();
+    }
+
+    public function getListGalleryEvent($id)
+    {
+        $event = Event::find($id);
+        $data = Image_event::where('event_id',$id)->get();
+        return view('Event::image.event_gallery',compact('data','event'));
+    }
+
+    public function postListGalleryEvent(Request $request){
+
+        if($request->file('title')){
+            $image = $request->input('event_id').'-'.$request->file('title')->getClientOriginalName();
+            $request->file('title')->move('upload/image/event/multible',$image);
+
+            $data = new Image_event();
+            $data->title = $image;
+            $data->event_id = $request->input('event_id');
+            $data->save();
+        }else{
+            $request->session()->flash('alert', 'Chưa có hình nào để tải lên!');
+        }
+
+        return redirect()->back();
+     }
+
+    public function deleteGalleryEvent(Request $request,$id)
+    {
+        $data = Image_event::find($id);
+        $data->delete();
+        $request->session()->flash('alert', 'Xóa thành công!');
+        return redirect()->back();
+    }
+
+    
 
    
 }

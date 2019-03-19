@@ -59,9 +59,9 @@ class EventController extends Controller{
 
     public function getEdit(Request $request, $id){
         $data = Event::find($id);
-        $cities = City::all();
-        $districts = District::all();
-        $wards = Ward::all();
+        $cities = City::get();
+        $districts = District::where('city_id',$data->ward->district->city->id)->get();
+        $wards = Ward::where('district_id',$data->ward->district->id)->get();
         $event_type = Event_type::all();
         return view('Event::event.edit',compact('data','cities','districts','wards','event_type'));
     }

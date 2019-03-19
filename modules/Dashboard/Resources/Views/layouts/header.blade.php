@@ -244,7 +244,7 @@
                                 <!-- text-->
                                 <!-- <div class="dropdown-divider"></div> -->
                                 <!-- text-->
-                                <a href="{{ route('get.login.admin') }}" class="dropdown-item"><i class="fa fa-power-off"></i> Đăng xuất</a>
+                                <a href="{{ route('get.logout.admin') }}" class="dropdown-item"><i class="fa fa-power-off"></i> Đăng xuất</a>
                                 <!-- text-->
                             </div>
                         </li>

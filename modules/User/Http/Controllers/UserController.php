@@ -22,7 +22,7 @@ class UserController extends Controller{
     
     public function getList(Request $request){
         $page = 8;
-        $data = User::paginate(8);
+        $data = User::where('role_id',1)->paginate(8);
         return view('User::user.list2',compact('data'))
                 ->with('i', ($request->input('page', 1) - 1) * $page);
     }

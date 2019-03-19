@@ -22,6 +22,9 @@ class AdminController extends Controller{
 
     public function getLogin(Request $request){
 
+        if(Auth::check()){
+            return redirect()->back();
+        }else
         return view('Dashboard::login.login');
     }
 
@@ -39,6 +42,11 @@ class AdminController extends Controller{
             $request->session()->flash('alert','Nhập sai Email hoặc Mật khẩu!');
             return redirect()->back();
         }
+    }
+
+    public function getLogout(Request $request){
+        Auth::logout();
+        return redirect()->route('get.login.admin');
     }
 
 }

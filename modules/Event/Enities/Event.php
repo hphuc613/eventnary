@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use HPro\Location\Enities\Ward;
 use HPro\Ticket\Enities\Ticket;
+use HPro\User\Enities\User;
 
 class Event extends Model
 {
@@ -57,6 +58,12 @@ class Event extends Model
     public function ward()
     {
         return $this->belongsTo(Ward::class,'ward_id');
+    }
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function ticket()
