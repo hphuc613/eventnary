@@ -65,8 +65,15 @@ class AccountController extends Controller{
         $data->update($request->all());
         // $data->password = bcrypt($request->input('password'));
         // $data->update();
-        $request->session()->flash('status', 'chỉnh sửa thành công!');
+        $request->session()->flash('status', 'Chỉnh sửa thành công!');
         return redirect()->back();
+    }
+
+    public function getListEventProfile(Request $request, $id)
+    {
+        $data = User::find($id);
+        $event = Event::where('user_id',$data->id)->orderBy('created_at','DESC')->paginate(3);
+        return view('Home::profile.event_list_profile',compact('data','event'));
     }
 
 

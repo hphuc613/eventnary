@@ -32,13 +32,13 @@
 		</div>
 
 	</section><!-- #page-title end -->
-
 	<section id="content">
 
 			<div class="content-wrap">
 
 				<div class="container clearfix">
 
+				@include('Dashboard::layouts.notification')
 					<div class="single-event">
 
 						<div class="col_three_fourth">
@@ -61,7 +61,10 @@
 									</ul>
 								</div>
 							</div>
-							<a href="#" class="btn btn-success btn-block btn-lg">Mua vé</a>
+							<a href="#" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Nhận vé miễn phí</a>
+							<a href="#" class="btn btn-success btn-block btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg2">Mua vé </a>
+							@include('Ticket::frontend.get_ticket.get_ticket')
+							@include('Ticket::frontend.get_ticket.buy_ticket')
 						</div>
 
 						<div class="clear"></div>

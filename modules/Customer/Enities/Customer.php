@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use HPro\Role\Enities\Roles;
+use HPro\User\Enities\User;
 
 class Customer extends Model{
     
@@ -66,6 +67,10 @@ class Customer extends Model{
 
     public function role(){
         return $this->belongsTo(Roles::class,'role_id');
+    }
+
+    public function user(){
+        return $this->hasOne(User::class,'user_id');
     }
 
 }

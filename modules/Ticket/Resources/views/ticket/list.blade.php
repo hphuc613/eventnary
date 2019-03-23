@@ -35,7 +35,7 @@
                         </tfoot>
                         <tbody>
                             @foreach($data as $key => $val)
-                            <tr>
+                            <tr @if($val->quality==0) style="background: #ff120054" @endif>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $val->title }}</td>
                                 <td>{{ number_format($val->price) }} VNĐ</td>

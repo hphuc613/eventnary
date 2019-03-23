@@ -26,7 +26,7 @@
 						{{ $collaborator->user()->email }}
 						<ul class="left m-t-10" >
 							<a class="" href="{{ route('home.create.event') }}"><i class="icon-plus"></i> Tạo sự kiện mới</a><br>
-							<a class="" href="#"><i class="icon-tasks"></i> Sự kiện của bạn</a><br>
+							<a class="" href="{{ route('get.list.event_profile',$collaborator->user()->id) }}"><i class="icon-tasks"></i> Sự kiện của bạn</a><br>
 							<a class="" href="#"><i class="icon-bar-chart"></i> Thống kê sự kiện</a><br>
 							<a class="" href="#"><i class="icon-credit"></i> Vé đã mua</a><br>
 							<a class="" href="{{ route('get.home.logout') }}"><i class="icon-signout"></i> Đăng xuất</a>

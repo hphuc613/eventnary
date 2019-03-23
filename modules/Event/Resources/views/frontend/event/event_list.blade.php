@@ -38,8 +38,7 @@
 									</ul>
 									<div class="entry-content">
 										<p>{{ $val->description }}</p>
-										<a href="#" class="btn btn-success " disabled="disabled">Buy Tickets</a>
-										<a href="{{ route('home.detail.event',$val->id) }}" class="btn btn-danger">Xem thêm</a>
+										<a href="{{ route('home.detail.event',$val->id) }}" class=" float-right"><u>Xem thêm...</u></a>
 									</div>
 								</div>
 								</div>
@@ -54,8 +53,8 @@
 						============================================= -->
 						<div class="row mb-3">
 							<div class="col-12">
-								<a href="{{ $data->previousPageUrl() }}" class="btn btn-outline-secondary float-left">&larr; Older</a>
-								<a href="{{ $data->nextPageUrl() }}" class="btn btn-outline-dark float-right">Newer &rarr;</a>
+								<a href="{{ $data->previousPageUrl() }}" class="btn btn-outline-secondary float-left">&larr; Trang trước</a>
+								<a href="{{ $data->nextPageUrl() }}" class="btn btn-outline-dark float-right">Trang sau &rarr;</a>
 							</div>
 						</div>
 						<!-- .pager end -->

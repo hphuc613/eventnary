@@ -24,6 +24,7 @@ class CreateCustomersTable extends Migration
             $table->string('bank_account_owner')->nullable();
             $table->string('email');
             $table->string('password');
+            $table->integer('user_id')->unsigned()->nullable();
             $table->integer('role_id')->unsigned();
             $table->timestamps();
 

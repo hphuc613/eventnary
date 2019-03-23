@@ -81,7 +81,7 @@
                                                         @for($i=1;$i<=10;$i++)
                                                         <option value="{{ $i }}">{{ $i }}</option>
                                                         @endfor
-                                                        <option value="Không giới hạn">Không giới hạn</option>
+                                                        <option value="11">Không giới hạn</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -92,7 +92,6 @@
                                                         @for($i=1;$i<=10;$i++)
                                                         <option value="{{ $i }}">{{ $i }}</option>
                                                         @endfor
-                                                        <option value="Không giới hạn">Không giới hạn</option>
                                                     </select>
                                                 </div>
                                             </div>

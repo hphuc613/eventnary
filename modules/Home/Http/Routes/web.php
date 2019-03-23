@@ -12,6 +12,7 @@
             Route::post('/sign-up','AccountController@postCreate')->name('post.create.account');
             Route::get('/have{id}onl','AccountController@getEditProfile')->name('get.edit.account');
             Route::post('/have{id}onl','AccountController@postEditProfile')->name('post.edit.account');
+            Route::get('list-event/have{id}onl','AccountController@getListEventProfile')->name('get.list.event_profile');
         });
 
     	Route::prefix('web')->group(function(){

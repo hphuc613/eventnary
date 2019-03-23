@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use HPro\Role\Enities\Roles;
 use HPro\Event\Enities\Event;
+use HPro\Customer\Enities\Customer;
+use HPro\Ticket_detail\Enities\Ticket_detail;
 
 class User extends Model
 {
@@ -71,7 +73,11 @@ class User extends Model
 
     public function event()
     {
-        return $this->hasMany(Event::class,'event_id');
+        return $this->hasMany(Event::class,'user_id');
+    }
+
+    public function ticket_detail(){
+        return $this->hasMany(Ticket_detail::class,'user_id');
     }
 
 }
