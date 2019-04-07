@@ -47,7 +47,7 @@
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 									</div>
 									<div class="modal-body">
-										<form action="{{ route('post.edit_image.user',$data->id) }}" method="post" enctype="multipart/form-data">
+										<form action="{{ route('post.edit_image.account',$data->id) }}" method="post" enctype="multipart/form-data">
 											{{ csrf_field() }}	
 											<input id="input-8" type="file" name="image" class="file-loading" data-allowed-file-extensions='[]'>
 										</form>

@@ -6,23 +6,28 @@
 								<h4>Upcoming Events</h4>
 								<div id="post-list-footer">
 
-									@for($i=0; $i < 3; $i++)
-									
+									@foreach($data as $key => $val)
+									@php
+									    $start_date=$val->start_date;
+									    $end_date=$val->end_date;
+									@endphp
 									<div class="spost clearfix">
 										<div class="entry-image">
-											<a href="#" class="nobg"><img src="frontend/images/events/thumbs/1.jpg" alt=""></a>
+											<a href="{{ route('home.detail.event',$val->id) }}" class="nobg"><img src="{{ asset('upload/image/event/'.$val->current_image) }}" alt=""></a>
 										</div>
 										<div class="entry-c">
 											<div class="entry-title">
-												<h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
+												<h4><a href="{{ route('home.detail.event',$val->id) }}">{{ $val->title }}</a></h4>
 											</div>
 											<ul class="entry-meta">
-												<li>10th July 2014</li>
+												<li>{{ date_format(new DateTime($start_date),'d-m-Y H:i') }} - {{ date_format(new DateTime($end_date),'d-m-Y H:i') }}</li>
 											</ul>
 										</div>
 									</div>
-									
-									@endfor
+									@if($key < 3)
+										@break
+									@endif
+									@endforeach
 									
 
 								</div>

@@ -30,7 +30,9 @@
 				<li class="breadcrumb-item active" aria-current="page"><a href="#" class="breadcrumb-event">{{ $data->title }}</a></li>
 			</ol>
 		</div>
-
+		<div class="container clearfix m-t-30">
+			@include('Dashboard::layouts.notification')
+		</div>
 	</section><!-- #page-title end -->
 	<section id="content">
 
@@ -38,7 +40,6 @@
 
 				<div class="container clearfix">
 
-				@include('Dashboard::layouts.notification')
 					<div class="single-event">
 
 						<div class="col_three_fourth">
@@ -58,6 +59,12 @@
 										<li><i class="icon-time"></i> {{ date_format(new DateTime($start_date),'H:i') }} - {{ date_format(new DateTime($end_date),'H:i') }}</li>
 										<li><i class="icon-map-marker2"></i> {{ $data->address }}, {{ $data->ward->title }}, {{ $data->ward->district->title }}, {{ $data->ward->district->city->title }}</li>
 										<li><i class="icon-dollar"></i> <strong>@if($data->price) {{ $data->price }} @else 0 @endif VNĐ</strong></li>
+										@if($ticket_free)
+										<li><i class="icon-ticket"></i> <strong>{{ $ticket_free->quality }} Vé miễn phí</strong></li>
+										@endif
+										@if($ticket_fee)
+										<li><i class="icon-ticket"></i> <strong>{{ $ticket_fee->quality }} Vé thu phí</strong></li>
+										@endif
 									</ul>
 								</div>
 							</div>

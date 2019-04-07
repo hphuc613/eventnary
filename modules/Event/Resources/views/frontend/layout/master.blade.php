@@ -127,7 +127,7 @@ label{
 									<div class="input-group-prepend">
 										<div class="input-group-text"><i class="icon-line-search"></i></div>
 									</div>
-									<input type="text" name="key" class="form-control" value="" placeholder="Search..">
+									<input type="text" name="key" class="form-control" value="" placeholder="Tìm kiếm...">
 								</div>
 							</form>
 						</div><!-- #top-search end -->

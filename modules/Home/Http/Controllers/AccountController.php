@@ -1,11 +1,13 @@
 <?php
 namespace HPro\Home\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use HPro\Role\Enities\Roles;
+use Mail;
+use App\Mail\OrderShipped;
 use HPro\User\Enities\User;
+use HPro\Role\Enities\Roles;
+use Illuminate\Http\Request;
 use HPro\Event\Enities\Event;
+use App\Http\Controllers\Controller;
 use Validator;
 
 class AccountController extends Controller{
@@ -19,7 +21,9 @@ class AccountController extends Controller{
         $this->model    = $model;
     }
 
-     public function postCreate(Request $request){
+
+    var $email;
+    public function postCreate(Request $request){
 
         $this->validate($request,$this->model->rules,[
                         'phone.unique'      =>   'Số điện thoại của bạn dường như đã được sử dụng!',
@@ -35,6 +39,18 @@ class AccountController extends Controller{
         $data->role_id = $request->role_id;
         $data->password = bcrypt($request->password);
         $data->save();
+
+        $array = array(
+            'name'=>$request->name, // to $name
+            'email'=>$request->email, // $email
+            'password'=>$request->password //$content
+        );
+        Mail::to($request->email)
+            ->cc($request->email)
+            ->bcc($request->email)
+            ->send(new OrderShipped($array));
+
+
 
         $request->session()->flash('status', 'Tạo tài khoản thành công!');
         return redirect()->back();
@@ -76,6 +92,42 @@ class AccountController extends Controller{
         return view('Home::profile.event_list_profile',compact('data','event'));
     }
 
+    public function postImageEdit(Request $request, $id)
+    {
+
+        $data = User::find($id);
+
+        if($request->file('image') && $data->image != null){
+            $fileImage = 'upload/image/user/'.$data->image;
+            if(file_exists($fileImage))
+            {
+                unlink($fileImage);
+
+            }
+
+            $image = $data->id.'-'.$request->file('image')->getClientOriginalName();
+            $request->file('image')->move('upload/image/user',$image);
+            $data->image = $image;
+            $data->update();
+          
+            $request->session()->flash('status', 'Thay đổi thành công!');
+
+        }elseif($request->file('image') != null){
+            
+            $image = $data->id.'-'.$request->file('image')->getClientOriginalName();
+            $request->file('image')->move('upload/image/user',$image);
+            $data->image = $image;
+            $data->update();
+            
+            $request->session()->flash('status', 'Thay đổi thành công!');
+
+        }elseif($request->file('image') == null){
+
+            $request->session()->flash('alert', 'Vui lòng nhập hình mới!');
+        }
+
+        return redirect()->back();
+    }
 
    
 }

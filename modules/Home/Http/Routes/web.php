@@ -13,6 +13,7 @@
             Route::get('/have{id}onl','AccountController@getEditProfile')->name('get.edit.account');
             Route::post('/have{id}onl','AccountController@postEditProfile')->name('post.edit.account');
             Route::get('list-event/have{id}onl','AccountController@getListEventProfile')->name('get.list.event_profile');
+            Route::post('image/have{id}onl','AccountController@postImageEdit')->name('post.edit_image.account');
         });
 
     	Route::prefix('web')->group(function(){

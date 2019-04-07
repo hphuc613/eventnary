@@ -9,41 +9,43 @@
 					<form action="{{ route('post.get.ticket',$ticket_fee->id) }}" method="post">
 						{{ csrf_field() }}
 						<div class="modal-header">
-							<h4 class="modal-title" id="myModalLabel">Mua vé: <span>{{ $ticket_fee->title }}</span></h4>
+							<h4 class="modal-title" id="myModalLabel">Mua vé: <span>{{ $ticket_fee->title }}</span><br>
+																	  Số vé còn lại: <span>{{ $ticket_fee->quality }}</span> vé<br>
+																	  Giá vé: <span>{{ number_format($ticket_fee->price) }}</span> VNĐ</h4>
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						</div>
 						<div class="modal-body">
 							@if(Auth::guard('collaborator')->check())
 							<div class="form-group">
 								<label for="">Nhập tên: </label>
-								<input type="text" name="name" class="form-control" value="{{ Auth::guard('collaborator')->user()->name }}">
+								<input type="text" name="name" class="form-control" required value="{{ Auth::guard('collaborator')->user()->name }}">
 							</div>
 							<div class="form-group">
 								<label for="">Số điện thoai: </label>
-								<input type="text" name="phone" class="form-control" value="{{ Auth::guard('collaborator')->user()->phone }}">
+								<input type="text" name="phone" class="form-control" required value="{{ Auth::guard('collaborator')->user()->phone }}">
 							</div>
 							<div class="form-group">
 								<label for="">Email: </label>
-								<input type="text" name="email" class="form-control" value="{{ Auth::guard('collaborator')->user()->email }}">
+								<input type="text" name="email" class="form-control" required value="{{ Auth::guard('collaborator')->user()->email }}">
 							</div>
 							@else
 							<div class="form-group">
 								<label for="">Nhập tên: </label>
-								<input type="text" name="name" class="form-control">
+								<input type="text" name="name" required class="form-control">
 							</div>
 							<div class="form-group">
 								<label for="">Số điện thoai: </label>
-								<input type="text" name="phone" class="form-control">
+								<input type="text" name="phone" required class="form-control">
 							</div>
 							<div class="form-group">
 								<label for="">Email: </label>
-								<input type="text" name="email" class="form-control">
+								<input type="text" name="email" required class="form-control">
 							</div>
 							@endif
 							<div class="form-group">
 								<label for="">Số lượng vé mua: </label>
 								@if($ticket_fee->max_selling == 11)
-								<input type="number" name="quality" class="form-control">
+								<input type="number" name="quality" required class="form-control">
 								@else
 								<select name="quality" class="form-control" id="">
 									@for($i=1; $i <= $ticket_fee->max_selling; $i++)

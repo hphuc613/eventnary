@@ -6,3 +6,5 @@
 	});
     	
 
+    Route::get('/test/email','AdminController@getTestMail');
+    Route::post('/test/email','AdminController@postTestMail');

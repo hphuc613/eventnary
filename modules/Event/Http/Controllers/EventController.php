@@ -46,7 +46,9 @@ class EventController extends Controller{
         $insert = new Event($data);
         $insert->save();
 
+
         $event = Event::orderBy('created_at','DESC')->first();
+
         $image = $event->id.'-'.$request->file('current_image')->getClientOriginalName();
         $request->file('current_image')->move('upload/image/event',$image);
         $event->current_image = $image;

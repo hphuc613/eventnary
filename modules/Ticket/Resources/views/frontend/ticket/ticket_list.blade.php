@@ -26,8 +26,8 @@
 		    <td>{{ ticketStatusTitle($val->status) }}</td>
 		    <td>
 		    	<center>
-	                <a href="{{ route('get.edit.ticket',$val->id) }}" data-toggle="tooltip" data-original-title="Sửa"> <i class="fa fa-pencil text-inverse m-r-10"></i>Sửa</a><span> / </span>
-	                <a href="javascript:void(0)" alt="{{ route('get.delete.ticket',$val->id) }}" id="del-warning" href="#" data-toggle="tooltip" data-original-title="Xóa"> <i class="fa fa-close text-danger"></i>Xóa</a>
+	                <a href="{{ route('get.edit.ticket_home',$val->event->slug) }}" class="btn btn-warning white" data-toggle="tooltip" data-original-title="Sửa">Sửa</a>
+	                <a href="{{ route('get.delete.ticket_home',$val->event->slug) }}" class="btn btn-danger" alt="{{ route('get.delete.ticket',$val->id) }}" id="del-warning" href="#" data-toggle="tooltip" data-original-title="Xóa"> <i class="fa fa-close text-danger"></i>Xóa</a>
 	            </center>
 		    </td>
 		</tr>

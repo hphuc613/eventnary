@@ -27,7 +27,7 @@ class HomeController extends Controller{
     
     
     public function getHome(Request $request){
-        $events = Event::all();
+        $events = Event::orderBy('created_at','DESC')->get();
         return view('Home::home.home',compact('events'));
     }
 
@@ -72,10 +72,13 @@ class HomeController extends Controller{
         }
     }
 
+    
+
     public function getHomeLogout(Request $request){
         Auth::guard('collaborator')->logout();
         return redirect()->route('get.home.index');
     }
+
 
    
 
