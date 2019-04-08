@@ -24,13 +24,13 @@
 								@endphp
 								<div class="entry clearfix">
 								<div class="entry-image">
-									<a href="{{ route('home.detail.event',$val->id) }}">
+									<a href="{{ route('home.detail.event',[$val->id,$val->slug]) }}">
 										<img src="{{ asset('upload/image/event/'.$val->current_image) }}" alt="{{ $val->title }}">
 									</a>
 								</div>
 								<div class="entry-c">
 									<div class="entry-title">
-										<h2><a href="{{ route('home.detail.event',$val->id) }}">{{ $val->title }}</a></h2>
+										<h2><a href="{{ route('home.detail.event',[$val->id,$val->slug]) }}">{{ $val->title }}</a></h2>
 									</div>
 									<ul class="entry-meta clearfix">
 										<li><a href="#"><i class="icon-time"></i> {{ date_format(new DateTime($start_date),'d-m-Y H:i') }} - {{ date_format(new DateTime($end_date),'d-m-Y H:i') }}</a></li>
@@ -38,7 +38,7 @@
 									</ul>
 									<div class="entry-content">
 										<p>{{ $val->description }}</p>
-										<a href="{{ route('home.detail.event',$val->id) }}" class=" float-right"><u>Xem thêm...</u></a>
+										<a href="{{ route('home.detail.event',[$val->id,$val->slug]) }}" class=" float-right"><u>Xem thêm...</u></a>
 									</div>
 								</div>
 								</div>

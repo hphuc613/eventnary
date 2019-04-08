@@ -6,14 +6,7 @@
 @push('css')
 
 <style>
-	.btn-orange{
-		background: orange;
-		color: white;
-	}	
-
-	.btn-warning{
-		color: white;
-	}
+	
 </style>
 
 @endpush

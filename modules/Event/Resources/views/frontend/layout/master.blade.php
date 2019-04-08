@@ -41,6 +41,15 @@
 	transition: margin .4s ease;
 }
 
+.btn-orange{
+	background: orange;
+	color: white;
+}	
+
+.btn-warning{
+	color: white;
+}
+
 #top-search-input form {
 	width: 160px;
 	height: 34px;

@@ -13,11 +13,11 @@
 									@endphp
 									<div class="spost clearfix">
 										<div class="entry-image">
-											<a href="{{ route('home.detail.event',$val->id) }}" class="nobg"><img src="{{ asset('upload/image/event/'.$val->current_image) }}" alt=""></a>
+											<a href="{{ route('home.detail.event',[$val->id,$val->slug]) }}" class="nobg"><img src="{{ asset('upload/image/event/'.$val->current_image) }}" alt=""></a>
 										</div>
 										<div class="entry-c">
 											<div class="entry-title">
-												<h4><a href="{{ route('home.detail.event',$val->id) }}">{{ $val->title }}</a></h4>
+												<h4><a href="{{ route('home.detail.event',[$val->id,$val->slug]) }}">{{ $val->title }}</a></h4>
 											</div>
 											<ul class="entry-meta">
 												<li>{{ date_format(new DateTime($start_date),'d-m-Y H:i') }} - {{ date_format(new DateTime($end_date),'d-m-Y H:i') }}</li>

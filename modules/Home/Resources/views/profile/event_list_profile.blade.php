@@ -44,6 +44,7 @@
 											<div class="entry-content">
 												<a href="{{ route('get.home.edit.event',[$val->id,$val->slug]) }}" class="btn btn-primary">Quản lý sự kiện</a>
 												<a href="#" class="btn btn-success">Quản lý khách mời</a>
+												<a href="{{ route('get.home.chart.event',[$val->id,$val->slug]) }}" class="btn btn-orange">Quản lý Thống kê</a>
 											</div>
 										</div>
 									</div>
