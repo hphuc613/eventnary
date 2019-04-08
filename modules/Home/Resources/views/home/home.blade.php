@@ -340,20 +340,20 @@
 										<a href="{{ asset('upload/image/event/'.$val->current_image) }}" data-lightbox="image"><img class="image_fade" src="{{ asset('upload/image/event/'.$val->current_image) }}" alt="Standard Post with Image"></a>
 									</div>
 									<div class="entry-title">
-										<h3><a href="blog-single.html">{{ $val->title }}</a></h3>
+										<h3><a href="{{ route('home.detail.event',[$val->id,$val->slug]) }}">{{ $val->title }}</a></h3>
 									</div>
 									<ul class="entry-meta clearfix">
 										<li><i class="icon-calendar3"></i>  {{ date_format(new DateTime($start_date),'d-m-Y H:i') }}</li>
 										<li><a href="#"><i class="icon-map-marker2"></i> {{ $val->ward->district->title }}, {{ $val->ward->district->city->title }}</a></li>
 									</ul>
 									<div class="entry-content">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, asperiores quod est tenetur in.</p>
+										<p>{{ $val->description }}</p>
 									</div>
 								</div>
 							</div>
 						@endforeach
 					</div>
-					<p class="bottommargin  m-t-30 m-r-30 float-right" style="font-size: 16px;"><a href="{{ route('home.list.event') }}" class="more-link">Xem thêm <i class="icon-angle-right"></i></a></p>
+					<p class="bottommargin m-r-30 float-right" style="font-size: 16px;"><a href="{{ route('home.list.event') }}" class="more-link">Xem thêm <i class="icon-angle-right"></i></a></p>
 
 					<div class="m-b-50 clear"></div>
 					

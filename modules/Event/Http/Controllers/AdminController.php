@@ -19,10 +19,22 @@ class AdminController extends Controller{
     
     public function getSearchEvent(Request $request){
         $page = 8;
-        $data = Event::where('title','like','%'.$request->key.'%')
-                            ->orWhere('title',$request->key)->paginate($page);
-            return view('Event::event.list',compact('data'))
-                        ->with('i', ($request->input('page', 1) - 1) * $page);
+
+        $data = Event::join('wards','wards.id','=','events.ward_id')
+                            ->join('districts','districts.id','=','wards.district_id')
+                            ->join('cities','cities.id','=','districts.city_id')
+
+                            ->select('events.id','events.title','events.ward_id','events.status','events.user_id','events.current_image','events.start_date','events.end_date')
+                            ->Where('wards.title','like','%'.$request->key.'%')
+                            ->orWhere('districts.title','like','%'.$request->key.'%')
+                            ->orWhere('cities.title','like','%'.$request->key.'%')
+
+                            ->orwhere('events.title','like','%'.$request->key.'%')
+                            ->orWhere('events.title',$request->key)->paginate($page);
+
+
+        return view('Event::event.list',compact('data'))
+                    ->with('i', ($request->input('page', 1) - 1) * $page);
     }
 
    

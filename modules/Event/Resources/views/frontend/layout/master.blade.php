@@ -257,6 +257,11 @@ label{
     <script src="{{ asset('backend/assets/node_modules/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
     <script src="{{ asset('backend/assets/node_modules/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
 
+    <!-- Charts JS
+	============================================= -->
+	<script src="{{ asset('frontend/js/chart.js') }} "></script>
+	<script src="{{ asset('frontend/js/chart-utils.js') }} "></script>
+
 	<script >
 		
 		$('.min-date').bootstrapMaterialDatePicker({ format: 'YYYY-MM-DD HH:mm:ss', minDate: new Date() });

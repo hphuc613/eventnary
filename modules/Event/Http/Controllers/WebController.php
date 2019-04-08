@@ -10,6 +10,7 @@ use HPro\Location\Enities\District;
 use HPro\Location\Enities\Ward;
 use HPro\Category\Enities\Event_type;
 use HPro\Ticket\Enities\Ticket;
+use HPro\Ticket\Enities\Ticket_detail;
 use Validator;
 
 class WebController extends Controller{
@@ -25,7 +26,7 @@ class WebController extends Controller{
     
     
     public function getListEvent(Request $request){
-        $data = Event::where('status',1)->orderBy('id','DESC')->paginate(6);
+        $data = Event::where('status',1)->orderBy('id','DESC')->paginate(5);
         return view('Event::frontend.event.event_list',compact('data'));
     }
 
@@ -39,7 +40,19 @@ class WebController extends Controller{
 
     public function searchEvent(Request $request)
     {
-        $data = Event::where('status',1)->where('title','like','%'.$request->key.'%')->paginate(6);
+        $data = Event::join('wards','wards.id','=','events.ward_id')
+                            ->join('districts','districts.id','=','wards.district_id')
+                            ->join('cities','cities.id','=','districts.city_id')
+
+                            ->select('events.id','events.title','events.ward_id','events.status','events.user_id','events.current_image','events.start_date','events.end_date','events.description')
+                            ->Where('wards.title','like','%'.$request->key.'%')
+                            ->orWhere('districts.title','like','%'.$request->key.'%')
+                            ->orWhere('cities.title','like','%'.$request->key.'%')
+
+                            ->orwhere('events.title','like','%'.$request->key.'%')
+                            ->orWhere('events.title',$request->key)
+                            ->where('status',1)->paginate(5);
+
         return view('Event::frontend.event.event_list',compact('data'));
     }
 
@@ -135,6 +148,62 @@ class WebController extends Controller{
         return redirect()->back();
     }
 
+    public function getChartEvent(Request $request, $id)
+    {
+        $data = Event::find($id);
+
+        $ticket_free = Ticket::where('event_id',$id)->where('ticket_type_id',1)->first();
+        $ticket_fee = Ticket::where('event_id',$id)->where('ticket_type_id',2)->first();
+
+        if($ticket_free && $ticket_fee){
+            $ticket_free_sell = Ticket_detail::where('ticket_id',$ticket_free->id)->get();
+            $total_ticket_free = $ticket_free->quality;
+            $ticket_free_sell=$ticket_free_sell->sum('quality');
+
+
+            $ticket_fee_sell = Ticket_detail::where('ticket_id',$ticket_fee->id)->get();
+            $total_ticket_fee = $ticket_fee->quality;
+            $ticket_fee_sell=$ticket_fee_sell->sum('quality');
+            
+            return view('Event::frontend.event.event_chart',compact('data','total_ticket_free','total_ticket_fee','ticket_free','ticket_free_sell','ticket_fee','ticket_fee_sell'));
+        }
+
+
+        if($ticket_free && $ticket_fee == null){
+            $ticket_free_sell = Ticket_detail::where('ticket_id',$ticket_free->id)->get();
+            $total_ticket_free = $ticket_free->quality;
+            $ticket_free_sell=$ticket_free_sell->sum('quality');
+
+            $total_ticket_fee = 50;
+            $ticket_fee_sell= 50;
+         
+            return view('Event::frontend.event.event_chart',compact('data','total_ticket_free','total_ticket_fee','ticket_free','ticket_free_sell','ticket_fee','ticket_fee_sell'));
+        }
+
+
+        if($ticket_free==null && $ticket_fee){
+            $ticket_fee_sell = Ticket_detail::where('ticket_id',$ticket_fee->id)->get();
+            $total_ticket_fee = $ticket_fee->quality;
+            $ticket_fee_sell=$ticket_fee_sell->sum('quality');
+
+            $total_ticket_free = 50;
+            $ticket_free_sell= 50;
+         
+            return view('Event::frontend.event.event_chart',compact('data','total_ticket_free','total_ticket_fee','ticket_free','ticket_free_sell','ticket_fee','ticket_fee_sell'));
+        }
+
+        if($ticket_free==null && $ticket_fee==null){
+            $total_ticket_free = 50;
+            $ticket_free_sell= 50;
+            $total_ticket_fee = 50;
+            $ticket_fee_sell= 50;
+         
+            return view('Event::frontend.event.event_chart',compact('data','total_ticket_free','total_ticket_fee','ticket_free','ticket_free_sell','ticket_fee','ticket_fee_sell'));
+        }
+
+
+
+    }
     
     
 

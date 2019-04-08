@@ -26,6 +26,11 @@
         font-size: 15px;
     }
 
+    .status-event-wait-active{
+        color: #f90;
+        font-size: 15px;
+    }
+
     .full-width{ width: 100%; }
 
     .del-icon{
@@ -43,6 +48,10 @@
 
     .card-active{
         background: #c2f5f066;
+    }
+
+    .card-wait-active{
+        background: #e9ec7166;;
     }
 </style>
 
@@ -66,14 +75,14 @@
         <!-- .col -->
            @foreach($data as $key => $val)
             <div class="col-md-6 col-lg-6 col-xlg-4">
-                <div @if($val->status==1) class="card card-active card-body list-event card-active" @else class="card card-body list-event card-non-active"  @endif >
+                <div @if($val->status==1) class="card card-body list-event card-active" @elseif($val->status==0) class="card card-body list-event card-non-active" @else class = "card card-body list-event card-wait-active"  @endif >
                     <div class="row align-items-center">
                         <div class="col-md-4 col-lg-3 text-center">
                             <a href="{{ route('get.edit.event',$val->id) }}"><img src="{{ asset('upload/image/event/'.$val->current_image) }}" alt="Đây là cái hình" class="img-fluid"></a>
                         </div>
                         <div class="col-md-8">
                             <a href="{{ route('get.edit.event',$val->id) }}">
-                                <h4 class="box-title m-b-0">{{ $val->title }} <span @if($val->status==1) class="status-event-active" @else class="status-event-non-active" @endif>({{eventStatusTitle($val->status)}})</span></h4>
+                                <h4 class="box-title m-b-0">{{ $val->title }} <span @if($val->status==1) class="status-event-active" @elseif($val->status==0) class="status-event-non-active" @else class="status-event-wait-active" @endif>({{eventStatusTitle($val->status)}})</span></h4>
                             </a>
                             <address>
                                 <p><span>Người đăng:</span>@if($val->user_id) <a href="{{ route('get.edit.user',$val->user_id) }}">{{ $val->user->name }}</a> @endif</p>

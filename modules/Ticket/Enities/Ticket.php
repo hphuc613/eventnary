@@ -28,12 +28,17 @@ class Ticket extends Model
     public  $rules =
 	[
 		'title'        => 'required',
-		'description'        => '',
+        'price'        => 'required',
+        'quality'        => 'required',
+		'start_selling'        => 'required',
 	];
 
 	public $messages = 
 	[
-		'title.required' => 'Tên không được để trống!',
+        'title.required' => 'Tên không được để trống!',
+        'price.required' => 'Giá không được để trống!',
+        'quality.required' => 'Số lượng vé không được để trống!',
+		'start_selling.required' => 'Ngày bắt đầu bán không được để trống!',
 	];
 
 

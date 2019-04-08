@@ -3,6 +3,21 @@
 	Chỉnh sửa sự kiện
 @endsection
 
+@push('css')
+
+<style>
+	.btn-orange{
+		background: orange;
+		color: white;
+	}	
+
+	.btn-warning{
+		color: white;
+	}
+</style>
+
+@endpush
+
 @section('content')
 	
 <div class="clear"></div>
@@ -21,10 +36,11 @@
 							<div class="col-md-12 m-b-10">
 								<span><strong>Chú ý:</strong> (<span class="red">*</span>) là các trường bắt buộc phải nhập</span>
 								<div class="float-right">
+									<a href="{{ route('get.home.chart.event',[$data->id,$data->slug]) }}" class="btn btn-orange">Quản lý Thống kê</a>
 									<a href="{{ route('get.create.ticket_home',$data->slug) }}" class="btn btn-success">Quản lý vé</a>
 									<a href="#" class="btn btn-info">Quản khách mời</a>
 									<a href="{{ route('get.home.list.gallery',[$data->id,$data->slug]) }}" class="btn btn-warning">Quản lý thư viện hình ảnh</a>
-									<a href="{{ route('home.detail.event',$data->id) }}" class="btn btn-primary">Đi đến trang chi tiết</a>
+									<a href="{{ route('home.detail.event',[$data->id,$data->slug]) }}" class="btn btn-primary">Đi đến trang chi tiết</a>
 
 									
 								</div>
