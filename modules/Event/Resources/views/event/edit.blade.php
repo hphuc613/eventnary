@@ -92,8 +92,8 @@
                                             <label class="custom-control-label" for="customRadio2">Đang chờ xét duyệt</label>
                                         </div>
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio2" name="status" class="custom-control-input" @if($data->status==0) checked @endif value="0">
-                                            <label class="custom-control-label" for="customRadio2">Ngừng hoạt động</label>
+                                            <input type="radio" id="customRadio3" name="status" class="custom-control-input" @if($data->status==0) checked @endif value="0">
+                                            <label class="custom-control-label" for="customRadio3">Ngừng hoạt động</label>
                                         </div>
                                     </div>
                                 </div>

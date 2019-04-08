@@ -152,7 +152,7 @@
 			                                    <div class="form-group">
 			                                        <label class="control-label">Ảnh chính</label>
 													<input id="input-6" name="current_image" type="file" class="file-loading">
-													<input name="status" type="hidden" value="0" class="file-loading">
+													<input name="status" type="hidden" value="2" class="file-loading">
 													<input name="user_id" type="hidden" value="{{ Auth::guard('collaborator')->user()->id }}" class="file-loading">
 			                                    </div>
 			                                </div>

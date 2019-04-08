@@ -33,7 +33,8 @@
 										</div>
 										<div class="col-md-8">
 											<div class="entry-title">
-												<h3><a href="{{ route('get.home.edit.event',[$val->id,$val->slug]) }}">{{ $val->title }} @if($val->status==1) (Đang hoạt động) @elseif($val->status==0) (Chưa được duyệt) @endif</a></h3>
+												<h3><a href="{{ route('get.home.edit.event',[$val->id,$val->slug]) }}">{{ $val->title }} @if($val->status==1) (Đang hoạt động) @elseif($val->status==0) (Chưa được duyệt)
+												@elseif($val->status==2) (Đang chờ xét duyệt) @endif</a></h3>
 											</div>
 											<ul class="entry-meta clearfix">
 												<li><i class="icon-calendar3"></i> {{ date_format(new DateTime($start_date),'d-m-Y H:i') }} - {{ date_format(new DateTime($end_date),'d-m-Y H:i') }}</li>

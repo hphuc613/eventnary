@@ -33,8 +33,8 @@ class WebController extends Controller{
     public function getInfoEvent(Request $request, $id){
         $data = Event::find($id);
         $gallery = Image_event::where('event_id',$id)->get();
-        $ticket_free = Ticket::where('event_id',$id)->where('ticket_type_id',1)->first();
-        $ticket_fee = Ticket::where('event_id',$id)->where('ticket_type_id',2)->first();
+        $ticket_free = Ticket::where('event_id',$id)->where('ticket_type_id',1)->where('status',1)->first();
+        $ticket_fee = Ticket::where('event_id',$id)->where('ticket_type_id',2)->where('status',1)->first();
         return view('Event::frontend.event.event_detail',compact('data','gallery','ticket_free','ticket_fee'));
     }
 

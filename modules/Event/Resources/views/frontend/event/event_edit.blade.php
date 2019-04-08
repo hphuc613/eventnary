@@ -4,11 +4,11 @@
 @endsection
 
 @push('css')
-
-<style>
-	
-</style>
-
+	<style>
+		span{
+			font-size: 20px;
+		}
+	</style>
 @endpush
 
 @section('content')
@@ -46,6 +46,7 @@
 									<a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Thông tin sự kiện (<span class="red">*</span>)</a>
 									<a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Địa chỉ(<span class="red">*</span>)</a>
 									<a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Nội dung sự kiện</a>
+									<a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-status" role="tab" aria-controls="settings">Trạng thái</a>
 									<a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Thêm hình ảnh</a>
 								</div>
 							</div>
@@ -170,6 +171,26 @@
 				                                    <textarea name="content" class="form-control" id="editor1" rows="20">{{ $data->content }}</textarea>
 				                                </div>
 				                            </div>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="list-status" role="tabpanel" aria-labelledby="list-messages-list">
+										<div class="row m-t-30">
+											<div class="col-md-4"></div>
+											<div class="col-md-4">
+												<div class="col-md-12 radio">
+													<input type="radio" disabled name="status" @if($data->status==1) checked @endif value="1">
+													<span> Đang hoạt động </span>
+												</div>
+												<div class="col-md-12 radio">
+													<input type="radio" name="status" @if($data->status==2) checked @endif value="2">
+													<span> Chờ xét duyệt </span>
+												</div>
+												<div class="col-md-12 radio">
+													<input type="radio" name="status" @if($data->status==0) checked @endif value="0"> 
+													<span> Ngừng hoạt động </span>
+												</div>
+											</div>
+											<div class="col-md-4"></div>
 										</div>
 									</div>
 									<div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">

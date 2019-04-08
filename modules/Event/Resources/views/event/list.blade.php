@@ -64,10 +64,24 @@
                 <div class="col-md-6">
                     <h3 class="text-white bold">Danh sách sự kiện</h3>
                 </div>
-                <div class="col-md-6">
-                    <form class="app-search d-none d-md-block d-lg-block float-right" method="get" action="{{ route('get.search.event') }}">
-                        <input type="text" name="key" class="form-control" placeholder="Search & enter">
-                    </form>
+                <div class="col-md-6 row">
+                    <div class="col-md-6">
+                        <ul class="navbar-nav my-lg-0">
+                            <li class="nav-item dropdown u-pro">
+                                <a class="nav-link waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="hidden-md-down white" style="font-size: 20px;">Chọn trạng thái&nbsp;<i class="fa fa-angle-down"></i></span></a>
+
+                                <div class="dropdown-menu dropdown-menu-right animated flipInY m-t-50">
+                                    <a href="#" class="dropdown-item"><i class="ti-user"></i> Sự kiện đang hoạt động</a>
+                                    <a href="#" class="dropdown-item"><i class="fa fa-power-off"></i> Đăng xuất</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <form class="app-search d-none d-md-block d-lg-block float-right" method="get" action="{{ route('get.search.event') }}">
+                            <input type="text" name="key" class="form-control" placeholder="Search & enter">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

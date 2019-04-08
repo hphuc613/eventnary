@@ -58,12 +58,12 @@
 										<li><i class="icon-calendar3"></i>{{ date_format(new DateTime($start_date),'d-m-Y') }} - {{ date_format(new DateTime($end_date),'d-m-Y') }}</li>
 										<li><i class="icon-time"></i> {{ date_format(new DateTime($start_date),'H:i') }} - {{ date_format(new DateTime($end_date),'H:i') }}</li>
 										<li><i class="icon-map-marker2"></i> {{ $data->address }}, {{ $data->ward->title }}, {{ $data->ward->district->title }}, {{ $data->ward->district->city->title }}</li>
-										<li><i class="icon-dollar"></i> <strong>@if($data->price) {{ $data->price }} @else 0 @endif VNĐ</strong></li>
 										@if($ticket_free)
 										<li><i class="icon-ticket"></i> <strong>{{ $ticket_free->quality }} Vé miễn phí</strong></li>
 										@endif
 										@if($ticket_fee)
 										<li><i class="icon-ticket"></i> <strong>{{ $ticket_fee->quality }} Vé thu phí</strong></li>
+										<li><i class="icon-dollar"></i> <strong>{{ number_format($ticket_fee->price) }} VNĐ</strong></li>
 										@endif
 									</ul>
 								</div>
