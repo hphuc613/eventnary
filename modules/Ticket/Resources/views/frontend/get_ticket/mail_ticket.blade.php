@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Eventnary Email</title>
 </head>
-<body bgcolor="black">
+<body>
 	
 	<div class="content">
 		<h3>{{ $ticket }}</h3>
