@@ -28,14 +28,14 @@
                  {{ csrf_field() }}
                     <div class="form-body">
                         <div class="row">
-                            <div class="col-md-8">
-                                <h3>Thông tin sự kiện: <span class="event-name">{{ $data->getTitle() }}</span></h3>
+                            <div class="col-md-5">
+                                <h3>Thông tin sự kiện: <br><span class="event-name">{{ $data->getTitle() }}</span></h3>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-7">
                                 <a href="{{ route('get.list_gallery.event',$data->id) }}" class="btn btn-warning float-right">Thư viện hình ảnh</a>
-                            </div>
-                            <div class="col-md-2">
-                                <a href="{{ route('get.create.ticket',$data->id) }}" class="btn btn-primary ">Quản lý vé</a>
+                                <a href="{{ route('get.create.ticket',$data->id) }}" class="btn btn-primary float-right m-r-5">Quản lý vé</a>
+                                <a href="{{ route('get.chart.event',$data->id) }}" class="btn btn-success float-right m-r-5">Thống kê doanh thu</a>
+                                <a href="{{ route('get.create.ticket',$data->id) }}" class="btn btn-info float-right m-r-5">Quản lý khách mời</a>
                             </div>
                         </div>
                         <hr>

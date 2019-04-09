@@ -10,6 +10,7 @@ use HPro\Location\Enities\District;
 use HPro\Location\Enities\Ward;
 use HPro\Category\Enities\Event_type;
 use HPro\Ticket\Enities\Ticket;
+use HPro\Ticket\Enities\Ticket_detail;
 use Validator;
 
 class EventController extends Controller{
@@ -136,5 +137,60 @@ class EventController extends Controller{
         return redirect()->back();
     }
 
-   
+    public function getChart(Request $request, $id)
+    {
+        $data = Event::find($id);
+
+        $ticket_free = Ticket::where('event_id',$id)->where('ticket_type_id',1)->first();
+        $ticket_fee = Ticket::where('event_id',$id)->where('ticket_type_id',2)->first();
+
+        if($ticket_free && $ticket_fee){
+            $ticket_free_sell = Ticket_detail::where('ticket_id',$ticket_free->id)->get();
+            $total_ticket_free = $ticket_free->quality;
+            $ticket_free_sell=$ticket_free_sell->sum('quality');
+
+
+            $ticket_fee_sell = Ticket_detail::where('ticket_id',$ticket_fee->id)->get();
+            $total_ticket_fee = $ticket_fee->quality;
+            $ticket_fee_sell=$ticket_fee_sell->sum('quality');
+            
+            return view('Event::event.chart',compact('data','total_ticket_free','total_ticket_fee','ticket_free','ticket_free_sell','ticket_fee','ticket_fee_sell'));
+        }
+
+
+        if($ticket_free && $ticket_fee == null){
+            $ticket_free_sell = Ticket_detail::where('ticket_id',$ticket_free->id)->get();
+            $total_ticket_free = $ticket_free->quality;
+            $ticket_free_sell=$ticket_free_sell->sum('quality');
+
+            $total_ticket_fee = 50;
+            $ticket_fee_sell= 50;
+         
+            return view('Event::event.chart',compact('data','total_ticket_free','total_ticket_fee','ticket_free','ticket_free_sell','ticket_fee','ticket_fee_sell'));
+        }
+
+
+        if($ticket_free==null && $ticket_fee){
+            $ticket_fee_sell = Ticket_detail::where('ticket_id',$ticket_fee->id)->get();
+            $total_ticket_fee = $ticket_fee->quality;
+            $ticket_fee_sell=$ticket_fee_sell->sum('quality');
+
+            $total_ticket_free = 50;
+            $ticket_free_sell= 50;
+         
+            return view('Event::event.chart',compact('data','total_ticket_free','total_ticket_fee','ticket_free','ticket_free_sell','ticket_fee','ticket_fee_sell'));
+        }
+
+        if($ticket_free==null && $ticket_fee==null){
+            $total_ticket_free = 50;
+            $ticket_free_sell= 50;
+            $total_ticket_fee = 50;
+            $ticket_fee_sell= 50;
+         
+            return view('Event::event.chart',compact('data','total_ticket_free','total_ticket_fee','ticket_free','ticket_free_sell','ticket_fee','ticket_fee_sell'));
+        }
+
+
+
+    }
 }

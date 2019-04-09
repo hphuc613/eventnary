@@ -32,8 +32,8 @@
 									<a href="{{ route('get.home.chart.event',[$data->id,$data->slug]) }}" class="btn btn-orange">Quản lý Thống kê</a>
 									<a href="{{ route('get.create.ticket_home',$data->slug) }}" class="btn btn-success">Quản lý vé</a>
 									<a href="#" class="btn btn-info">Quản khách mời</a>
-									<a href="{{ route('get.home.list.gallery',[$data->id,$data->slug]) }}" class="btn btn-warning">Quản lý thư viện hình ảnh</a>
-									<a href="{{ route('home.detail.event',[$data->id,$data->slug]) }}" class="btn btn-primary">Đi đến trang chi tiết</a>
+									<a href="{{ route('get.home.list.gallery',[$data->id,$data->slug]) }}" class="btn btn-warning">Thư viện hình ảnh</a>
+									<a href="{{ route('home.detail.event',[$data->id,$data->slug]) }}" alt="Đi đến trang chi tiết" class="btn btn-primary">Trang chi tiết</a>
 
 									
 								</div>

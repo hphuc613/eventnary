@@ -9,7 +9,8 @@ use HPro\Category\Enities\Event_type;
 use HPro\Ticket\Enities\Ticket;
 use HPro\Ticket\Enities\Ticket_detail;
 use HPro\Customer\Enities\Customer;
-use HPro\user\Enities\user;
+use HPro\User\Enities\User;
+use HPro\Guest\Enities\Guest;
 use Validator;
 
 use Mail;
@@ -100,7 +101,14 @@ class WebController extends Controller{
         $ticket_detail->buy_date = date('Y-m-d');
         $ticket_detail->payment_method = $request->payment;
 
+        $guest = new Guest();
+        $guest->name = $request->name;
+        $guest->phone = $request->phone;
+        $guest->email = $request->email;
+        $guest->event_id = $ticket->event->id;
+
         $ticket_detail->save();
+        $guest->save();
         $ticket->update();
 
         $array = array(
@@ -112,6 +120,7 @@ class WebController extends Controller{
             'type' => $ticket->type->title,
             'event'=> $ticket->event->title,
             'event_id'=> $ticket->event->id,
+            'address' => $ticket->event->address.', '.$ticket->event->ward->title.', '.$ticket->event->ward->district->title.', '.$ticket->event->ward->district->city->title,
         );
         Mail::to($request->email)
             ->cc($request->email)

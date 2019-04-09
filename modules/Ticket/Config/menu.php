@@ -3,7 +3,7 @@
 return [
         'name' => '',
         'route' => '',
-        'sort' => '',
+        'sort' => 100,
         'active'=> '',
         'icon' => '',
         'middleware' => [],

@@ -221,6 +221,11 @@
     <!-- ============================================================== -->
     <!-- Flot Charts JavaScript -->
     <script src="{{ asset('backend/dist/js/pages/jasny-bootstrap.js') }} "></script>
+    <!-- Charts JS
+    ============================================= -->
+    <script src="{{ asset('frontend/js/chart.js') }} "></script>
+    <script src="{{ asset('frontend/js/chart-utils.js') }} "></script>
+    
 
     <script src="{{ asset('backend/assets/node_modules/datatables/jquery.dataTables.min.js') }}"></script>  
     <!-- start - This is for export functionality only -->

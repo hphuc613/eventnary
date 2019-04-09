@@ -1,27 +1,27 @@
 <?php 
 
 return [
-        'name' => 'Khách mời',
+        'name' => '',
         'route' => '',
-        'sort' => 3,
-        'active'=> 'customer',
-        'icon' => 'icon-user',
+        'sort' => 100,
+        'active'=> '',
+        'icon' => '',
         'middleware' => [],
         'group' => [
-                'list-customer' => [
-                        'name'  => trans('Danh sách người dùng'),
-                        'icon'  => null,
-                        'route' => route('get.list.customer')   ,
-                        'active'=> 'list-customer ',
-                        'middleware' => [],
-                ],
-                'create-customer' => [
-                        'name'  => trans('Thêm mới người dùng'),
-                        'icon'  => null,
-                        'route' => route('get.create.customer'),
-                        'active'=> 'create-customer',
-                        'middleware' => [],
-                ],
+                // 'list-guest' => [
+                //         'name'  => trans('Danh sách người dùng'),
+                //         'icon'  => null,
+                //         'route' => route('get.list.guest')   ,
+                //         'active'=> 'list-guest ',
+                //         'middleware' => [],
+                // ],
+                // 'create-guest' => [
+                //         'name'  => trans('Thêm mới người dùng'),
+                //         'icon'  => null,
+                //         'route' => route('get.create.guest'),
+                //         'active'=> 'create-guest',
+                //         'middleware' => [],
+                // ],
 
         // \TTSoft\Categories\Entities\Category::DOC_STATUS => [
         //     'name'  => trans('Tình trạng chứng từ'),

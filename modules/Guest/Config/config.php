@@ -1,5 +1,5 @@
 <?php 
 return [
 	'status' => true,
-	'modules' => 'Customer'
+	'modules' => 'Guest'
 ];
