@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use HPro\Role\Enities\Roles;
 use HPro\Guest\Enities\Guest;
+use HPro\Event\Enities\Event;
 use Validator;
 
 class GuestController extends Controller{
@@ -20,7 +21,12 @@ class GuestController extends Controller{
     }
     
     
-    
+    public function getList($id)
+    {
+        $event = Event::find($id);
+        $data = Guest::where('event_id',$id)->orderBy('created_at','DESC')->get();
+        return view('Guest::guest.create',compact('data','event'));
+    }
 
    
 }

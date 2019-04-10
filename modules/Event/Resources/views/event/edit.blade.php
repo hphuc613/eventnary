@@ -35,7 +35,7 @@
                                 <a href="{{ route('get.list_gallery.event',$data->id) }}" class="btn btn-warning float-right">Thư viện hình ảnh</a>
                                 <a href="{{ route('get.create.ticket',$data->id) }}" class="btn btn-primary float-right m-r-5">Quản lý vé</a>
                                 <a href="{{ route('get.chart.event',$data->id) }}" class="btn btn-success float-right m-r-5">Thống kê doanh thu</a>
-                                <a href="{{ route('get.create.ticket',$data->id) }}" class="btn btn-info float-right m-r-5">Quản lý khách mời</a>
+                                <a href="{{ route('get.list.guest',$data->id) }}" class="btn btn-info float-right m-r-5">Quản lý khách mời</a>
                             </div>
                         </div>
                         <hr>
