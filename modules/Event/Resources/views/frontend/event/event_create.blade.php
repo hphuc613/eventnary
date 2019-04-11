@@ -6,6 +6,21 @@
 @section('content')
 	
 <div class="clear"></div>
+
+<!-- Page Title
+============================================= -->
+<section id="page-title">
+
+	<div class="container clearfix">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#">Home</a></li>
+			<li class="breadcrumb-item"><a href="{{ route('get.list.event_profile',Auth::guard('collaborator')->user()->id) }}">Sự kiện</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Tạo sự kiện</li>
+		</ol>
+	</div>
+
+</section><!-- #page-title end -->
+
 <section id="content">
 	<div class="content-wrap nopadding">
 		<div class="container clearfix">

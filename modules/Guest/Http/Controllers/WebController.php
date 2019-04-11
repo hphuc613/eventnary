@@ -9,7 +9,7 @@ use HPro\Event\Enities\Event;
 use HPro\Ticket\Enities\Ticket_detail;
 use Validator;
 
-class GuestController extends Controller{
+class WebController extends Controller{
     /**
      * Create a new authentication controller instance.
      *
@@ -18,19 +18,19 @@ class GuestController extends Controller{
     public function __construct(Guest $model, Request $request)
     {
         $this->model    = $model;
-        $this->middleware('auth');
     }
     
     
-    public function getCreate($id)
+    public function getCreateGuest($id)
     {
+        Authecation();
         $event = Event::find($id);
         $data = Guest::where('event_id',$id)->orderBy('created_at','DESC')->get();
         $representers = Guest::where('event_id',$id)->where('guest_group_id',1)->get();
-        return view('Guest::guest.create',compact('data','event','representers'));
+        return view('Guest::frontend.create',compact('data','event','representers'));
     }
 
-    public function postCreate(Request $request, $id)
+    public function postCreateGuest(Request $request, $id)
     {
         $this->validate($request,$this->model->rules,$this->model->messages);
 
@@ -52,16 +52,17 @@ class GuestController extends Controller{
         }
     }
 
-    public function getEdit($id, $event_id)
+    public function getEditGuest($id, $event_id)
     {
+        Authecation();
         $event = Event::find($event_id);
         $data = Guest::where('event_id',$event->id)->orderBy('created_at','DESC')->get();
         $representers = Guest::where('event_id',$event->id)->where('guest_group_id',1)->get();
         $guest = Guest::find($id);
-        return view('Guest::guest.edit',compact('data','event','representers','guest'));
+        return view('Guest::frontend.edit',compact('data','event','representers','guest'));
     }
 
-    public function postEdit(Request $request, $id, $event_id)
+    public function postEditGuest(Request $request, $id, $event_id)
     {
         $this->validate($request,$this->model->rules,$this->model->messages);
         $data = Guest::find($id);
@@ -70,8 +71,9 @@ class GuestController extends Controller{
         return redirect()->back();
     }
 
-    public function getDelete(Request $request, $id)
+    public function getDeleteGuest(Request $request, $id)
     {
+        Authecation();
         $data = Guest::find($id);
         if($data->id == $data->represent_id){
             

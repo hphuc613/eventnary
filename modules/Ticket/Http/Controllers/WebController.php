@@ -107,8 +107,16 @@ class WebController extends Controller{
         $guest->email = $request->email;
         $guest->event_id = $ticket->event->id;
 
+
+
         $ticket_detail->save();
         $guest->save();
+
+        $represent = Guest::orderBy('created_at','DESC')->first();
+        $represent->represent_id = $represent->id;
+        $represent->guest_group_id = 1;
+        $represent->update();
+        
         $ticket->update();
 
         $array = array(

@@ -10,3 +10,4 @@ function eventStatusTitle($id)
 		echo 'Đang chờ xét duyệt';
 	}
 }
+

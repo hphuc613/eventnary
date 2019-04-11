@@ -20,10 +20,10 @@
 <section id="page-title">
 
 	<div class="container clearfix">
-		<h1>Sự kiện: {{ $data->title }}</h1>
+		<h1>Sự kiện: <a href="{{ route('get.home.edit.event',[$data->id,$data->slug]) }}">{{ $data->title }}</a></h1>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="#">Home</a></li>
-			<li class="breadcrumb-item"><a href="#">Sự kiện</a></li>
+			<li class="breadcrumb-item"><a href="{{ route('get.list.event_profile',Auth::guard('collaborator')->user()->id) }}">Sự kiện</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Biểu đồ</li>
 		</ol>
 	</div>
@@ -142,6 +142,8 @@
 	</div>
 
 </section><!-- #content end -->
+
+
 
 @endsection
 

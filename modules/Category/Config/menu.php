@@ -22,6 +22,13 @@ return [
                         'active'=> 'list-type-ticket',
                         'middleware' => [],
                 ],
+                'list-guest-group' => [
+                        'name'  => trans('Nhóm khách mời'),
+                        'icon'  => null,
+                        'route' => route('get.create.guest_group'),
+                        'active'=> 'list-guest-group',
+                        'middleware' => [],
+                ],
 
                 
 

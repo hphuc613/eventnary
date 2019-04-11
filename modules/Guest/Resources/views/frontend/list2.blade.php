@@ -10,7 +10,6 @@
                         <tr>
                             <th>STT</th>
                             <th>Tên khách mời</th>
-                            <th>Email</th>
                             <th>Số điện thoại</th>
                             <th>Người đại diện</th>
                             <th>Thao tác</th>
@@ -20,10 +19,9 @@
                         <tr>
                             <th>STT</th>
                             <th>Tên khách mời</th>
-                            <th>Email</th>
                             <th>Số điện thoại</th>
                             <th>Người đại diện</th>
-                            <th width="110px">Thao tác</th>
+                            <th width="150px">Thao tác</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -31,13 +29,12 @@
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td>{{ $val->name }}</td>
-                            <td>{{ $val->email }}</td>
                             <td>{{ $val->phone }}</td>
                             <td>{{ Representer($val->represent_id) }}</td>
                             <td>
                                 <center>
-                                    <a href="{{ route('get.edit.guest',[$val->id,$val->event_id]) }}" data-toggle="tooltip" data-original-title="Sửa"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
-                                    <a href="javascript:void(0)" alt="{{ route('get.delete.guest',$val->id) }}" id="del-warning" href="#" data-toggle="tooltip" data-original-title="Xóa"> <i class="fa fa-close text-danger"></i> </a>
+                                    <a href="{{ route('get.home.edit.guest',[$val->id,$event->id,$event->slug]) }}" class="btn btn-warning white">Sửa</a>
+                                    <a href="{{ route('get.home.delete.guest',[$val->id,$event->slug]) }}" class="btn btn-danger">Xóa</a>
                                 </center>
                             </td>
                             

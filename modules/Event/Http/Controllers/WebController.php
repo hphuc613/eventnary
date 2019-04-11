@@ -12,6 +12,7 @@ use HPro\Category\Enities\Event_type;
 use HPro\Ticket\Enities\Ticket;
 use HPro\Ticket\Enities\Ticket_detail;
 use Validator;
+use Illuminate\Support\Facades\Auth;
 
 class WebController extends Controller{
     /**
@@ -22,6 +23,8 @@ class WebController extends Controller{
     public function __construct(Event $model, Request $request)
     {
         $this->model    = $model;
+        
+        // $this->middleware('auth:collaborator'));
     }
     
     
@@ -58,6 +61,7 @@ class WebController extends Controller{
 
     public function getCreateEvent(Request $request)
     {   
+        Authecation();
         $cities = City::get();
         $type = Event_type::get();
         return view('Event::frontend.event.event_create',compact('cities','type'));
@@ -89,6 +93,7 @@ class WebController extends Controller{
 
     public function getEditEvent(Request $request, $slug, $id)
     {   
+        Authecation();
         $data = Event::find($id);
         $type = Event_type::get();
         $cities = City::get();
@@ -118,6 +123,7 @@ class WebController extends Controller{
 
     public function getListGalleryEvent($id)
     {
+        Authecation();
         $event = Event::find($id);
         $data = Image_event::where('event_id',$id)->get();
         return view('Event::image.event_gallery',compact('data','event'));
@@ -142,6 +148,7 @@ class WebController extends Controller{
 
     public function deleteGalleryEvent(Request $request,$id)
     {
+        Authecation();
         $data = Image_event::find($id);
         $data->delete();
         $request->session()->flash('alert', 'Xóa thành công!');
@@ -150,6 +157,7 @@ class WebController extends Controller{
 
     public function getChartEvent(Request $request, $id)
     {
+        Authecation();
         $data = Event::find($id);
 
         $ticket_free = Ticket::where('event_id',$id)->where('ticket_type_id',1)->first();

@@ -1,15 +1,27 @@
-@extends('Dashboard::layouts.master')
+@extends('Event::frontend.layout.master')
+@section('title')
+    Quản lý khách mời
+@endsection
 
-@include('Guest::guest.breadcrumb')
 
 @section('content')
-                <!-- ============================================================== -->
-                <!-- End Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <!-- Row -->
+    <div class="clear"></div>
+
+    <!-- Page Title
+    ============================================= -->
+    <section id="page-title">
+
+        <div class="container clearfix">
+            <h1>Sự kiện: <a href="{{ route('get.home.edit.event',[$event->id,$event->slug]) }}">{{ $event->title }}</a></h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('get.list.event_profile',Auth::guard('collaborator')->user()->id) }}">Sự kiện</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa khách mời</li>
+            </ol>
+        </div>
+
+    </section><!-- #page-title end -->
+    <div class="container m-t-30">
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="card">
@@ -17,7 +29,7 @@
                                 <h4 class="m-b-0 text-white">Thêm khách mời</h4>
                             </div>
                             <div class="card-body">
-                                <form class="form-material" method="post" action="{{ route('post.create.guest',$event->id) }}">
+                                <form class="form-material" method="post" action="">
                                  {{ csrf_field() }}
                                     <div class="form-body">
                                         <div class="p-t-20">
@@ -27,29 +39,28 @@
                                                     <select name="represent_id" class="form-control select2">
                                                         <option value="">-- Chọn người đại diện--</option>
                                                         @foreach($representers as $key => $val)
-                                                            <option value="{{ $val->id }}">{{ $val->name }}</option>
+                                                            <option @if($guest->represent_id == $val->id) selected @endif value="{{ $val->id }}">{{ $val->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Tên khách mời</label>
-                                                    <input type="text" name="name" required class="form-control" placeholder="Nhập tên vai trò" value="{{ old('name') }}">
+                                                    <input type="text" name="name" required class="form-control" placeholder="Nhập tên vai trò" value="{{ $guest->name }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label">Số điện thoại khách mời</label>
-                                                    <input type="text" name="phone" required class="form-control" placeholder="Nhập tên vai trò" value="{{ old('phone') }}">
+                                                    <input type="text" name="phone" required class="form-control" placeholder="Nhập tên vai trò" value="{{ $guest->phone }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label">Email khách mời</label>
-                                                    <input type="email" name="email" required class="form-control" placeholder="Nhập tên vai trò" value="{{ old('email') }}">
+                                                    <input type="email" name="email" required class="form-control" placeholder="Nhập tên vai trò" value="{{ $guest->email }}">
                                                 </div>
                                             </div>
                                             <input type="hidden" name="event_id" class="form-control" value="{{ $event->id }}">
-                                            <input type="hidden" name="guest_group_id" class="form-control" value="2">
 
                                             <!--/span-->
                                         </div>
@@ -65,6 +76,7 @@
                     </div>
                     <!-- Start Page Content -->
                 
-                    @include('Guest::guest.list2')
+                    @include('Guest::frontend.list2')
                 </div>
+    </div>
 @endsection

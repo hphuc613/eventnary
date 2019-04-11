@@ -113,7 +113,7 @@
                     </div>
                     <div class="row" style="margin: 0px 30px">
                         <div class="col-md-4">
-                            <a class="btn btn-info btn-xs full-width" href="#">Thêm Khách Mời</a>
+                            <a class="btn btn-info btn-xs full-width" href="{{ route('get.create.guest',$val->id) }}">Thêm Khách Mời</a>
                         </div>
                         <div class="col-md-4">
                             <a class="btn btn-primary btn-xs full-width" href="{{ route('get.create.ticket',$val->id) }}">Quản lý vé</a>

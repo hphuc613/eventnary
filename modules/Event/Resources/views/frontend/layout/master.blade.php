@@ -9,6 +9,7 @@
 	============================================= -->
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
 	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Roboto:300,400,500,700" rel="stylesheet" type="text/css" />
+	
 	<link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('frontend/style.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('frontend/css/dark.css') }}" type="text/css" />

@@ -12,6 +12,21 @@
 @endpush
 
 @section('content')
+
+<!-- Page Title
+============================================= -->
+<section id="page-title">
+
+	<div class="container clearfix">
+		<h1>Sự kiện: <a href="{{ route('get.home.edit.event',[$data->id,$data->slug]) }}">{{ $data->title }}</a></h1>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="#">Home</a></li>
+			<li class="breadcrumb-item"><a href="{{ route('get.list.event_profile',Auth::guard('collaborator')->user()->id) }}">Sự kiện</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Chỉnh sửa sự kiện</li>
+		</ol>
+	</div>
+
+</section><!-- #page-title end -->
 	
 <div class="clear"></div>
 <section id="content">
@@ -30,8 +45,8 @@
 								<span><strong>Chú ý:</strong> (<span class="red">*</span>) là các trường bắt buộc phải nhập</span>
 								<div class="float-right">
 									<a href="{{ route('get.home.chart.event',[$data->id,$data->slug]) }}" class="btn btn-orange">Quản lý Thống kê</a>
-									<a href="{{ route('get.create.ticket_home',$data->slug) }}" class="btn btn-success">Quản lý vé</a>
-									<a href="#" class="btn btn-info">Quản khách mời</a>
+									<a href="{{ route('get.create.ticket_home',$data->slug) }}" class="btn btn-info">Quản lý vé</a>
+									<a href="{{ route('get.home.create.guest',[$data->id,$data->slug]) }}" class="btn btn-success">Quản khách mời</a>
 									<a href="{{ route('get.home.list.gallery',[$data->id,$data->slug]) }}" class="btn btn-warning">Thư viện hình ảnh</a>
 									<a href="{{ route('home.detail.event',[$data->id,$data->slug]) }}" alt="Đi đến trang chi tiết" class="btn btn-primary">Trang chi tiết</a>
 

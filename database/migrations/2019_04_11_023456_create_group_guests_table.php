@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnToGuestsTable extends Migration
+class CreateGroupGuestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddColumnToGuestsTable extends Migration
      */
     public function up()
     {
-        Schema::table('guests', function (Blueprint $table) {
+        Schema::create('guest_groups', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title');
+            $table->string('description')->nullable();
             $table->timestamp('deleted_at')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddColumnToGuestsTable extends Migration
      */
     public function down()
     {
-        Schema::table('guests', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('guest_groups');
     }
 }

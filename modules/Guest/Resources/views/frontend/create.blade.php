@@ -1,15 +1,27 @@
-@extends('Dashboard::layouts.master')
-
-@include('Guest::guest.breadcrumb')
+@extends('Event::frontend.layout.master')
+@section('title')
+    Quản lý khách mời
+@endsection
 
 @section('content')
-                <!-- ============================================================== -->
-                <!-- End Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <!-- Row -->
+    <div class="clear"></div>
+
+    <!-- Page Title
+    ============================================= -->
+    <section id="page-title">
+
+        <div class="container clearfix">
+            <h1>Sự kiện: <a href="{{ route('get.home.edit.event',[$event->id,$event->slug]) }}">{{ $event->title }}</a></h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('get.list.event_profile',Auth::guard('collaborator')->user()->id) }}">Sự kiện</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Thêm mới khách mời</li>
+            </ol>
+        </div>
+
+    </section><!-- #page-title end -->
+
+    <div class="container m-t-30">
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="card">
@@ -65,6 +77,7 @@
                     </div>
                     <!-- Start Page Content -->
                 
-                    @include('Guest::guest.list2')
+                    @include('Guest::frontend.list2')
                 </div>
+    </div>
 @endsection

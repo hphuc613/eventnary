@@ -40,17 +40,6 @@ class AccountController extends Controller{
         $data->password = bcrypt($request->password);
         $data->save();
 
-        $array = array(
-            'name'=>$request->name, // to $name
-            'email'=>$request->email, // $email
-            'password'=>$request->password //$content
-        );
-        Mail::to($request->email)
-            ->cc($request->email)
-            ->bcc($request->email)
-            ->send(new OrderShipped($array));
-
-
 
         $request->session()->flash('status', 'Tạo tài khoản thành công!');
         return redirect()->back();
@@ -59,6 +48,7 @@ class AccountController extends Controller{
 
     public function getEditProfile(Request $request, $id)
     {
+        Authecation();
         $data = User::find($id);
         $event = Event::where('user_id',$data->id)->orderBy('created_at','DESC')->get();
         return view('Home::profile.profile',compact('data','event'));
@@ -87,6 +77,7 @@ class AccountController extends Controller{
 
     public function getListEventProfile(Request $request, $id)
     {
+        Authecation();
         $data = User::find($id);
         $event = Event::where('user_id',$data->id)->orderBy('created_at','DESC')->paginate(3);
         return view('Home::profile.event_list_profile',compact('data','event'));
