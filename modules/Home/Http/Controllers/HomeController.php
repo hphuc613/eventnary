@@ -27,7 +27,7 @@ class HomeController extends Controller{
     
     
     public function getHome(Request $request){
-        $events = Event::orderBy('created_at','DESC')->get();
+        $events = Event::Where('status',1)->orderBy('created_at','DESC')->get();
         return view('Home::home.home',compact('events'));
     }
 
