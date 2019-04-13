@@ -14,7 +14,9 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-header bg-info">
+
                                 <h4 class="m-b-0 text-white">Thêm khách mời</h4>
+                                <h4 class="m-b-0 text-white">Sự kiện: {{ $event->title }}</h4>
                             </div>
                             <div class="card-body">
                                 <form class="form-material" method="post" action="{{ route('post.create.guest',$event->id) }}">

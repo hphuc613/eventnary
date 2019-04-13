@@ -13,7 +13,8 @@
 		<p>Địa chỉ tại: {{ $address }}</p>
 		<p>{{ $type }}</p>
 		<p>Tổng số vé bạn mua là: {{ $quality }} vé</p>
-		<p>Tổng giá tiền của bạn là: {{ number_format($price) }} VNĐ</p>
+		<p>Phương thức thanh toán của bạn là: <b>{{ $payment }}</b> </p>
+		<p>Tổng giá tiền của bạn là: <b>{{ number_format($price) }} VNĐ</b></p>
 		<p><b>Chú ý:</b> <i>Cho nhân viên soát vé xem email này khi bạn tham gia sự kiện này!</i></p>
 	</div>
 	

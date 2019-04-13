@@ -42,7 +42,7 @@
 							<div class="form-group">
 								<select name="payment" class="form-control" id="">
 									<option value="1">Thanh toán bằng thẻ ngân hàng</option>
-									<option value="2">Thanh toán tại nhà</option>
+									<option value="2">Thanh toán tại quầy bán vé</option>
 								</select>
 							</div>
 							<button class="btn btn-success btn-block btn-lg" type="submit">Mua vé</button>

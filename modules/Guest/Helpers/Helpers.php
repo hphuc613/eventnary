@@ -2,6 +2,6 @@
 
 function Representer($id)
 {
-	$data = DB::table('guests')->find($id);
+	$data = DB::table('ticket_details')->find($id);
 	echo $data->name;
 }

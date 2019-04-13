@@ -10,11 +10,12 @@
 		
 	<div class="container">
         <div class="row">
-	        <div class="col-md-8">
+	        <div class="col-md-6">
 	            <h3>Sự kiện: <span class="event-name">{{ $event->getTitle() }}</span></h3>
 	        </div>
-	        <div class="col-md-4">
+	        <div class="col-md-6">
 	            <a href="{{ route('get.home.edit.event',[$event->id,$event->slug]) }}" class="btn btn-primary float-right">Hoàn thành</a>
+	            <a href="{{ route('get.sell.ticket_home',[$event->id,$event->slug]) }}" class="btn btn-warning m-r-10 float-right">Bán vé</a>
 	        </div>
 	    </div>
 		@include('Dashboard::layouts.notification')
