@@ -8,3 +8,12 @@ function ticketStatusTitle($id)
 		echo 'Đang bán';
 	}
 }
+
+function paymentMethod($id)
+{
+	if($id==1){
+		return "Thanh toán bằng thẻ ngân hàng";
+	}else{
+		return "Thanh toán tại quầy bán vé";
+	}
+}

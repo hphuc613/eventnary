@@ -34,10 +34,9 @@ class GuestController extends Controller{
     {
         $this->validate($request,$this->model->rules,$this->model->messages);
 
-        $representer = Guest::find($request->represent_id);
-        $quality = Ticket_detail::where('email',$representer->email)->first();
+        $quality = Ticket_detail::find($request->represent_id);
         $quality = $quality->quality;
-        $guest = Guest::where('represent_id',$representer->id)->get();
+        $guest = Guest::where('represent_id',$request->represent_id)->get();
 
         if(count($guest)<$quality){
             $data = $request->all();
