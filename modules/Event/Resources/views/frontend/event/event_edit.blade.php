@@ -44,12 +44,16 @@
 							<div class="col-md-12 m-b-10">
 								<span><strong>Chú ý:</strong> (<span class="red">*</span>) là các trường bắt buộc phải nhập</span>
 								<div class="float-right">
+									@if($data->status == 1)
 									<a href="{{ route('get.home.chart.event',[$data->id,$data->slug]) }}" class="btn btn-orange">Quản lý Thống kê</a>
 									<a href="{{ route('get.create.ticket_home',$data->slug) }}" class="btn btn-info">Quản lý vé</a>
 									<a href="{{ route('get.home.create.guest',[$data->id,$data->slug]) }}" class="btn btn-success">Quản khách mời</a>
 									<a href="{{ route('get.home.list.gallery',[$data->id,$data->slug]) }}" class="btn btn-warning">Thư viện hình ảnh</a>
 									<a href="{{ route('home.detail.event',[$data->id,$data->slug]) }}" alt="Đi đến trang chi tiết" class="btn btn-primary">Trang chi tiết</a>
-
+									@else
+									<a href="{{ route('get.create.ticket_home',$data->slug) }}" class="btn btn-info">Quản lý vé</a>
+									<a href="{{ route('get.home.list.gallery',[$data->id,$data->slug]) }}" class="btn btn-warning">Thư viện hình ảnh</a>
+									@endif
 									
 								</div>
 							</div>

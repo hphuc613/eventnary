@@ -15,7 +15,9 @@
 	        </div>
 	        <div class="col-md-6">
 	            <a href="{{ route('get.home.edit.event',[$event->id,$event->slug]) }}" class="btn btn-primary float-right">Hoàn thành</a>
+				@if($event->status == 1)
 	            <a href="{{ route('get.sell.ticket_home',[$event->id,$event->slug]) }}" class="btn btn-warning m-r-10 float-right">Bán vé</a>
+	            @endif
 	        </div>
 	    </div>
 		@include('Dashboard::layouts.notification')

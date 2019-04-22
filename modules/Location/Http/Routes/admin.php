@@ -28,9 +28,6 @@
 
         });
 
-            Route::get('ajax-district/{id}','DistrictController@ajaxOptionDistrict')->name('ajax.option.district');
-            Route::get('ajax-ward/{id}','WardController@ajaxOptionWard');
-
 
 	});
     	

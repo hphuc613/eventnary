@@ -68,6 +68,7 @@ class HomeController extends Controller{
             or Auth::guard('collaborator')->attempt($login3) or Auth::guard('collaborator')->attempt($login4)) {
             return redirect()->route('get.home.index');
         }else{
+            $request->session()->flash('alert', 'Sai tên đăng nhập hoặc mật khẩu!');
             return redirect()->back()->withInput();
         }
     }

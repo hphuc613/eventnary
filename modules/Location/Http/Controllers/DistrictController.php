@@ -66,11 +66,4 @@ class DistrictController extends Controller{
         return redirect()->back();
     }
 
-    public function ajaxOptionDistrict($id){
-        $data = District::where('city_id',$id)->get();
-        echo "<option value='' >--Chọn--</option>";
-        foreach ($data as $key => $val) {
-            echo '<option value="'.$val->id.'" >'.$val->title.'</option>';
-        }
-    }
 }

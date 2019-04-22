@@ -275,7 +275,7 @@ label{
 	<script src="{{ asset('frontend/js/chart.js') }} "></script>
 	<script src="{{ asset('frontend/js/chart-utils.js') }} "></script>
 
-	 <script src="{{ asset('backend/assets/node_modules/datatables/jquery.dataTables.min.js') }}"></script>  
+	<script src="{{ asset('backend/assets/node_modules/datatables/jquery.dataTables.min.js') }}"></script>  
     <!-- start - This is for export functionality only -->
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>

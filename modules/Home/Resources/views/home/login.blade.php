@@ -40,12 +40,12 @@
 								{{ csrf_field() }}
 								<div class="col_full">
 									<label for="login-form-username">Email/Số điện thoại:</label>
-									<input type="text" id="login-form-username" name="account" value="{{ old('account') }}" class="form-control" />
+									<input type="text" id="login-form-username" required="" name="account" value="{{ old('account') }}" class="form-control" />
 								</div>
 
 								<div class="col_full">
 									<label for="login-form-password">Mật khẩu:</label>
-									<input type="password" id="login-form-password" name="password" value="" class="form-control" />
+									<input type="password" id="login-form-password" required name="password" value="" class="form-control" />
 								</div>
 
 								<div class="col_full nobottommargin">

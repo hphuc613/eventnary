@@ -12,6 +12,7 @@
 <section id="page-title">
 
 	<div class="container clearfix">
+		<h1>Thêm mới sự kiện</h1>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="#">Home</a></li>
 			<li class="breadcrumb-item"><a href="{{ route('get.list.event_profile',Auth::guard('collaborator')->user()->id) }}">Sự kiện</a></li>
@@ -30,7 +31,6 @@
 					
 					<div class="tab-content clearfix" id="tab-feeds">
 
-						<h3>Thêm mới sự kiện</h3>
 							@include('Dashboard::layouts.notification')
 							<span><strong>Chú ý:</strong> (<span class="red">*</span>) là các trường bắt buộc phải nhập</span>
 						<div class="row">
@@ -101,7 +101,7 @@
 											<div class="col-md-6">
 				                                <div class="form-group">
 				                                    <label class="control-label">Chọn thành phố (<span class="red">*</span>)</label>
-		                                            <select class="select2 form-control custom-select" id="city" >
+		                                            <select class="form-control" id="city" >
 		                                                <option value="">--Chọn--</option>
 		                                                @foreach($cities as $key => $city)
 		                                                <option value="{{ $city->id }}">{{ $city->title }}</option>
@@ -112,7 +112,7 @@
 											<div class="col-md-6">
 												<div class="form-group">
 				                                    <label class="control-label">Chọn quận huyện (<span class="red">*</span>)</label>
-		                                            <select class="select2 form-control custom-select" id="district" >
+		                                            <select class="form-control" id="district" >
 		                                                <option value="">--Chọn--</option>
 		                                            </select>
 		                                        </div>
@@ -120,7 +120,7 @@
 											<div class="col-md-6">
 												<div class="form-group">
                                 					<label class="control-label">Chọn phường xã (<span class="red">*</span>)</label>
-				                                    <select class="select2 form-control custom-select" id="ward" name="ward_id">
+				                                    <select class="form-control" id="ward" name="ward_id">
 		                                                <option value="">--Chọn--</option>
 		                                            </select>
 		                                        </div>
