@@ -30,6 +30,7 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <h3>Thông tin sự kiện: <br><span class="event-name">{{ $data->getTitle() }}</span></h3>
+                                <h4>Người đăng: <a href="{{ route('get.edit.user',$data->user_id) }}" style="font-size: 20px; color: blue">{{ $data->user->name }}</a></h4>
                             </div>
                             <div class="col-md-7">
                                 <a href="{{ route('get.list_gallery.event',$data->id) }}" class="btn btn-warning float-right">Thư viện hình ảnh</a>

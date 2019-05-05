@@ -9,7 +9,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header bg-info">
-                                <h4 class="m-b-0 text-white">Danh sách vai trò</h4>
+                                <h4 class="m-b-0 text-white">Danh sách loại vé</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">

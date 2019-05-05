@@ -14,7 +14,11 @@
 
             Route::get('chart/{id}','EventController@getChart')->name('get.chart.event');
 
-            Route::get('search-event}','AdminController@getSearchEvent')->name('get.search.event');
+            Route::get('search-event','AdminController@getSearchEvent')->name('get.search.event');
+
+            Route::get('event-wait','AdminController@statusWait')->name('get.wait.event');
+            Route::get('event-active','AdminController@statusActive')->name('get.active.event');
+            Route::get('event-stop','AdminController@statusStop')->name('get.stop.event');
     	});
 	});
     	

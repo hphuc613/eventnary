@@ -37,5 +37,35 @@ class AdminController extends Controller{
                     ->with('i', ($request->input('page', 1) - 1) * $page);
     }
 
+    public function statusWait(Request $request)
+    {
+        $page = 8;
+
+        $data = Event::where('status',2)->paginate($page);
+
+        return view('Event::event.list',compact('data'))
+                    ->with('i', ($request->input('page', 1) - 1) * $page);
+    }
+
+    public function statusActive(Request $request)
+    {
+        $page = 8;
+
+        $data = Event::where('status',1)->paginate($page);
+
+        return view('Event::event.list',compact('data'))
+                    ->with('i', ($request->input('page', 1) - 1) * $page);
+    }
+
+    public function statusStop(Request $request)
+    {
+        $page = 8;
+
+        $data = Event::where('status',0)->paginate($page);
+
+        return view('Event::event.list',compact('data'))
+                    ->with('i', ($request->input('page', 1) - 1) * $page);
+    }
+
    
 }

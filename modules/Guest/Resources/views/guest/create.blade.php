@@ -35,19 +35,19 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label">Tên khách mời</label>
-                                                    <input type="text" name="name" required class="form-control" placeholder="Nhập tên vai trò" value="{{ old('name') }}">
+                                                    <input type="text" name="name" required class="form-control" placeholder="Nhập tên khách mời" value="{{ old('name') }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label">Số điện thoại khách mời</label>
-                                                    <input type="text" name="phone" required class="form-control" placeholder="Nhập tên vai trò" value="{{ old('phone') }}">
+                                                    <input type="text" name="phone" required class="form-control" placeholder="Nhập số điện thoại" value="{{ old('phone') }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="control-label">Email khách mời</label>
-                                                    <input type="email" name="email" required class="form-control" placeholder="Nhập tên vai trò" value="{{ old('email') }}">
+                                                    <input type="email" name="email" required class="form-control" placeholder="Nhập email" value="{{ old('email') }}">
                                                 </div>
                                             </div>
                                             <input type="hidden" name="event_id" class="form-control" value="{{ $event->id }}">

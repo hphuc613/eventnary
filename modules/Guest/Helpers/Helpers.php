@@ -2,6 +2,10 @@
 
 function Representer($id)
 {
-	$data = DB::table('ticket_details')->find($id);
-	echo $data->name;
+	if($id){
+		$data = DB::table('ticket_details')->find($id);
+		echo $data->name;
+	}else{
+		echo 'Khách mời';
+	}
 }

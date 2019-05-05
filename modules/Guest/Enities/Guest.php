@@ -28,7 +28,6 @@ class Guest extends Model{
 		'name'        => 'required',
         'phone'       => 'required|numeric',
         'email'       => 'required|e-mail',
-        'represent_id'    => 'required',
 	];
 
 
@@ -39,7 +38,6 @@ class Guest extends Model{
         'phone.numeric'     =>   'Số điện thoại không đúng định dạng!',
         'email.required'    =>   'Email không được để trống!',
         'email.e-mail'      =>   'Vui lòng nhập đúng địa chỉ email!',
-        'represent_id.required'    => 'Chưa chọn người đại diện!',
 	];
    
     public function authorize()

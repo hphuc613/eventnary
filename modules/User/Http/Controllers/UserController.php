@@ -4,6 +4,7 @@ namespace HPro\User\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use HPro\Role\Enities\Roles;
+use HPro\Event\Enities\Event;
 use HPro\User\Enities\User;
 use Validator;
 

@@ -34,20 +34,29 @@ class WebController extends Controller{
     {
         $this->validate($request,$this->model->rules,$this->model->messages);
 
-        $quality = Ticket_detail::find($request->represent_id);
-        $quality = $quality->quality;
-        $guest = Guest::where('represent_id',$request->represent_id)->get();
-
-        if(count($guest)<$quality){
+        if($request->represent_id == null){
             $data = $request->all();
+            $data['guest_group_id'] = 1;
             $insert = new Guest($data);
             $insert->save();
-            
             $request->session()->flash('status', 'Thêm mới thành công!');
             return redirect()->back();
         }else{
-            $request->session()->flash('alert', 'Không thêm được nữa vì đã đủ số lượng vé!');
-            return redirect()->back();
+            $quality = Ticket_detail::find($request->represent_id);
+            $quality = $quality->quality;
+            $guest = Guest::where('represent_id',$request->represent_id)->get();
+            if(count($guest)<$quality){
+                $data = $request->all();
+                $insert = new Guest($data);
+                
+                $insert->save();
+                
+                $request->session()->flash('status', 'Thêm mới thành công!');
+                return redirect()->back();
+            }else{
+                $request->session()->flash('alert', 'Không thêm được nữa vì đã đủ số lượng vé!');
+                return redirect()->back();
+            }
         }
     }
 

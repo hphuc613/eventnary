@@ -71,8 +71,9 @@
                                 <a class="nav-link waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="hidden-md-down white" style="font-size: 20px;">Chọn trạng thái&nbsp;<i class="fa fa-angle-down"></i></span></a>
 
                                 <div class="dropdown-menu dropdown-menu-right animated flipInY m-t-50">
-                                    <a href="#" class="dropdown-item"><i class="ti-user"></i> Sự kiện đang hoạt động</a>
-                                    <a href="#" class="dropdown-item"><i class="fa fa-power-off"></i> Đăng xuất</a>
+                                    <a href="{{ route('get.active.event') }}" class="dropdown-item"><i class="far fa-check-circle"></i> Sự kiện đang hoạt động</a>
+                                    <a href="{{ route('get.wait.event') }}" class="dropdown-item"><i class="fas fa-sync-alt"></i> Sự kiện chờ xét duyệt</a>
+                                    <a href="{{ route('get.stop.event') }}" class="dropdown-item"><i class="fas fa-ban"></i> Sự kiện ngưng hoạt động</a>
                                 </div>
                             </li>
                         </ul>
