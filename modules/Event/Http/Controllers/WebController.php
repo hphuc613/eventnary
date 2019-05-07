@@ -30,7 +30,8 @@ class WebController extends Controller{
     
     public function getListEvent(Request $request){
         $data = Event::where('status',1)->orderBy('id','DESC')->paginate(5);
-        return view('Event::frontend.event.event_list',compact('data'));
+        $type = Event_type::get();
+        return view('Event::frontend.event.event_list',compact('data','type'));
     }
 
     public function getInfoEvent(Request $request, $id){
@@ -54,7 +55,7 @@ class WebController extends Controller{
 
                             ->orwhere('events.title','like','%'.$request->key.'%')
                             ->orWhere('events.title',$request->key)
-                            ->where('status',1)->paginate(5);
+                            ->where('status',1)->orderBy('events.created_at','DESC')->paginate(5);
 
         return view('Event::frontend.event.event_list',compact('data'));
     }
@@ -209,10 +210,14 @@ class WebController extends Controller{
             return view('Event::frontend.event.event_chart',compact('data','total_ticket_free','total_ticket_fee','ticket_free','ticket_free_sell','ticket_fee','ticket_fee_sell'));
         }
 
-
-
     }
     
+    public function getTypeEvent(Request $request)
+    {
+        $data = Event::where('status',1)->where('event_type_id', $request->event_type)->orderBy('id','DESC')->paginate(5);
+        $type = Event_type::get();
+        return view('Event::frontend.event.event_list',compact('data','type'));
+    }
     
 
    

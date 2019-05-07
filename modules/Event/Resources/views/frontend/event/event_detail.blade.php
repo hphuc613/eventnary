@@ -117,3 +117,15 @@
 		</section>
 
 @endsection
+
+@push('js')
+	
+	<script>
+		$('#payment').change(function() {
+			if($('#payment').val() == 1){
+				$('#payment_method').html('<div class="row"><div class="col-md-2"></div><div class="col-md-8"><img src="{{ asset("image/visa_logo.png") }}" style="width: 80px; margin-bottom: 20px" alt=""><div class="form-group"><label for="">Số thẻ</label><input type="text" required placeholder="Số thẻ" class="form-control"></div><div class="form-group"><label for="">Tên trên thẻ</label><input type="text" required placeholder="Tên trên thẻ" class="form-control"></div><div class="form-group row"><div class="col-md-6"><label for="">Ngày hết hạn</label><input type="date" required class="form-control"></div><div class="col-md-6"><label for="">CVV</label><input type="text" required placeholder="Nhập 3 số cuối trên thẻ" class="form-control"></div></div></div><div class="col-md-2"></div></div>');
+			}
+		});
+	</script>
+
+@endpush

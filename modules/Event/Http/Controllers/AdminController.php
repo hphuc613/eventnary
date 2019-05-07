@@ -30,7 +30,7 @@ class AdminController extends Controller{
                             ->orWhere('cities.title','like','%'.$request->key.'%')
 
                             ->orwhere('events.title','like','%'.$request->key.'%')
-                            ->orWhere('events.title',$request->key)->paginate($page);
+                            ->orWhere('events.title',$request->key)->orderBy('events.created_at','DESC')->paginate($page);
 
 
         return view('Event::event.list',compact('data'))
@@ -41,7 +41,7 @@ class AdminController extends Controller{
     {
         $page = 8;
 
-        $data = Event::where('status',2)->paginate($page);
+        $data = Event::where('status',2)->orderBy('created_at','DESC')->paginate($page);
 
         return view('Event::event.list',compact('data'))
                     ->with('i', ($request->input('page', 1) - 1) * $page);
@@ -51,7 +51,7 @@ class AdminController extends Controller{
     {
         $page = 8;
 
-        $data = Event::where('status',1)->paginate($page);
+        $data = Event::where('status',1)->orderBy('created_at','DESC')->paginate($page);
 
         return view('Event::event.list',compact('data'))
                     ->with('i', ($request->input('page', 1) - 1) * $page);
@@ -61,7 +61,7 @@ class AdminController extends Controller{
     {
         $page = 8;
 
-        $data = Event::where('status',0)->paginate($page);
+        $data = Event::where('status',0)->orderBy('created_at','DESC')->paginate($page);
 
         return view('Event::event.list',compact('data'))
                     ->with('i', ($request->input('page', 1) - 1) * $page);

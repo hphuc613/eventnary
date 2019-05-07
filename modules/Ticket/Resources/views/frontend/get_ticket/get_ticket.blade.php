@@ -9,8 +9,10 @@
 					<form action="{{ route('post.get.ticket',$ticket_free->id) }}" method="post">
 						{{ csrf_field() }}
 						<div class="modal-header">
-							<h4 class="modal-title" id="myModalLabel">Tên vé: <span>{{ $ticket_free->title }}</span><br>
-																	  Số vé còn lại: <span class="red">{{ $ticket_free->quality }}</span> vé</h4>
+							<h4 class="modal-title" id="myModalLabel">
+								Tên vé: <span>{{ $ticket_free->title }}</span><br>
+								Số vé còn lại: <span class="red">{{ $ticket_free->quality }}</span> vé
+							</h4>
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						</div>
 						<div class="modal-body">
@@ -28,7 +30,7 @@
 								<input type="text" name="email" class="form-control" required value="{{ Auth::guard('collaborator')->user()->email }}">
 							</div>
 							<div class="form-group">
-								<label >Số lượng vé mua: </label>
+								<label >Số lượng vé: </label>
 								@if($ticket_free->max_selling == 11)
 								<input type="number" name="quality" required class="form-control">
 								@else
@@ -39,12 +41,7 @@
 								</select>
 								@endif
 							</div>
-							<div class="form-group">
-								<select name="payment" class="form-control" id="">
-									<option value="1">Thanh toán bằng thẻ ngân hàng</option>
-									<option value="2">Thanh toán tại quầy bán vé</option>
-								</select>
-							</div>
+							<input type="hidden" name="payment" value="2">
 							<button class="btn btn-success btn-block btn-lg" type="submit">Mua vé</button>
 
 							@else
@@ -90,7 +87,7 @@
 				</div>
 				<div class="modal-body center">
 					***
-					<p style="font-size: 20px"><i>Đây là sự kiện mở cửa miễn phí!</i></p>
+					<p style="font-size: 20px"><i>Vé miễn phí không có sẵn!</i></p>
 				</div>
 			</div>
 		</div>

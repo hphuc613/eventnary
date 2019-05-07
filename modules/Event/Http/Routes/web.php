@@ -22,6 +22,7 @@
         Route::post('gallery/','WebController@postListGalleryEvent')->name('post.home.create.gallery');
 
         Route::get('search-event','WebController@searchEvent')->name('home.search.event');
+        Route::get('search-type-event','WebController@getTypeEvent')->name('home.search.type-event');
 
 
 

@@ -206,7 +206,7 @@
                                 <select class="select2 form-control custom-select" name="event_type_id">
                                     <option value="">--Không có loại sự kiện--</option>
                                     @foreach($event_type as $key => $val)
-                                    <option value="{{ $val->id }}">{{ $val->title }}</option>
+                                    <option @if($data->event_type_id == $val->id) selected @endif value="{{ $val->id }}">{{ $val->title }}</option>
                                     @endforeach
                                 </select>
                             </div>

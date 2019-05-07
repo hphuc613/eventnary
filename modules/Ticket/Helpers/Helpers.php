@@ -12,7 +12,7 @@ function ticketStatusTitle($id)
 function paymentMethod($id)
 {
 	if($id==1){
-		return "Thanh toán bằng thẻ ngân hàng";
+		return "Thanh toán bằng thẻ tín dụng";
 	}else{
 		return "Thanh toán tại quầy bán vé";
 	}

@@ -9,9 +9,11 @@
 					<form action="{{ route('post.get.ticket',$ticket_fee->id) }}" method="post">
 						{{ csrf_field() }}
 						<div class="modal-header">
-							<h4 class="modal-title" id="myModalLabel">Mua vé: <span>{{ $ticket_fee->title }}</span><br>
-																	  Số vé còn lại: <span>{{ $ticket_fee->quality }}</span> vé<br>
-																	  Giá vé: <span>{{ number_format($ticket_fee->price) }}</span> VNĐ</h4>
+							<h4 class="modal-title" id="myModalLabel">
+								Mua vé: <span>{{ $ticket_fee->title }}</span><br>
+								Số vé còn lại: <span>{{ $ticket_fee->quality }}</span> vé<br>
+								Giá vé: <span>{{ number_format($ticket_fee->price) }}</span> VNĐ
+							</h4>
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						</div>
 						<div class="modal-body">
@@ -55,10 +57,16 @@
 								@endif
 							</div>
 							<div class="form-group">
-								<select name="payment" class="form-control" id="">
-									<option value="1">Thanh toán bằng thẻ ngân hàng</option>
+								<label>Chọn phương thức thanh toán</label>
+								<select name="payment" class="form-control" id="payment">
 									<option value="2">Thanh toán tại quầy bán vé</option>
+									<option value="1">Thanh toán bằng thẻ tín dụng</option>
 								</select>
+							</div>
+							<div class="form-group">
+								<div id="payment_method">
+									
+								</div>
 							</div>
 							<button class="btn btn-success btn-block btn-lg" type="submit">Mua vé</button>
 						</div>

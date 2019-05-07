@@ -3,6 +3,23 @@
 	Danh sách sự kiện	
 @endsection
 
+@push('css')
+	
+	<style>
+		form {
+			margin-bottom: 0px;
+		}
+
+		.filter {
+			font-size: 20px;
+		}
+		.filter-child {
+			font-size: 16px;
+		}
+	</style>
+
+@endpush
+
 @section('content')
 
 <div class="clear"></div>
@@ -14,7 +31,25 @@
 				<div class="container clearfix">
 
 					<div class="postcontent nobottommargin">
-
+						<ul class="nav nav-tabs">
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle filter" data-toggle="dropdown" href="#">
+								Thể loại sự kiện
+								</a>
+								<ul class="dropdown-menu" role="menu">
+									@foreach($type as $val)
+									<form action="{{ route('home.search.type-event') }}" method="get">
+										<input type="hidden" class="dropdown-item" name="event_type" value="{{ $val->id }}">
+										<input type="submit" class="dropdown-item filter-child" value="{{ $val->title }}">
+									</form>
+									@endforeach
+									<form action="{{ route('home.search.type-event') }}" method="get">
+										<input type="hidden" class="dropdown-item" name="event_type" value="">
+										<input type="submit" class="dropdown-item filter-child" value="- Khác -">
+									</form>
+								</ul>
+							</li>
+						</ul>
 						<div id="posts" class="events small-thumbs">
 						@if($data)
 							@foreach($data as $key => $val)
@@ -46,7 +81,6 @@
 						@else
 							<p>Không có sự kiện nào bạn muốn tìm!</p>
 						@endif
-
 						</div>
 
 						<!-- Pagination

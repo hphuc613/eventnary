@@ -115,7 +115,7 @@
 				                            	<select name="event_type_id" id="" class="form-control">
 				                            		<option value="">-- Không có loại sự kiện --</option>
 				                            		@foreach($type as $key => $val)
-					                            		<option value="{{ $val->id }}">{{ $val->title }}</option>
+					                            		<option @if($data->event_type_id == $val->id) selected @endif value="{{ $val->id }}">{{ $val->title }}</option>
 				                            		@endforeach
 				                            	</select>
 				                            </div>
