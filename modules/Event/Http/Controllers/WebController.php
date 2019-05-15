@@ -96,11 +96,17 @@ class WebController extends Controller{
     {   
         Authecation();
         $data = Event::find($id);
-        $type = Event_type::get();
-        $cities = City::get();
-        $districts = District::where('city_id',$data->ward->district->city->id)->get();
-        $wards = Ward::where('district_id',$data->ward->district->id)->get();
-        return view('Event::frontend.event.event_edit',compact('cities','wards','districts','type','data'));
+        if(Auth::guard('collaborator')->id() != $data->user->id){
+            $request->session()->flash('alert', 'Bạn không có sự kiện này!');
+            return redirect()->route('get.edit.account',Auth::guard('collaborator')->id()); 
+        }else{
+            $type = Event_type::get();
+            $cities = City::get();
+            $districts = District::where('city_id',$data->ward->district->city->id)->get();
+            $wards = Ward::where('district_id',$data->ward->district->id)->get();
+            return view('Event::frontend.event.event_edit',compact('cities','wards','districts','type','data'));    
+        }
+        
     }
 
     public function postEditEvent(Request $request, $slug, $id){

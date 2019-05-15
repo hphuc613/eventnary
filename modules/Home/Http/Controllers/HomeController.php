@@ -73,6 +73,41 @@ class HomeController extends Controller{
         }
     }
 
+    public function postCurrentLogin(Request $request){
+        
+        $login = [
+                        'email' => $request->input('account'),
+                        'password' => $request->input('password'),
+                        'role_id' => 2
+                    ];
+
+        $login2 = [
+                        'phone' => $request->input('account'),
+                        'password' => $request->input('password'),
+                        'role_id' => 2
+                    ];
+
+        $login3 = [
+                        'email' => $request->input('account'),
+                        'password' => $request->input('password'),
+                        'role_id' => 1
+                    ];
+
+        $login4 = [
+                        'phone' => $request->input('account'),
+                        'password' => $request->input('password'),
+                        'role_id' => 1
+                    ];
+        
+        if (Auth::guard('collaborator')->attempt($login) or Auth::guard('collaborator')->attempt($login2)
+            or Auth::guard('collaborator')->attempt($login3) or Auth::guard('collaborator')->attempt($login4)) {
+            return redirect()->back();
+        }else{
+            $request->session()->flash('alert', 'Sai tên đăng nhập hoặc mật khẩu!');
+            return redirect()->back()->withInput();
+        }
+    }
+
     
 
     public function getHomeLogout(Request $request){

@@ -3,6 +3,7 @@
         Route::get('/','HomeController@getHome')->name('get.home.index');
         
         Route::get('/login-page','HomeController@getHomeLogin')->name('get.home.login');
+        Route::post('/login/current-page','HomeController@postCurrentLogin')->name('post.current.login');
         Route::post('/login-page','HomeController@postHomeLogin')->name('post.home.login');
         Route::get('/logout-page','HomeController@getHomeLogout')->name('get.home.logout');
     	

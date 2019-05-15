@@ -37,6 +37,16 @@
 		</div>
 	@else
 
+		<div class="center">
+			<form id="login-form" name="login-form" class="nobottommargin" action="{{ route('post.current.login') }}" method="post">
+				{{ csrf_field() }}
+				<input type="text" class="form-control" required="" name="account"  placeholder="Email/Số điện thoại">
+				<input type="password" class="form-control m-t-5" required name="password" placeholder="Mật khẩu">
+				<button class="btn btn-primary m-t-10 m-b-10" type="submit">Đăng nhập</button>
+			</form>
+			<a href="{{ route('get.home.login') }}"><u>Đăng ký</u></a>
+		</div>
+
 		<div class="widget quick-contact-widget clearfix">
 
 			<h4>Về chúng tôi</h4>
@@ -51,7 +61,7 @@
 
 				<abbr title="Phone Number">Số điện thoại:</abbr> (91) 8547 632521<br>
 				<abbr title="Fax">Fax:</abbr> (91) 11 4752 1433<br>
-				<abbr title="Email Address">Email:</abbr> wofl.alone613@gmail.com
+				<abbr title="Email Address">Email:</abbr> eventnary.system@gmail.com
 			</div>
 
 		</div>
@@ -103,11 +113,7 @@
 
 		</div>
 
-		<div class="top-header m-b-30">
-			<div class="container-fluid center topmargin">
-				<a href="{{ route('get.home.login') }}" class="btn btn-primary">Đăng nhập </a>
-			</div>
-		</div>
+
 	@endif
 	</div>
 
